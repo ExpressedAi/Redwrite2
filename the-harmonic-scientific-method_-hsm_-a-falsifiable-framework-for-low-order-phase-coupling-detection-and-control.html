@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Harmonic Scientific Method (HSM): A Falsifiable Framework | Redwrite</title>
+  <meta name="description" content="A complete, falsifiable framework for detecting, testing, and controlling low-order phase couplings in complex systems. Building on the Low-Order Wins renormalization-group principle.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .code { font-family: 'JetBrains Mono', monospace; }
+    .admonition { border-left: 4px solid; border-radius: 0.5rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .admonition-info { background-color: #eff6ff; border-color: #3b82f6; }
+    .admonition-warning { background-color: #fef3c7; border-color: #f59e0b; }
+    .admonition-success { background-color: #d1fae5; border-color: #10b981; }
+    .admonition-note { background-color: #f3e8ff; border-color: #8b5cf6; }
+    .admonition-danger { background-color: #fee2e2; border-color: #ef4444; }
+    .concept-card { transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid; }
+    .concept-card:hover { transform: translateX(8px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-in {
+      animation: slide-in 0.6s ease-out;
+    }
+    .math-block {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    code {
+      background-color: #f1f5f9;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875em;
+    }
+    pre {
+      background-color: #1e293b;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    pre code {
+      background-color: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    .toc-link {
+      color: #3b82f6;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc-link:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    th {
+      background-color: #f8fafc;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Navigation -->
+    <nav class="mb-8">
+      <a href="/" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        <span class="font-medium">Back to Redwrite</span>
+      </a>
+    </nav>
+    
+    <!-- Header -->
+    <header class="mb-12 animate-slide-in">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-4 flex-wrap">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+            <i data-lucide="microscope" class="w-4 h-4"></i>
+            Research
+          </span>
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-full text-sm font-semibold">
+            Scientific Methodology
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          The Harmonic Scientific Method
+          <span class="block text-3xl md:text-4xl text-gray-600 font-normal mt-2">(HSM)</span>
+          <span class="block text-2xl md:text-3xl text-gray-500 font-normal mt-2">A Falsifiable Framework for Low-Order Phase Coupling Detection and Control</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- Abstract -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.1s">
+      <div class="admonition admonition-success">
+        <h2 class="text-2xl font-bold text-green-900 mb-4">Abstract</h2>
+        <p class="text-green-800 leading-relaxed text-lg mb-4">
+          We present the <strong>Harmonic Scientific Method (HSM)</strong>, a complete, falsifiable framework for detecting, testing, and controlling low-order phase couplings in complex systems. Building on the <strong>Low-Order Wins</strong> renormalization-group principle, HSM operationalizes the hypothesis that persistent structure in coupled oscillatory systems concentrates at small integer frequency ratios (p:q) with p+q ≤ P.
+        </p>
+        <p class="text-green-800 leading-relaxed text-lg mb-4">
+          The method specifies: (i) four foundational axioms grounding all inferences in phase-space observables and admissible transformations; (ii) a <strong>locking kernel</strong> K<sub>ab</sub>(p:q) that penalizes both relation order and frequency detuning; (iii) <strong>Edge tests E1–E4</strong> serving as hard falsification gates; (iv) a <strong>Delta Coupling Operator (DCO)</strong> that maps observed phases to accepted locks, primary graphs, RG-consistency flags, and harmony gains; (v) pre-registered null families with BH-FDR control at q ≤ 0.05; and (vi) two compact theorems proving RG irrelevance of high-order/detuned couplings and monotone harmony improvement under greedy low-order steering.
+        </p>
+        <p class="text-green-800 leading-relaxed text-lg">
+          The framework is <strong>platform-agnostic</strong>: no code dependencies, only abstract operators and falsifiable predictions. Acceptance requires clearing all null thresholds <strong>and</strong> passing all four Edge tests—no partial credit.
+        </p>
+      </div>
+    </section>
+
+    <!-- Core Principle -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.2s">
+      <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-lg border border-emerald-200">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Core Principle: Low-Order Wins as Operational Law</h2>
+        <p class="text-emerald-900 leading-relaxed text-lg mb-4">
+          The foundation is the <strong>Low-Order Wins (LOW)</strong> principle, which states that after detuning normalization and fixed coarse-graining, effective scaling dimensions Δ<sub>(p,q)</sub> increase with relation order r = p + q. Under the RG flow:
+        </p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono text-lg">dK<sub>(p,q)</sub>/dℓ = (2 - Δ<sub>(p,q)</sub> - ΛK<sub>(p,q)</sub>)K<sub>(p,q)</sub></p>
+        </div>
+        <p class="text-emerald-900 leading-relaxed text-lg mt-4">
+          where Δ<sub>(p,q)</sub> ≈ d + η(p+q) + ζ|detune| increases with both order and detuning. <strong>Only low-order, near-tuned ratios survive</strong> repeated coarse-graining.
+        </p>
+      </div>
+    </section>
+
+    <!-- Four Axioms -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.3s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">The Four Foundational Axioms</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">A1 (Vibration)</h3>
+          <p class="text-gray-700 mb-2">Every observable phenomenon admits a phase description V(x) = (A, f, φ, H) where oscillatory structure is observable, not metaphorical.</p>
+          <p class="text-gray-700 text-sm"><strong>Operational test:</strong> Phase extraction must survive amplitude muting. Encoded in E1.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">A2 (Closure)</h3>
+          <p class="text-gray-700 mb-2">All valid inferences are built from V and admissible transformations without importing extraneous structure.</p>
+          <p class="text-gray-700 text-sm"><strong>Operational test:</strong> All preprocessing must be preregistered and apply uniformly to all (p,q) candidates. Encoded in E2.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">A3 (Observer Discipline)</h3>
+          <p class="text-gray-700 mb-2">Observers must preserve phase meaning under admissible transformations; otherwise claims are void.</p>
+          <p class="text-gray-700 text-sm"><strong>Operational test:</strong> E2 and E4 require observer/instrument swap persistence. A lock that disappears when switching platforms fails A3.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">A4 (Quality Identity)</h3>
+          <p class="text-gray-700 mb-2">Among candidate descriptions Q, choose Q* = argmax<sub>Q</sub> [I(Q; O) - λ·MDL(Q)] where O ranges over admissible observers.</p>
+          <p class="text-gray-700 text-sm"><strong>Interpretation:</strong> Quality is the most informative description penalized by complexity, formalizing Occam's razor.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Locking Kernel -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.4s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Locking Kernel K<sub>ab</sub>(p:q)</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-indigo-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Definition</h3>
+        <p class="text-gray-700 mb-4">For channels a, b and coprime integers p, q ≥ 1 with p + q ≤ P:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono text-lg">K<sub>ab</sub>(p:q) = |⟨e<sup>i(pθ<sub>b</sub> - qθ<sub>a</sub>)</sup>⟩| · e<sup>-λ(p+q)</sup> · e<sup>-γδ<sub>ab</sub>(p:q)</sup></p>
+        </div>
+        <p class="text-gray-700 mt-4">with scale-free detuning:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono">δ<sub>ab</sub>(p:q) = |(ω<sub>b</sub>/ω<sub>a</sub>) - (p/q)| / max(ω<sub>b</sub>/ω<sub>a</sub>, p/q)</p>
+        </div>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Phase Lock Magnitude</h3>
+          <p class="text-blue-800 text-sm">|⟨e<sup>i(·)</sup>⟩| measures how phase-locked the composite defect Θ<sub>p</sub> is over the window</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Order Penalty</h3>
+          <p class="text-amber-800 text-sm">e<sup>-λ(p+q)</sup> exponentially suppresses high-order relations (typical λ ≈ 0.6)</p>
+        </div>
+        
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">Detuning Penalty</h3>
+          <p class="text-green-800 text-sm">e<sup>-γδ</sup> exponentially suppresses relations with large frequency mismatch (typical γ ≈ 12)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Edge Tests -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.5s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Edge Tests: The Four Hard Gates</h2>
+      
+      <div class="admonition admonition-danger mb-6">
+        <h3 class="text-lg font-bold text-red-900 mb-2">Hard-Gate Doctrine</h3>
+        <p class="text-red-800">Every accepted lock <strong>must pass all four Edge tests</strong>. Failing <strong>any</strong> test <strong>invalidates all downstream claims</strong>. No partial credit.</p>
+      </div>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">E1 — Channelized Vibration Proof</h3>
+          <p class="text-gray-700 mb-2"><strong>Test:</strong> Phase must survive amplitude muting and satisfy time-reversal symmetry</p>
+          <p class="text-gray-700 text-sm"><strong>Failure means:</strong> Vacuous "phase" (violates A1)</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">E2 — Symmetry & Observer Invariance</h3>
+          <p class="text-gray-700 mb-2"><strong>Test:</strong> Phase gauge invariance, permutation invariance, and observer/instrument swap persistence</p>
+          <p class="text-gray-700 text-sm"><strong>Failure means:</strong> Artifact or observer-dependent (violates A2/A3)</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">E3 — Micro-Perturbation Causality</h3>
+          <p class="text-gray-700 mb-2"><strong>Test:</strong> Small frequency nudges toward hypothesized locks must increase K and harmony H*</p>
+          <p class="text-gray-700 text-sm"><strong>Failure means:</strong> Non-causal or spurious lock</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">E4 — Out-of-Sample & RG Persistence</h3>
+          <p class="text-gray-700 mb-2"><strong>Test:</strong> Temporal hold-out, coarse-graining, and cross-modality RG persistence</p>
+          <p class="text-gray-700 text-sm"><strong>Failure means:</strong> Overfitting or RG-inconsistent</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Null Families -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.6s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Three Preregistered Null Families</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-indigo-500 mb-6">
+        <p class="text-gray-700 mb-4">To claim that an observed K<sub>ab</sub>(p:q) represents <strong>real structure</strong> rather than noise or artifact, it must beat <strong>all three</strong> null types simultaneously:</p>
+        
+        <div class="space-y-4 mt-6">
+          <div class="admonition admonition-info">
+            <h3 class="text-lg font-bold text-blue-900 mb-2">Null 1: Spectral Surrogates</h3>
+            <p class="text-blue-800 text-sm">Phase randomization preserves amplitude spectra and autocorrelation. Rules out spurious coupling from spectral overlap or waveform shape.</p>
+          </div>
+          
+          <div class="admonition admonition-success">
+            <h3 class="text-lg font-bold text-green-900 mb-2">Null 2: Phase-Shuffle Surrogates</h3>
+            <p class="text-green-800 text-sm">Circular phase shift preserves marginal phase distributions. Rules out coupling from slow drifts or common external driver.</p>
+          </div>
+          
+          <div class="admonition admonition-note">
+            <h3 class="text-lg font-bold text-purple-900 mb-2">Null 3: Mechanistic Surrogates</h3>
+            <p class="text-purple-800 text-sm">AR/ARMA simulation preserves within-channel autocovariance. Rules out coupling from autocorrelation patterns mimicking locks.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="admonition admonition-warning">
+        <p class="text-amber-800"><strong>Edge Condition:</strong> A candidate lock must satisfy K<sub>ab</sub>(p:q) > max{τ<sub>spec</sub><sup>95</sup>, τ<sub>shuffle</sub><sup>95</sup>, τ<sub>mech</sub><sup>95</sup>} with BH-FDR control at q ≤ 0.05</p>
+      </div>
+    </section>
+
+    <!-- Delta Coupling Operator -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.7s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Delta Coupling Operator (DCO)</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-teal-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Abstract Definition</h3>
+        <p class="text-gray-700 mb-4">DCO maps observed phases P to a comprehensive output:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono">DCO: P ↦ (L, G<sup>primary</sup>, RG, ΔH*, Π, DeltaScore, ObserverSwap, χ)</p>
+        </div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Locks L</h3>
+          <p class="text-gray-700 text-sm">List of accepted tuples [(a,b), (p:q), K, detune, C<sub>ab</sub>, persistence] ranked by K</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Primary Graph G<sup>primary</sup></h3>
+          <p class="text-gray-700 text-sm">Edges (a,b) annotated with accepted ratio (p:q), undirected by default</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">RG Summary</h3>
+          <p class="text-gray-700 text-sm">Flags for low-order persistence, high-order decay, and RG consistency score</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Harmony Gain ΔH*</h3>
+          <p class="text-gray-700 text-sm">Measured improvement when enacting best steer plan vs. null controllers</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Steer Plan Π</h3>
+          <p class="text-gray-700 text-sm">Minimal-budget frequency adjustments that reduce detuning and increase harmony</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-red-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">DeltaScore</h3>
+          <p class="text-gray-700 text-sm">Composite score aggregating lock strength, harmony improvement, RG consistency, generalization, and parsimony</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RG Flow -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.8s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">RG Flow and the Low-Order Wins Law</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-indigo-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">The Flow Equation</h3>
+        <p class="text-gray-700 mb-4">Under coarse-graining by scale ℓ, the coupling strength K evolves as:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono text-lg">dK/dℓ = (2 - Δ<sub>p:q</sub>)K - ΛK<sup>3</sup> + ...</p>
+        </div>
+        <p class="text-gray-700 mt-4">where the effective scaling dimension is:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono">Δ<sub>p:q</sub> = d + η(p+q) + ζ|ω<sub>b</sub>/ω<sub>a</sub> - p/q|</p>
+        </div>
+      </div>
+      
+      <div class="admonition admonition-note">
+        <h3 class="text-lg font-bold text-purple-900 mb-2">The Low-Order Wins Law</h3>
+        <p class="text-purple-800">If p+q is large or detuning |ω<sub>b</sub>/ω<sub>a</sub> - p/q| is large, then Δ<sub>p:q</sub> > 2 and K* = 0 is the unique stable fixed point. Hence, <strong>only low-order, near-tuned locks persist</strong> under noise and coarse-graining.</p>
+      </div>
+    </section>
+
+    <!-- Core Theorems -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.9s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Two Compact Theorems</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-indigo-500">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Theorem 1: RG Irrelevance of High Order / Detune</h3>
+          <p class="text-gray-700 mb-4">There exist P* and δ* > 0 such that if p+q > P* or |ω<sub>b</sub>/ω<sub>a</sub> - p/q| > δ*, then Δ<sub>p:q</sub> > 2 and K* = 0 is the unique stable fixed point.</p>
+          <p class="text-gray-700 mt-4"><strong>Conclusion:</strong> Only low-order, near-tuned locks persist under noise and coarse-graining.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Theorem 2: Monotone Harmony Under Greedy Steering</h3>
+          <p class="text-gray-700 mb-4">Given small intervention budget ∑<sub>a</sub> |δω<sub>a</sub>| ≤ ε and top-scoring lock (a*, b*, p*, q*), the greedy steer plan that moves ω toward the lock satisfies:</p>
+          <div class="math-block">
+            <p class="text-gray-900 font-mono">H*(ω + δω*) - H*(ω) > 0</p>
+          </div>
+          <p class="text-gray-700 mt-4"><strong>Conclusion:</strong> Harmony increases monotonically until detune hits zero or budget saturates.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Contributions -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.0s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Main Contributions</h2>
+      
+      <div class="space-y-4">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">1. Complete Falsifiable Framework</h3>
+          <p class="text-gray-700 text-sm">Four axioms, four Edge tests, three null families, one abstract operator (DCO) unifying detection, validation, and control</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">2. Formal Theorems with Proofs</h3>
+          <p class="text-gray-700 text-sm">Theorem 1 (RG irrelevance) and Theorem 2 (Monotone harmony) with complete proofs relying only on RG flow structure</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">3. Platform-Agnostic Design</h3>
+          <p class="text-gray-700 text-sm">No code dependencies; clock compiler handles oscillatory, event-based, semantic, and mixed-radix sources</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">4. Version 1.1 Extensions</h3>
+          <p class="text-gray-700 text-sm">Observer-swap persistence, micro-nudge monotonicity, lock-churn χ, semantic template locks, Control Barrier Function safety</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">5. Reproducibility Infrastructure</h3>
+          <p class="text-gray-700 text-sm">One-page operational checklist, researcher-degrees-of-freedom ledger, explicit failure modes, quantitative predictions</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Operational Checklist -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.1s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Operational Checklist</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-emerald-500">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">The HSM Protocol in Seven Steps</h3>
+        <ol class="list-decimal list-inside space-y-3 text-gray-700 ml-4">
+          <li><strong>Register</strong> hyperparameters (P, λ, γ, accept_R, min_persist_cycles, w•), null families, FDR level, steer budget ε</li>
+          <li><strong>Compute</strong> phases θ<sub>a</sub>(t), amplitudes ρ<sub>a</sub>(t), frequencies ω<sub>a</sub>(t) via clock compiler. Screen population coherence R</li>
+          <li><strong>Enumerate</strong> (p,q) up to P. Score each with locking kernel K<sub>ab</sub>(p:q)</li>
+          <li><strong>Gate</strong> by nulls + E1–E4. Enforce identifiability (one primary per band per pair). Apply BH-FDR at q ≤ 0.05</li>
+          <li><strong>Assemble</strong> locks L, primary graph G<sup>primary</sup>, RG summary. Quantify harmony gain ΔH*</li>
+          <li><strong>Steer</strong> by minimal δω toward best low-order lock. Check CBF safety. Re-measure K and H*</li>
+          <li><strong>Report</strong> Δ-report with DeltaScore. <strong>Stop immediately</strong> if any Edge test fails—no partial credit</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Why This Wins -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.2s">
+      <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-lg border border-emerald-200">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why This Wins</h2>
+        <p class="text-emerald-900 leading-relaxed text-lg">
+          The <strong>Harmonic Scientific Method</strong> transforms coupling analysis from a post-hoc pattern-search into a <strong>disciplined scientific protocol</strong>. By grounding all inferences in four foundational axioms, requiring passage of four hard Edge tests, and enforcing the Low-Order Wins RG principle via explicit penalties in the locking kernel, HSM provides a rigorous path forward for oscillatory systems.
+        </p>
+        <p class="text-emerald-800 mt-4 italic">
+          The method elevates findings from "statistical fit" to <strong>law-status</strong> via persistence under symmetry, RG coarse-graining, and cross-domain integer stability—offering a rigorous alternative to post-hoc pattern-finding in complex time series.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+      <div class="text-center text-gray-600">
+        <p class="mb-4">The Harmonic Scientific Method: A complete, falsifiable framework for low-order phase coupling detection and control.</p>
+        <p class="text-sm">Published by Jake A. Hallett • August 28, 2025</p>
+        <p class="text-xs mt-4 text-gray-500">This document represents a comprehensive scientific methodology for understanding phase coupling in complex systems through rigorous falsification protocols and renormalization group principles.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+
+

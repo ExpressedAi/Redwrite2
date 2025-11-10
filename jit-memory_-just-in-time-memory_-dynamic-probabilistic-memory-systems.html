@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JIT Memory - Just In Time Memory: Dynamic Probabilistic Memory Systems | Redwrite</title>
+  <meta name="description" content="JIT Memory fundamentally reimagines how AI agents maintain and access conversational history through intelligent snippet extraction, tag-based retrieval, and stochastic ranking mechanisms.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .admonition { border-left: 4px solid; border-radius: 0.5rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .admonition-info { background-color: #eff6ff; border-color: #3b82f6; }
+    .admonition-warning { background-color: #fef3c7; border-color: #f59e0b; }
+    .admonition-success { background-color: #d1fae5; border-color: #10b981; }
+    .admonition-note { background-color: #f3e8ff; border-color: #8b5cf6; }
+    .admonition-memory { background-color: #ecfeff; border-color: #06b6d4; }
+    .pillar-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.6); }
+    }
+    .animate-pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-in {
+      animation: slide-in 0.6s ease-out;
+    }
+    .stat-card {
+      transition: all 0.3s ease;
+    }
+    .stat-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    @keyframes memory-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+    .memory-pulse {
+      animation: memory-pulse 2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Navigation -->
+    <nav class="mb-8">
+      <a href="/" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        <span class="font-medium">Back to Redwrite</span>
+      </a>
+    </nav>
+    
+    <!-- Header -->
+    <header class="mb-12 animate-slide-in">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-4 flex-wrap">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            Original Research
+          </span>
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-full text-sm font-semibold animate-pulse-glow">
+            Agentic Architecture & System Design
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          JIT Memory
+          <span class="block text-3xl md:text-4xl text-gray-600 font-normal mt-2">Just In Time Memory</span>
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          An advanced state context memory architecture that fundamentally reimagines how AI agents maintain and access conversational history through intelligent snippet extraction, tag-based retrieval, and stochastic ranking mechanisms.
+        </p>
+      </div>
+    </header>
+
+    <!-- High-Level Summary -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.1s">
+      <div class="admonition admonition-memory">
+        <h2 class="text-2xl font-bold text-cyan-900 mb-4 flex items-center gap-2">
+          <i data-lucide="database" class="w-6 h-6"></i>
+          High-Level Summary
+        </h2>
+        <p class="text-cyan-800 leading-relaxed text-lg">
+          <strong>JIT Memory (Just In Time Memory)</strong> is an advanced state context memory architecture that fundamentally reimagines how AI agents maintain and access conversational history. By implementing intelligent snippet extraction, tag-based retrieval, and stochastic ranking mechanisms, JIT Memory enables agents to operate with effectively infinite context while maintaining computational efficiency and memory diversity.
+        </p>
+      </div>
+    </section>
+
+    <!-- Core Architecture -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.2s">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Core Architecture</h2>
+
+      <!-- Memory Creation Pipeline -->
+      <div class="mb-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+          <i data-lucide="cpu" class="w-8 h-8 text-teal-600"></i>
+          Memory Creation Pipeline
+        </h3>
+        <p class="text-gray-700 leading-relaxed text-lg mb-6">
+          JIT Memory operates on a turn-by-turn analysis framework that processes each user-agent interaction cycle:
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-6 mb-6">
+          <div class="pillar-card bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl p-6 shadow-lg border border-teal-200">
+            <div class="flex items-center gap-3 mb-4">
+              <i data-lucide="scissors" class="w-8 h-8 text-teal-600 memory-pulse"></i>
+              <h4 class="font-bold text-gray-900">Extraction Phase</h4>
+            </div>
+            <p class="text-gray-700 leading-relaxed text-sm">
+              The system analyzes each conversational turn and identifies the most semantically significant portions of the exchange. Rather than storing entire conversations, JIT Memory extracts highly specified text snippets that capture the essential information and context of each interaction.
+            </p>
+          </div>
+
+          <div class="pillar-card bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-6 shadow-lg border border-cyan-200">
+            <div class="flex items-center gap-3 mb-4">
+              <i data-lucide="tag" class="w-8 h-8 text-cyan-600 memory-pulse"></i>
+              <h4 class="font-bold text-gray-900">Tagging Mechanism</h4>
+            </div>
+            <p class="text-gray-700 leading-relaxed text-sm">
+              Each extracted memory snippet is enriched with a user-configurable number of semantic tags that describe the content, context, and relevance of the stored information. These tags serve as the primary indexing mechanism for future retrieval.
+            </p>
+          </div>
+
+          <div class="pillar-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 shadow-lg border border-blue-200">
+            <div class="flex items-center gap-3 mb-4">
+              <i data-lucide="sliders" class="w-8 h-8 text-blue-600 memory-pulse"></i>
+              <h4 class="font-bold text-gray-900">Configurable Granularity</h4>
+            </div>
+            <p class="text-gray-700 leading-relaxed text-sm">
+              Users can specify memory size parameters, allowing the system to balance between detailed context preservation and storage efficiency based on specific use case requirements.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stochastic Ranking with Bayesian TrueSkill -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.3s">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Stochastic Ranking with Bayesian TrueSkill</h2>
+      <div class="admonition admonition-note">
+        <p class="text-purple-800 leading-relaxed text-lg mb-4">
+          JIT Memory's most innovative feature is its implementation of <strong>Bayesian TrueSkill scoring</strong> for memory ranking:
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="pillar-card bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 shadow-lg border border-purple-200">
+          <div class="flex items-center gap-3 mb-4">
+            <i data-lucide="dice-6" class="w-8 h-8 text-purple-600"></i>
+            <h4 class="font-bold text-gray-900">Non-Deterministic Selection</h4>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-sm">
+            Unlike traditional memory systems that retrieve the same memories repeatedly based on fixed relevance scores, JIT Memory employs stochastic rating mechanisms. Each memory's retrieval probability is influenced by its TrueSkill score, but selection includes controlled randomness that prevents memory entrenchment.
+          </p>
+        </div>
+
+        <div class="pillar-card bg-gradient-to-br from-indigo-50 to-violet-50 rounded-xl p-6 shadow-lg border border-indigo-200">
+          <div class="flex items-center gap-3 mb-4">
+            <i data-lucide="sparkles" class="w-8 h-8 text-indigo-600"></i>
+            <h4 class="font-bold text-gray-900">Emergent "Free Will" Behavior</h4>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-sm">
+            The stochastic selection mechanism produces agent behavior that appears less deterministic and more dynamic. By varying which memories are retrieved across similar queries, the system prevents conversational patterns from becoming stale or overly repetitive, creating interactions that feel more natural and less robotic.
+          </p>
+        </div>
+
+        <div class="pillar-card bg-gradient-to-br from-violet-50 to-purple-50 rounded-xl p-6 shadow-lg border border-violet-200">
+          <div class="flex items-center gap-3 mb-4">
+            <i data-lucide="trending-up" class="w-8 h-8 text-violet-600"></i>
+            <h4 class="font-bold text-gray-900">Adaptive Importance Weighting</h4>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-sm">
+            The TrueSkill framework continuously updates memory importance scores based on retrieval success and contextual relevance, creating a self-optimizing memory ecosystem that evolves with usage patterns.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- High-Speed Onboarding System -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.4s">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">High-Speed Onboarding System</h2>
+      <p class="text-gray-700 leading-relaxed text-lg mb-8 text-center max-w-3xl mx-auto">
+        JIT Memory includes a specialized bulk ingestion pipeline designed for rapid knowledge base creation:
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="pillar-card bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl p-6 shadow-lg border border-teal-200">
+          <div class="flex items-center gap-3 mb-4">
+            <i data-lucide="zap" class="w-8 h-8 text-teal-600"></i>
+            <h4 class="font-bold text-gray-900">Parallel Processing Architecture</h4>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-sm">
+            The onboarding mechanism leverages <strong>chunked sequential parallel processing</strong> across multiple API keys, enabling simultaneous processing of large text corpora. This distributed architecture allows the system to ingest millions of characters of source material with minimal latency.
+          </p>
+        </div>
+
+        <div class="pillar-card bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-6 shadow-lg border border-cyan-200">
+          <div class="flex items-center gap-3 mb-4">
+            <i data-lucide="layers" class="w-8 h-8 text-cyan-600"></i>
+            <h4 class="font-bold text-gray-900">Configurable Overlap Protection</h4>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-sm">
+            Users can specify overlap parameters between processing chunks to ensure that semantically important information spanning chunk boundaries is not lost or fragmented. This overlap mechanism guarantees comprehensive knowledge capture regardless of source text structure.
+          </p>
+        </div>
+
+        <div class="pillar-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 shadow-lg border border-blue-200">
+          <div class="flex items-center gap-3 mb-4">
+            <i data-lucide="merge" class="w-8 h-8 text-blue-600"></i>
+            <h4 class="font-bold text-gray-900">Unified Memory Treatment</h4>
+          </div>
+          <p class="text-gray-700 leading-relaxed text-sm">
+            Onboarded content undergoes the same tagging and rating processes as turn-based memories, ensuring consistent retrieval behavior and ranking across both conversational and pre-loaded knowledge bases.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Advantages -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.5s">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Technical Advantages</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="stat-card bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded-xl border border-teal-200">
+          <div class="flex items-center gap-3 mb-3">
+            <i data-lucide="infinity" class="w-6 h-6 text-teal-600"></i>
+            <h3 class="font-bold text-gray-900">Infinite Context Illusion</h3>
+          </div>
+          <p class="text-gray-700 text-sm">By retrieving only relevant historical snippets, JIT Memory allows agents to reference vast conversational histories without context window limitations.</p>
+        </div>
+        
+        <div class="stat-card bg-gradient-to-br from-cyan-50 to-blue-50 p-6 rounded-xl border border-cyan-200">
+          <div class="flex items-center gap-3 mb-3">
+            <i data-lucide="palette" class="w-6 h-6 text-cyan-600"></i>
+            <h3 class="font-bold text-gray-900">Memory Diversity</h3>
+          </div>
+          <p class="text-gray-700 text-sm">Stochastic ranking prevents the same memories from dominating every conversation, creating more varied and engaging interactions.</p>
+        </div>
+        
+        <div class="stat-card bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
+          <div class="flex items-center gap-3 mb-3">
+            <i data-lucide="upload" class="w-6 h-6 text-blue-600"></i>
+            <h3 class="font-bold text-gray-900">Scalable Knowledge Integration</h3>
+          </div>
+          <p class="text-gray-700 text-sm">The high-speed onboarding system enables rapid deployment of domain-specific knowledge without manual conversation-based training.</p>
+        </div>
+        
+        <div class="stat-card bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-xl border border-indigo-200">
+          <div class="flex items-center gap-3 mb-3">
+            <i data-lucide="brain" class="w-6 h-6 text-indigo-600"></i>
+            <h3 class="font-bold text-gray-900">Cognitive Naturalness</h3>
+          </div>
+          <p class="text-gray-700 text-sm">Tag-based automatic retrieval eliminates the need for explicit memory commands, creating more intuitive user experiences.</p>
+        </div>
+        
+        <div class="stat-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-xl border border-purple-200">
+          <div class="flex items-center gap-3 mb-3">
+            <i data-lucide="shield" class="w-6 h-6 text-purple-600"></i>
+            <h3 class="font-bold text-gray-900">Anti-Entrenchment</h3>
+          </div>
+          <p class="text-gray-700 text-sm">The Bayesian TrueSkill mechanism ensures that memory importance remains dynamic, preventing obsolete or overused memories from persisting inappropriately.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementation Workflow -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.6s">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Implementation Workflow</h2>
+      <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8">
+        <ol class="space-y-4">
+          <li class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">1</span>
+            <div>
+              <strong class="text-gray-900">Interaction occurs</strong> between user and agent
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">2</span>
+            <div>
+              <strong class="text-gray-900">System extracts</strong> critical snippets and assigns semantic tags
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">3</span>
+            <div>
+              <strong class="text-gray-900">User input triggers</strong> tag-based memory search
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">4</span>
+            <div>
+              <strong class="text-gray-900">Stochastic ranking</strong> selects relevant memories using TrueSkill scores
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">5</span>
+            <div>
+              <strong class="text-gray-900">Memories inject</strong> into context window pre-reasoning
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">6</span>
+            <div>
+              <strong class="text-gray-900">Agent responds</strong> with full historical awareness
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="flex-shrink-0 w-8 h-8 bg-cyan-500 text-white rounded-full flex items-center justify-center font-bold">7</span>
+            <div>
+              <strong class="text-gray-900">TrueSkill scores update</strong> based on retrieval utility
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Innovation Significance -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.7s">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Innovation Significance</h2>
+      <div class="admonition admonition-success">
+        <p class="text-green-800 leading-relaxed text-lg mb-4">
+          JIT Memory represents a paradigm shift from static context management to dynamic, probabilistic memory systems.
+        </p>
+        <div class="bg-white/50 rounded-lg p-4 mt-4">
+          <p class="text-green-800 leading-relaxed">
+            By combining tag-based retrieval, stochastic ranking, and high-speed bulk ingestion, it solves the fundamental tension between context window limitations and the need for comprehensive historical awareness. The result is an AI agent that appears to possess genuine long-term memory while maintaining computational efficiency and conversational freshness through controlled non-determinism.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-500">
+          <div class="flex items-center gap-3 mb-3">
+            <i data-lucide="refresh-cw" class="w-6 h-6 text-teal-600"></i>
+            <h3 class="font-bold text-gray-900">From Static to Dynamic</h3>
+          </div>
+          <p class="text-gray-700 text-sm">Memory systems evolve from fixed, deterministic retrieval to dynamic, probabilistic selection that adapts with usage.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-cyan-500">
+          <div class="flex items-center gap-3 mb-3">
+            <i data-lucide="infinity" class="w-6 h-6 text-cyan-600"></i>
+            <h3 class="font-bold text-gray-900">From Limited to Infinite</h3>
+          </div>
+          <p class="text-gray-700 text-sm">Context window constraints are overcome through intelligent retrieval that creates the illusion of infinite context.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
+          <div class="flex items-center gap-3 mb-3">
+            <i data-lucide="dice-6" class="w-6 h-6 text-blue-600"></i>
+            <h3 class="font-bold text-gray-900">From Deterministic to Stochastic</h3>
+          </div>
+          <p class="text-gray-700 text-sm">Memory selection incorporates controlled randomness to prevent entrenchment and create more natural interactions.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-indigo-500">
+          <div class="flex items-center gap-3 mb-3">
+            <i data-lucide="zap" class="w-6 h-6 text-indigo-600"></i>
+            <h3 class="font-bold text-gray-900">From Manual to Automatic</h3>
+          </div>
+          <p class="text-gray-700 text-sm">Tag-based retrieval and automatic injection create seamless memory experiences without explicit user commands.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-200 pt-8 mt-16 text-center">
+      <p class="text-gray-500 text-sm">
+        Published on Redwrite • Agentic Architecture & System Design
+      </p>
+    </footer>
+  </div>
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+

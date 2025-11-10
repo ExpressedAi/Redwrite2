@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Variable Barrier Controller (VBC): A Kernel for Budgeted, Phase-Locked, Self-Auditing Cognition | Redwrite</title>
+  <meta name="description" content="A context-layer kernel that treats how a system may change its mind as a budgeted, phase-locked, and auditable process.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .code { font-family: 'JetBrains Mono', monospace; }
+    .admonition { border-left: 4px solid; border-radius: 0.5rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .admonition-info { background-color: #eff6ff; border-color: #3b82f6; }
+    .admonition-warning { background-color: #fef3c7; border-color: #f59e0b; }
+    .admonition-success { background-color: #d1fae5; border-color: #10b981; }
+    .admonition-note { background-color: #f3e8ff; border-color: #8b5cf6; }
+    .admonition-danger { background-color: #fee2e2; border-color: #ef4444; }
+    .concept-card { transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid; }
+    .concept-card:hover { transform: translateX(8px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.6); }
+    }
+    .animate-pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-in {
+      animation: slide-in 0.6s ease-out;
+    }
+    .math-block {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    code {
+      background-color: #f1f5f9;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875em;
+    }
+    pre {
+      background-color: #1e293b;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    pre code {
+      background-color: transparent;
+      padding: 0;
+      color: inherit;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Navigation -->
+    <nav class="mb-8">
+      <a href="/" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        <span class="font-medium">Back to Redwrite</span>
+      </a>
+    </nav>
+    
+    <!-- Header -->
+    <header class="mb-12 animate-slide-in">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-4 flex-wrap">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+            <i data-lucide="microscope" class="w-4 h-4"></i>
+            Research
+          </span>
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-full text-sm font-semibold">
+            System Architecture
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          The Variable Barrier Controller
+          <span class="block text-3xl md:text-4xl text-gray-600 font-normal mt-2">(VBC)</span>
+          <span class="block text-2xl md:text-3xl text-gray-500 font-normal mt-2">A Kernel for Budgeted, Phase-Locked, Self-Auditing Cognition</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- Abstract -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.1s">
+      <div class="admonition admonition-success">
+        <h2 class="text-2xl font-bold text-green-900 mb-4">Abstract</h2>
+        <p class="text-green-800 leading-relaxed text-lg">
+          Large language models already <em>contain</em> immense capability; what's missing is precise <strong>control of semantic change</strong> over time. The <strong>Variable Barrier Controller (VBC)</strong> is a context-layer kernel that treats "how a system may change its mind" as a <em>budgeted</em>, <em>phase-locked</em>, and <em>auditable</em> process. VBCs partition cognition into orthogonal axes (e.g., semantics, scope, evidence, risk, tone), meter allowable deltas per tick, schedule <strong>micro-performers</strong> (single-skill routines) with explicit axis profiles, and reconcile parallel token streams by contract-checking alignment. They learn by <strong>auto-auditing</strong> against a capability lattice (Δ-grids), then <strong>patch prompts</strong> or <strong>spawn new performers</strong> when repair economics dominate. The result is a self-evolving, proof-carrying cognitive substrate that can sit atop any competent LLM.
+        </p>
+      </div>
+    </section>
+
+    <!-- Core Idea -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.2s">
+      <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-lg border border-emerald-200">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+          <i data-lucide="lightbulb" class="w-8 h-8 text-emerald-600"></i>
+          Core Idea in One Line
+        </h2>
+        <p class="text-2xl font-bold text-emerald-900 leading-relaxed">
+          Constrain and schedule <em>how</em> prompts move meaning across time, not just <em>what</em> they ask for.
+        </p>
+      </div>
+    </section>
+
+    <!-- Motivation -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.3s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Motivation</h2>
+      <div class="admonition admonition-info">
+        <p class="text-blue-800 leading-relaxed">
+          Training bigger models isn't the only path to generality. Modern context windows are large enough that we can treat <strong>context as an operating system</strong>: allocate budgets, schedule jobs, enforce invariants, log diffs, and iterate. The VBC kernel provides the missing "SRAM-like" controller that turns raw latent amplitude (anti-nodes) into reliable computation by gating changes at <strong>nodes</strong>—points where movement can be snapped to grid.
+        </p>
+      </div>
+    </section>
+
+    <!-- Formal Object -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.4s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Formal Object</h2>
+      <p class="text-gray-700 mb-4">A VBC kernel is the tuple <strong>K = ⟨A, W, B, L, D, Π, Σ, ϕ, ⊕, ⊗⟩</strong>:</p>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-emerald-500 mb-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <p class="font-semibold text-gray-900 mb-2"><strong>A</strong> (<em>axes</em>):</p>
+            <p class="text-gray-700">Independent lanes of change: <code>semantics, scope, evidence, risk, tone, …</code></p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-2"><strong>W</strong> (<em>axis weights</em>):</p>
+            <p class="text-gray-700">Importance vector (w<sub>i</sub>) with ∑w<sub>i</sub> = 1</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-2"><strong>B</strong> (<em>budgets</em>):</p>
+            <p class="text-gray-700">Caps per tick: per-axis (c<sub>i</sub>), concurrent-axis cap (C), total budget (β) (0..1 of "movement")</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-2"><strong>L</strong> (<em>loads</em>):</p>
+            <p class="text-gray-700">Stateful utilization ℓ<sub>i</sub>(t) ∈ [0,1]</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-2"><strong>D</strong> (<em>decay</em>):</p>
+            <p class="text-gray-700">ℓ<sub>i</sub>(t+1) = ρ<sub>i</sub> · ℓ<sub>i</sub>(t) (half-life style, 0 &lt; ρ<sub>i</sub> &lt; 1)</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-2"><strong>Π</strong> (<em>prompt value hierarchy</em>):</p>
+            <p class="text-gray-700">Prompts (p<sub>j</sub>) with attention weights (v<sub>j</sub>), ∑v<sub>j</sub> ≤ 1</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-2"><strong>Σ</strong> (<em>scheduler</em>):</p>
+            <p class="text-gray-700">Maps tick phases → allowed micro-performers</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-2"><strong>ϕ</strong> (<em>gate</em>):</p>
+            <p class="text-gray-700">Admits/throttles/defers proposed deltas to respect budgets</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-2"><strong>⊕</strong> (<em>split</em>):</p>
+            <p class="text-gray-700">Partitions a token budget into parallel streams with declared axis profiles</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-2"><strong>⊗</strong> (<em>join</em>):</p>
+            <p class="text-gray-700">Reconciles streams by contract-checked alignment (consensus/merge)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="admonition admonition-note mt-6">
+        <h3 class="text-xl font-bold text-purple-900 mb-3">Kernel Law (Admissibility)</h3>
+        <p class="text-purple-800 mb-2">Given desired deltas Δ = {Δ<sub>i</sub>} aggregated from Π and active micro-performers, compute <strong>Δ̂</strong> such that:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono">∀i: |Δ̂<sub>i</sub>| ≤ c<sub>i</sub></p>
+          <p class="text-gray-900 font-mono">|Δ̂|<sub>1</sub> ≤ β</p>
+          <p class="text-gray-900 font-mono">|{i : Δ̂<sub>i</sub> ≠ 0}| ≤ C</p>
+        </div>
+        <p class="text-purple-800 mt-2">and update loads ℓ<sub>i</sub> ← ρ<sub>i</sub> · ℓ<sub>i</sub> + |Δ̂<sub>i</sub>|</p>
+        <p class="text-purple-700 mt-3 italic">This is the <strong>variable barrier</strong>: change is allowed, but metered.</p>
+      </div>
+    </section>
+
+    <!-- Ticks, Edge, and Spin -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.5s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Ticks, Edge, and Spin</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-blue-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Ticks (the temporal backbone)</h3>
+        <p class="text-gray-700 mb-4">A <strong>tick</strong> is the smallest schedulable decision window. Ticks implement your <em>standing-wave breath</em>:</p>
+        <div class="grid md:grid-cols-2 gap-4 mt-4">
+          <div class="bg-blue-50 p-4 rounded-lg">
+            <p class="font-semibold text-blue-900 mb-2">1. Inhale / Capture</p>
+            <p class="text-blue-800 text-sm">Explore/Observe/Scan/Prototype</p>
+          </div>
+          <div class="bg-green-50 p-4 rounded-lg">
+            <p class="font-semibold text-green-900 mb-2">2. Hold / Clean</p>
+            <p class="text-green-800 text-sm">Refine/Edit/Denoise/Benchmark</p>
+          </div>
+          <div class="bg-purple-50 p-4 rounded-lg">
+            <p class="font-semibold text-purple-900 mb-2">3. Bridge / Align</p>
+            <p class="text-purple-800 text-sm">Align/Calibrate/Normalize/Attune</p>
+          </div>
+          <div class="bg-amber-50 p-4 rounded-lg">
+            <p class="font-semibold text-amber-900 mb-2">4. Commit / Decide</p>
+            <p class="text-amber-800 text-sm">Commit/Validate/Explain/Choose</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-red-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Edge (the barrier)</h3>
+        <p class="text-gray-700">
+          <strong>Edge</strong> is the local boundary between "current frame" and "proposed frame." Crossing the edge imposes the barrier test (ϕ): if a delta would blow caps on any axis or violate an invariant (e.g., contract item must remain intact), the change is <strong>throttled</strong> or <strong>deferred</strong> to a later phase.
+        </p>
+      </div>
+
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-purple-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Spin (phase orientation of change)</h3>
+        <p class="text-gray-700 mb-4">
+          Borrowing the Bloch-sphere intuition, <strong>spin</strong> is a unit vector (s) indicating the <em>orientation</em> of the next admissible change across axes. Whereas <strong>magnitude</strong> comes from budgets, <strong>spin</strong> picks the <em>direction</em> in the multi-axis space.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4 mt-4">
+          <div class="admonition admonition-info">
+            <p class="text-blue-800 font-semibold mb-2">In-phase spin</p>
+            <p class="text-blue-700">Reinforces current plan (FI / OI grid roles)</p>
+          </div>
+          <div class="admonition admonition-warning">
+            <p class="text-amber-800 font-semibold mb-2">Counter-phase spin</p>
+            <p class="text-amber-700">Brakes or de-biases (Fπ / Oπ roles; "Counter-Orchestrate", "Counter-Attune")</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Micro-Performers -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.6s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Micro-Performers</h2>
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-indigo-500">
+        <p class="text-gray-700 mb-4">
+          A <strong>micro-performer</strong> is a single-skill subroutine with:
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 mb-4">
+          <li><strong>role</strong> (from Δ-grids): Prototype, Denoise, Normalize, Benchmark, Calibrate, Validate, Choose… plus counter-roles</li>
+          <li><strong>axis profile</strong> (π<sub>k</sub>) (expected pressure on axes)</li>
+          <li><strong>I/O contract</strong> (schema, tests)</li>
+          <li><strong>cost</strong> (tokens, time)</li>
+        </ul>
+        <p class="text-gray-700">
+          Σ opens phase windows each tick; only micro-performers whose (π<sub>k</sub>) fit remaining budget may fire. This is how VBC gets <strong>massive parallelism</strong> safely: many tiny routines run in the same tick so long as their combined pressure respects (B) and spin.
+        </p>
+      </div>
+    </section>
+
+    <!-- Parallel Token Splitting and Re-Alignment -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.7s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Parallel Token Splitting (⊕) and Re-Alignment (⊗)</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-cyan-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Split (⊕)</h3>
+        <p class="text-gray-700 mb-4">Given a token allowance T for the tick and a set of admissible micro-performers {m<sub>k</sub>} with profiles π<sub>k</sub>, the kernel solves a small packing problem:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 mb-4">
+          <li>choose a subset S ⊆ {m<sub>k</sub>}</li>
+          <li>allocate T<sub>k</sub> tokens to each m<sub>k</sub> ∈ S</li>
+        </ul>
+        <p class="text-gray-700 mb-2">subject to:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono">∑<sub>k∈S</sub> T<sub>k</sub> ≤ T</p>
+          <p class="text-gray-900 font-mono">∑<sub>k∈S</sub> T<sub>k</sub> · π<sub>k</sub> ⪯ remaining budget per axis</p>
+          <p class="text-gray-900 font-mono">spin(S) ≈ s</p>
+        </div>
+        <p class="text-gray-700 mt-4 italic">Intuition: we "shard" the tick into parallel streams that gently press different axes without overloading any one.</p>
+      </div>
+
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-teal-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Join (⊗)</h3>
+        <p class="text-gray-700 mb-4">At tick end, streams <strong>reconverge</strong> via a <em>contract-first</em> reducer:</p>
+        <ol class="list-decimal list-inside space-y-2 text-gray-700 mb-4">
+          <li><strong>Local checks</strong> — each stream attaches its test outcomes</li>
+          <li><strong>Covenant check</strong> — compare aggregate outputs against the Architect's Deliverables Contract (Forgemate)</li>
+          <li><strong>Consensus</strong> — keep elements that pass; reconcile collisions by axis priority (W) and phase policy</li>
+          <li><strong>Emit</strong> the merged state + audit deltas; update (L) via D</li>
+        </ol>
+        <div class="admonition admonition-warning mt-4">
+          <p class="text-amber-800 font-semibold">Important:</p>
+          <p class="text-amber-700">The join is not "average the text." It is <em>alignment by contract</em> + <em>axis-aware arbitration</em>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Hierarchy -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.8s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Value Hierarchy Π (bounded attention)</h2>
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-emerald-500">
+        <p class="text-gray-700 mb-4">
+          Π is a list of prompts with weights that must sum to ≤ 1.0 (100%). At tick start, they produce a <strong>desired delta vector</strong>; the gate (ϕ) enforces budgets. If a high-weight prompt wants more change than allowed, it is deferred—with <strong>decay</strong>—creating <em>momentum</em> rather than thrash. This is how your "66/30/4" becomes physics, not vibes.
+        </p>
+      </div>
+    </section>
+
+    <!-- Auditing & Evolution -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.9s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Auditing & Evolution (Δ-grids + economics)</h2>
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-purple-500 mb-6">
+        <p class="text-gray-700 mb-4">Your two matrices are the <strong>capability lattice</strong>:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 mb-4">
+          <li><strong>Mode grid:</strong> Explore/Refine/Align/Commit × Generate/Interpret/Compare/Select → 16 canonical moves</li>
+          <li><strong>Quality grid:</strong> FI/Fπ/OI/Oπ × DM/DA/RM/RA (and counters) → 16 style/role moves</li>
+        </ul>
+        <p class="text-gray-700 mb-4"><strong>Harness:</strong> for any performer or kernel, run a slate of cells → pass/fail with machine-checkable assertions.</p>
+        <p class="text-gray-700 mb-4"><strong>Patch synthesis:</strong> map each failure to (a) prompt edits, (b) new micro-performers, or (c) spawning a new performer—with <strong>repair_uplift/effort</strong> economics.</p>
+        <p class="text-gray-700"><strong>Calendar:</strong> daily micro-audits (≤1 patch), weekly weight rebalance, monthly spawn proposals.</p>
+      </div>
+    </section>
+
+    <!-- Integration with Momentum Recursion -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.0s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">How VBC Integrates with Momentum Recursion (Forgemate)</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-emerald-50 p-6 rounded-xl border border-emerald-200">
+          <p class="font-semibold text-emerald-900 mb-2">1. Clarifier</p>
+          <p class="text-emerald-800 text-sm">VBC caps large semantic jumps; spin aims at clarity (tick phases 1–2 favored)</p>
+        </div>
+        <div class="bg-blue-50 p-6 rounded-xl border border-blue-200">
+          <p class="font-semibold text-blue-900 mb-2">2. Architect</p>
+          <p class="text-blue-800 text-sm">Emits the Covenant of Creation (deliverables + tests)</p>
+        </div>
+        <div class="bg-purple-50 p-6 rounded-xl border border-purple-200">
+          <p class="font-semibold text-purple-900 mb-2">3. Worker</p>
+          <p class="text-purple-800 text-sm">Runs mostly in parallel via ⊕, but with tight commit-phase budgets; join via ⊗ is contract-checked</p>
+        </div>
+        <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
+          <p class="font-semibold text-amber-900 mb-2">4. Auditor</p>
+          <p class="text-amber-800 text-sm">Δ-grid harness + strict pass/fail → either deliver or recurse</p>
+        </div>
+        <div class="bg-red-50 p-6 rounded-xl border border-red-200 md:col-span-2">
+          <p class="font-semibold text-red-900 mb-2">5. Recursive Loop</p>
+          <p class="text-red-800 text-sm">VBC decay rewards iterative movement; repeated failures trigger patch/spawn</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Minimal Interfaces -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.1s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Minimal Interfaces</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-indigo-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Kernel API</h3>
+        <ul class="space-y-2 text-gray-700">
+          <li><code>propose_deltas(Δ_desired) -> Δ_hat</code> <em>(ϕ gate)</em></li>
+          <li><code>split(T, candidates) -> {streams}</code> <em>(⊕ allocate)</em></li>
+          <li><code>join({streams}) -> state, audit</code> <em>(⊗ align)</em></li>
+          <li><code>tick(state) -> state'</code> <em>(Σ schedule, D decay, L update)</em></li>
+        </ul>
+      </div>
+
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-gray-700 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Performer Schema (excerpt)</h3>
+        <pre><code>id: orchestrator.v1
+kernel:
+  axes: [semantics, scope, evidence, risk, tone]
+  weights: {semantics:0.35, scope:0.20, evidence:0.25, risk:0.15, tone:0.05}
+  budgets: {per_axis_cap: {semantics:0.30, scope:0.25, evidence:0.35, risk:0.20, tone:0.20},
+            concurrent_cap: 3, total: 0.60}
+  decay: {half_life_ticks: 6}
+value_hierarchy:
+  - id: "spec_fidelity"  ; weight: 0.45 ; prompt: "... obey contract ids ..."
+  - id: "evidence_attach"; weight: 0.35 ; prompt: "... attach τ(α), residuals ..."
+  - id: "format_polish"  ; weight: 0.20 ; prompt: "... validate schema ..."
+micro_performers:
+  - id: prototype   ; profile: {sem:0.12, scope:0.05, evid:0.00, risk:0.01, tone:0.01}
+  - id: normalize   ; profile: {sem:0.05, scope:0.08, evid:0.02, risk:0.01, tone:0.04}
+  - id: benchmark   ; profile: {sem:0.04, scope:0.05, evid:0.22, risk:0.04, tone:0.00}
+  - id: validate    ; profile: {sem:0.01, scope:0.02, evid:0.10, risk:0.04, tone:0.00}</code></pre>
+      </div>
+    </section>
+
+    <!-- Metrics -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.2s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Metrics</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <p class="font-semibold text-gray-900 mb-2">Grid Coverage</p>
+          <p class="text-gray-700 text-sm">% cells passed in last N runs (capability surface)</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <p class="font-semibold text-gray-900 mb-2">Strike Precision / False-Flag Rate</p>
+          <p class="text-gray-700 text-sm">Auditor quality</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <p class="font-semibold text-gray-900 mb-2">Repair Uplift</p>
+          <p class="text-gray-700 text-sm">Δ score pre→post patch</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <p class="font-semibold text-gray-900 mb-2">Budget Utilization</p>
+          <p class="text-gray-700 text-sm">|Δ̂|<sub>1</sub>/β per tick</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <p class="font-semibold text-gray-900 mb-2">Phase Efficiency</p>
+          <p class="text-gray-700 text-sm">Passes per tick per 1k tokens</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <p class="font-semibold text-gray-900 mb-2">Reroute Rate</p>
+          <p class="text-gray-700 text-sm">% tasks solved by alternate performers (spawn signal)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Properties & Intuition -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.3s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Properties & Intuition</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">Stability under recursion</h3>
+          <p class="text-green-800">Decay + caps prevent oscillatory thrash; momentum builds across ticks</p>
+        </div>
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Compositionality</h3>
+          <p class="text-blue-800">Micro-performers with small, typed profiles compose like filters; ⊕/⊗ ensures safe parallelism</p>
+        </div>
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">Auditable evolution</h3>
+          <p class="text-purple-800">Every change leaves a journaled delta, test, and economic rationale</p>
+        </div>
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Alignment by construction</h3>
+          <p class="text-amber-800">The edge/barrier is a formal place to enforce contracts and invariants, not an afterthought</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Limitations & Risks -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.4s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Limitations & Risks</h2>
+      <div class="space-y-4">
+        <div class="admonition admonition-danger">
+          <h3 class="text-lg font-bold text-red-900 mb-2">Budget starvation</h3>
+          <p class="text-red-800">Too-tight caps stall progress → start with soft warnings before hard rejections</p>
+        </div>
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Axis entanglement</h3>
+          <p class="text-amber-800">Poorly chosen axes create hidden coupling → audit co-linearity and merge</p>
+        </div>
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Spec drift</h3>
+          <p class="text-amber-800">Weak Architect poisons the loop → invest in contract templates and tests early</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Wins -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.5s">
+      <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-lg border border-emerald-200">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why This Wins</h2>
+        <p class="text-emerald-900 leading-relaxed text-lg">
+          The VBC turns "prompt engineering" into <strong>cognitive manufacturing</strong>: budgeted, scheduled, audited, and economically optimized. It doesn't ask the LLM to be a god; it asks it to be <em>conducted</em>. Nodes steer, anti-nodes sing, micro-performers carry the tune, and the Auditor decides if the song passes the contract. With calendars, patches, and spawns, the system <strong>evolves itself</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- One-Page Recap -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.6s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">One-Page Recap</h2>
+      <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-200">
+        <ul class="space-y-3 text-gray-700">
+          <li><strong>VBC:</strong> kernel that meters change across axes with caps, loads, and decay</li>
+          <li><strong>Tick:</strong> phase-locked window; Σ chooses micro-performers</li>
+          <li><strong>Edge:</strong> barrier where deltas are admitted/throttled/deferred</li>
+          <li><strong>Spin:</strong> orientation of change in axis space; in-phase vs counter-phase</li>
+          <li><strong>⊕ split:</strong> allocate tokens to parallel micro-performers by axis profiles and budgets</li>
+          <li><strong>⊗ join:</strong> contract-checked reconciliation; not a text average</li>
+          <li><strong>Π:</strong> 100%-capped prompt value hierarchy; deferred influence accumulates momentum</li>
+          <li><strong>Δ-grids:</strong> capability lattice for pass/fail auditing and patch synthesis</li>
+          <li><strong>Evolve:</strong> patch prompts or spawn new performers based on repair_uplift/effort</li>
+          <li><strong>Metrics:</strong> coverage, strike precision, uplift, utilization, phase efficiency, reroute rate</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+      <div class="text-center text-gray-600">
+        <p class="mb-4">The Variable Barrier Controller transforms prompt engineering into cognitive manufacturing—budgeted, scheduled, audited, and economically optimized.</p>
+        <p class="text-sm">Published by Jake Aaron • August 28, 2025</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+
+

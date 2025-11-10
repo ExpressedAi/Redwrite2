@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meaning Codec: A Frequency-Gated Control Scheme for Vibrating Plates | Redwrite</title>
+  <meta name="description" content="A frequency-only control scheme that maps resonance/antiresonance operations on a square plate to a small alphabet of stable patterns. Eight simple, low-order shape domains constitute a compact symbol alphabet.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .code { font-family: 'JetBrains Mono', monospace; }
+    .admonition { border-left: 4px solid; border-radius: 0.5rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .admonition-info { background-color: #eff6ff; border-color: #3b82f6; }
+    .admonition-warning { background-color: #fef3c7; border-color: #f59e0b; }
+    .admonition-success { background-color: #d1fae5; border-color: #10b981; }
+    .admonition-note { background-color: #f3e8ff; border-color: #8b5cf6; }
+    .admonition-danger { background-color: #fee2e2; border-color: #ef4444; }
+    .concept-card { transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid; }
+    .concept-card:hover { transform: translateX(8px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-in {
+      animation: slide-in 0.6s ease-out;
+    }
+    .math-block {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    code {
+      background-color: #f1f5f9;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875em;
+    }
+    pre {
+      background-color: #1e293b;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    pre code {
+      background-color: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    .toc-link {
+      color: #3b82f6;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc-link:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    th {
+      background-color: #f8fafc;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Navigation -->
+    <nav class="mb-8">
+      <a href="/" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        <span class="font-medium">Back to Redwrite</span>
+      </a>
+    </nav>
+    
+    <!-- Header -->
+    <header class="mb-12 animate-slide-in">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-4 flex-wrap">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+            <i data-lucide="microscope" class="w-4 h-4"></i>
+            Research
+          </span>
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-full text-sm font-semibold">
+            Cymatics & Control Theory
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Meaning Codec
+          <span class="block text-3xl md:text-4xl text-gray-600 font-normal mt-2">A Frequency-Gated Control Scheme</span>
+          <span class="block text-2xl md:text-3xl text-gray-500 font-normal mt-2">for Vibrating Plates</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- Executive Thesis -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.1s">
+      <div class="admonition admonition-success">
+        <h2 class="text-2xl font-bold text-green-900 mb-4">Executive Thesis</h2>
+        <p class="text-green-800 leading-relaxed text-lg">
+          A centrally driven square plate with granular tracers implements an <strong>ε-gated control surface</strong> whose resonant and anti-resonant structure yields lawful <strong>drive / break / hold primitives</strong>. Eight simple, low-order shape domains (○ → ring → ellipse → arcs → II → hyper-arcs → X → ring-recur) constitute a compact symbol alphabet for a <strong>Meaning Codec</strong>, exhibiting:
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-green-800 mt-4">
+          <li><strong>Abstention</strong> outside eligibility bands ε</li>
+          <li><strong>Sharp causal flips</strong> at nearby antiresonances</li>
+          <li><strong>LOW/MDL persistence</strong> under coarse-graining and material changes</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Core Claims -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.2s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Core Claims (Falsifiable)</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">C0 (Abstention law)</h3>
+          <p class="text-gray-700 mb-2">Off-band (outside ε) the system does not commit to a stable pattern; abstention rate ≫ 0.5 and time-to-commit diverges with distance from ε.</p>
+          <div class="admonition admonition-warning mt-3">
+            <p class="text-amber-800 text-sm"><strong>Red-team:</strong> Overdrive amplitude to induce adhesion/friction regime flip. If off-ε spurious "stable" heaps appear persistently, C0 fails → requires safe-amplitude precondition.</p>
+          </div>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">C1 (Drive/Break asymmetry)</h3>
+          <p class="text-gray-700 mb-2">At the same symbol, a ±1–2 Hz hop from a resonant peak to the nearest antiresonant notch increases time-to-commit and reduces SNR vs a sham hop (Z≥3 vs null).</p>
+          <div class="admonition admonition-warning mt-3">
+            <p class="text-amber-800 text-sm"><strong>Red-team:</strong> Choose the shallowest possible notch near S₄/S₆. If RES≈ANTI (Δlatency < 1.2×, ΔSNR < 2 dB) reproducibly with good Q, C1 needs a minimum-notch-depth precondition.</p>
+          </div>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">C2 (LOW persistence)</h3>
+          <p class="text-gray-700 mb-2">Under ×2 temporal downsample or halved drive amplitude, the symbol order (○→…→X→ring-recur) is invariant; higher-index domains thin first.</p>
+          <div class="admonition admonition-warning mt-3">
+            <p class="text-amber-800 text-sm"><strong>Red-team:</strong> Tweak mounting to make S₆ wider than S₄ persistently (post-fix mounting). If reproducible, C2 needs a boundary-quality precondition.</p>
+          </div>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">C3 (Bridge invariance)</h3>
+          <p class="text-gray-700 mb-2">Changing plate material/thickness/mass shifts absolute frequencies but preserves (i) symbol order, (ii) ε topology, and (iii) availability/positioning of nearby antiresonant "break" notches (within one ε-band when expressed in units of f/Q).</p>
+          <div class="admonition admonition-warning mt-3">
+            <p class="text-amber-800 text-sm"><strong>Red-team:</strong> Use P2→P3 with single Q; if |Δδ| > 1.5 systematically, C3 requires piecewise Q(f) correction.</p>
+          </div>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">C4 (Controller sufficiency)</h3>
+          <p class="text-gray-700 mb-2">A frequency-only controller with RES/ANTI/HOLD semantics achieves deterministic symbol selection with pre-declared accuracy and latency targets; phase and amplitude trims are optional refinements.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-red-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">C5 (Atypical quarantine)</h3>
+          <p class="text-gray-700 mb-2">Narrow, high-brittleness micro-bands (elevated ζ, small Q) either serve as boundary beacons or are excluded without degrading codec completeness.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acceptance Frame -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.3s">
+      <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-lg border border-emerald-200">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Acceptance Frame</h2>
+        <p class="text-emerald-900 leading-relaxed text-lg mb-4">
+          Claims must pass <strong>HSM audits E0–E4:</strong>
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-emerald-800 mb-4">
+          <li><strong>E0:</strong> Calibration (rig & first principles)</li>
+          <li><strong>E1:</strong> Vibration / Eligibility mapping</li>
+          <li><strong>E2:</strong> Symmetry & Invariance</li>
+          <li><strong>E3:</strong> Micro-nudge (causal RES/ANTI/SHAM)</li>
+          <li><strong>E4:</strong> RG-persistence & Bridge transfer</li>
+        </ul>
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 mt-4">
+          <p class="text-red-900 font-semibold">Fail any → <strong>demote to hypothesis</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alphabet -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.4s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Symbol Alphabet</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-indigo-500 mb-6">
+        <p class="text-gray-700 mb-4">Let S = {S₀, …, S₇} with simple, low-order shapes:</p>
+        <div class="overflow-x-auto">
+          <table>
+            <thead>
+              <tr>
+                <th>k</th>
+                <th>Symbol</th>
+                <th>Human Label</th>
+                <th>Informal Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>S₀</td>
+                <td>○</td>
+                <td>filled disk / central mound (lowest-f domain)</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>S₁</td>
+                <td>ring</td>
+                <td>annulus / nodal center</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>S₂</td>
+                <td>ellipse</td>
+                <td>elongated ring / symmetry-aligned</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>S₃</td>
+                <td>arcs</td>
+                <td>two elliptical arcs</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>S₄</td>
+                <td>II</td>
+                <td>two parallel segments</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>S₅</td>
+                <td>hyper-arcs</td>
+                <td>two hyperbolic-like arcs</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>S₆</td>
+                <td>X</td>
+                <td>two diagonals (cross)</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>S₇</td>
+                <td>ring-recur</td>
+                <td>higher-f ring-like recurrence</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-gray-700 mt-4"><strong>Canonical frequency order</strong> (increasing f): S₀ → S₁ → S₂ → S₃ → S₄ → S₅ → S₆ → S₇</p>
+        <div class="admonition admonition-note mt-4">
+          <p class="text-purple-800"><strong>Note:</strong> Not every plate must realize all eight, but the order among realized domains is preserved (LOW).</p>
+        </div>
+      </div>
+      
+      <div class="admonition admonition-success">
+        <h3 class="text-lg font-bold text-green-900 mb-2">Core-4</h3>
+        <p class="text-green-800">Robust operational subset: {S₁, S₂, S₄, S₆} — ring, ellipse, II (parallel lines), X (diagonals)</p>
+      </div>
+    </section>
+
+    <!-- Controller Semantics -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.5s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Controller Semantics</h2>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">RES (+)</h3>
+          <p class="text-gray-700 text-sm">Park at the resonant peak inside εₖ (or the band center) to commit to Sₖ</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-red-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">ANTI (−)</h3>
+          <p class="text-gray-700 text-sm">Hop to the nearest antiresonant notch to erase / break current pattern and reduce commit probability</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-gray-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">HOLD (0)</h3>
+          <p class="text-gray-700 text-sm">Remain off-ε (abstention) or dwell within ε without switching symbols</p>
+        </div>
+      </div>
+      
+      <div class="admonition admonition-info mt-6">
+        <p class="text-blue-800">These are the only required actions for a working Meaning Codec on the plate; phase and amplitude trims are optional.</p>
+      </div>
+    </section>
+
+    <!-- Key Metrics -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.6s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Key Metrics & Parameters</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-blue-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Frequency Structures</h3>
+        <ul class="space-y-3 text-gray-700">
+          <li><strong>Eligibility band (εₖ = [fₖ⁻, fₖ⁺]):</strong> Frequencies where symbol Sₖ is reliably realizable (stability σₖ ≥ 0.8)</li>
+          <li><strong>Interior point (fₖ*):</strong> Preferred commit frequency (window center or dominant RES peak)</li>
+          <li><strong>Resonant peak (fₖ⁺):</strong> Local maximum of center response; fastest commit</li>
+          <li><strong>Antiresonant notch (fₖ,break):</strong> Nearby minimum; best for erase / memory reset</li>
+        </ul>
+      </div>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-purple-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Quality & Damping</h3>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono">Quality factor: Q = fₙ / (fᵣ - fₗ)</p>
+          <p class="text-gray-900 font-mono">Damping ratio: ζ ≈ (fᵣ - fₗ) / (2fₙ) ≈ 1 / (2Q)</p>
+          <p class="text-gray-900 font-mono">Bandwidth: Δf ≈ f / Q</p>
+        </div>
+      </div>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-amber-500">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Signals & Metrics</h3>
+        <ul class="space-y-2 text-gray-700">
+          <li><strong>Time-to-commit (t_commit):</strong> Time from set-frequency to first stable symbol hold (≥ T_hold)</li>
+          <li><strong>Stability (σₖ(f)):</strong> Fraction of frames labeled Sₖ during dwell</li>
+          <li><strong>Abstention (a(f)):</strong> Fraction of frames labeled "no symbol" (∅)</li>
+          <li><strong>SNR (dB):</strong> Pattern-to-background contrast</li>
+          <li><strong>Hysteresis:</strong> Up vs down sweep edge difference (Hz)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Core Laws -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.7s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Core Laws</h2>
+      
+      <div class="space-y-4">
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">L1 Abstention</h3>
+          <p class="text-green-800">Off-ε → abstain; commits slow/fail outside windows</p>
+        </div>
+        
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">L2 Drive/Break</h3>
+          <p class="text-blue-800">RES accelerates commit; ANTI suppresses it (Δlatency, ΔSNR)</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">L3 LOW persistence</h3>
+          <p class="text-purple-800">Low-order symbols retain windows and order under coarse-graining; high-order thin first</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">L4 Bridge invariance</h3>
+          <p class="text-amber-800">After (f̄, Q) normalization, peaks/notches align across plates (Core-4 accuracy ≥ 90%)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Examples -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.8s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Examples & Walkthroughs</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-indigo-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Single-Symbol Commit (clean interior)</h3>
+        <p class="text-gray-700 mb-4"><strong>Plate:</strong> P3 (SUS304, Q≈6.19)</p>
+        <p class="text-gray-700 mb-4"><strong>Target:</strong> S₆ (X)</p>
+        <p class="text-gray-700 mb-4"><strong>ε-window:</strong> 172–174 Hz</p>
+        <p class="text-gray-700 mb-4"><strong>Procedure:</strong></p>
+        <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
+          <li><strong>Erase:</strong> set f = 169 Hz (ANTI), dwell T_erase = 0.7 s</li>
+          <li><strong>Enter:</strong> step to f = 174 Hz (center/peak)</li>
+          <li><strong>Dwell:</strong> T_min = 3/Q ≈ 0.485 s</li>
+          <li><strong>Verify:</strong> require σ ≥ 0.8 for T_hold = 0.30 s</li>
+        </ol>
+        <p class="text-gray-700 mt-4"><strong>Expected:</strong> Commit latency median t_commit ≲ 0.58 s; Image shows two diagonals within ±5°; SNR ≥ interior baseline</p>
+      </div>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-blue-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Monotone 3-Symbol Sequence (LOW-preferred)</h3>
+        <p class="text-gray-700 mb-4"><strong>Plate:</strong> P2 (A5052, Q≈4.24)</p>
+        <p class="text-gray-700 mb-4"><strong>Targets:</strong> S₁ → S₂ → S₄ (ring → ellipse → II)</p>
+        <p class="text-gray-700 mb-4"><strong>Procedure:</strong> Sequentially step to each center frequency; dwell 3/Q ≈ 0.71 s; verify each symbol</p>
+        <p class="text-gray-700 mt-4"><strong>Expected:</strong> All three commits succeed with total wall-time ~2.5–3.0 s</p>
+      </div>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-purple-500">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Bridge Transfer (normalized δ) — P2 → P3</h3>
+        <p class="text-gray-700 mb-4">Transfer schedules across plates using normalized offset:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono">δ = (f - f̄ₖ) / (f̄ₖ / Qₖ)</p>
+          <p class="text-gray-900 font-mono">f^(P3) = f̄ + δ · f̄/Q</p>
+        </div>
+        <p class="text-gray-700 mt-4"><strong>Expectation:</strong> Symbol accuracy ≥ 90% for Core-4 when transferring 10+ such δ-points</p>
+      </div>
+    </section>
+
+    <!-- Theory Connections -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.9s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Theory Connections</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-teal-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Map to Δ-Primitives v1.1</h3>
+        <ul class="space-y-3 text-gray-700">
+          <li><strong>A0 Ground-state:</strong> Off-ε behavior is abstention. Null = "no symbol."</li>
+          <li><strong>A1 Vibration:</strong> The codec's only control knob is frequency (f=ω/2π); phase is implicit in the plate response.</li>
+          <li><strong>A2 Closure:</strong> We restrict to frequency moves and brief erasures at antiresonances.</li>
+          <li><strong>A3 Observer Discipline:</strong> E2 enforces square-symmetry invariance: axes and diagonals align within ±5°.</li>
+          <li><strong>A4 Quality Identity (MDL):</strong> The smallest alphabet that carries meaning reliably is Core-4.</li>
+          <li><strong>A5 Contrast Restoration:</strong> RES vs ANTI produce a contrast in SNR & latency.</li>
+        </ul>
+      </div>
+      
+      <div class="admonition admonition-note">
+        <h3 class="text-lg font-bold text-purple-900 mb-2">Core Law: Low-Order Wins</h3>
+        <p class="text-purple-800">In practice: broader ε, faster commits, and higher stability for lower-index symbols (S₁>…>S₇), and this survives coarse-graining (E4). High-order bands thin first → RG-irrelevant.</p>
+      </div>
+    </section>
+
+    <!-- Why This Wins -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.0s">
+      <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-lg border border-emerald-200">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why This Wins</h2>
+        <p class="text-emerald-900 leading-relaxed text-lg">
+          The Meaning Codec is not hand-wavy: it's <strong>Δ-lawful</strong>, <strong>Ω-aligned</strong>, <strong>LOW-conformant</strong>, and <strong>COPL-operational</strong>. You can <strong>break</strong> it if and only if you beat the audits above. If you can, we'll tighten or revise; if you can't, we've got a portable, tiny, working code for meaning on vibrating plates.
+        </p>
+        <p class="text-emerald-800 mt-4 italic">
+          The core insight: <strong>frequency alone</strong> provides sufficient control for deterministic symbol selection. RES/ANTI asymmetry yields causal control, and low-order patterns persist under coarse-graining and material changes.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+      <div class="text-center text-gray-600">
+        <p class="mb-4">Meaning Codec: A frequency-gated control scheme for vibrating plates using resonance/antiresonance operations.</p>
+        <p class="text-sm">Published by Jake Aaron • August 28, 2025</p>
+        <p class="text-xs mt-4 text-gray-500">This document represents a comprehensive framework for controlling pattern formation in vibrating plates through frequency-only operations.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+
+

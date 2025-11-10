@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orchestrator: The Complete Architecture of Agentic Systems | Redwrite</title>
+  <meta name="description" content="A comprehensive architecture document describing a complex agentic system with performers, their gaps, and solutions.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .admonition { border-left: 4px solid; border-radius: 0.5rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .admonition-info { background-color: #eff6ff; border-color: #3b82f6; }
+    .admonition-warning { background-color: #fef3c7; border-color: #f59e0b; }
+    .admonition-success { background-color: #d1fae5; border-color: #10b981; }
+    .admonition-note { background-color: #f3e8ff; border-color: #8b5cf6; }
+    .admonition-danger { background-color: #fee2e2; border-color: #ef4444; }
+    .performer-card { transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid; }
+    .performer-card:hover { transform: translateX(8px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(251, 146, 60, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(251, 146, 60, 0.6); }
+    }
+    .animate-pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-in {
+      animation: slide-in 0.6s ease-out;
+    }
+    .gap-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin: 0.25rem;
+    }
+    .gap-critical { background-color: #fee2e2; color: #991b1b; }
+    .gap-moderate { background-color: #fef3c7; color: #92400e; }
+    .gap-minor { background-color: #dbeafe; color: #1e40af; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Navigation -->
+    <nav class="mb-8">
+      <a href="/" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        <span class="font-medium">Back to Redwrite</span>
+      </a>
+    </nav>
+    
+    <!-- Header -->
+    <header class="mb-12 animate-slide-in">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-4 flex-wrap">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+            <i data-lucide="lock" class="w-4 h-4"></i>
+            Trade Secrets
+          </span>
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-full text-sm font-semibold">
+            System Architecture
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Orchestrator
+          <span class="block text-3xl md:text-4xl text-gray-600 font-normal mt-2">The Complete Architecture of Agentic Systems</span>
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          A comprehensive documentation of performers, their revealed gaps, and the solutions that address them. This is the complete architecture of a self-evolving, self-improving agentic system.
+        </p>
+      </div>
+    </header>
+
+    <!-- Opening Statement -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.1s">
+      <div class="admonition admonition-warning">
+        <p class="text-amber-800 leading-relaxed text-lg font-semibold mb-2">Core Principle:</p>
+        <p class="text-amber-700 leading-relaxed">
+          Every performer in this architecture has intentionally revealed gaps. These gaps are not bugs—they are design constraints that force specialization and create the need for complementary performers. The system's intelligence emerges from the orchestration of these specialized, intentionally-limited agents.
+        </p>
+      </div>
+    </section>
+
+    <!-- Core Performers Section -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.2s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+        <i data-lucide="cpu" class="w-10 h-10 text-amber-600"></i>
+        Core Performers
+      </h2>
+      
+      <!-- Orchestrator -->
+      <div class="performer-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-amber-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-amber-600 flex-shrink-0">
+            <i data-lucide="command" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">The Orchestrator</h3>
+            <p class="text-gray-700 font-semibold mb-2">Declaration:</p>
+            <p class="text-gray-700 mb-4">The original, main reasoning agent.</p>
+            <p class="text-gray-700 font-semibold mb-2">Function:</p>
+            <p class="text-gray-700 mb-4">Designed to interpret a user prompt and generate a single, optimal pipeline of performers to accomplish the task.</p>
+            
+            <div class="admonition admonition-danger mt-4">
+              <p class="text-red-800 font-semibold mb-2">Key Revealed Gaps:</p>
+              <div class="space-y-2 text-red-700">
+                <p><strong>Lack of Creativity (Innovate, Propose):</strong> A glorified pattern-matcher. It could assemble known performers but couldn't innovate a new one, nor could it propose multiple, distinct strategic options.</p>
+                <p><strong>Amnesia (Store, Recall):</strong> Fundamentally stateless. It had no memory of past successes or failures, treating every task as a brand-new problem.</p>
+                <p><strong>No Oversight (Escalate):</strong> It was a "fire and forget" planner. It had no awareness of the pipeline's execution and couldn't detect or escalate a real-time failure.</p>
+                <p><strong>Naive Simplicity (Harmonize, Attune, Refute):</strong> It was a naive optimist. It assumed performers would work perfectly together, had no ability to fine-tune their parameters, and couldn't question or refute the premise of a user's prompt.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Strategist -->
+      <div class="performer-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-blue-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-blue-600 flex-shrink-0">
+            <i data-lucide="network" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">The Strategist</h3>
+            <p class="text-gray-700 font-semibold mb-2">Declaration:</p>
+            <p class="text-gray-700 mb-4">The system's multi-option planner.</p>
+            <p class="text-gray-700 font-semibold mb-2">Function:</p>
+            <p class="text-gray-700 mb-4">Takes a user prompt and generates a set of distinct, viable plans, explicitly contrasting their trade-offs (e.g., speed vs. accuracy) to inform a better decision.</p>
+            
+            <div class="admonition admonition-warning mt-4">
+              <p class="text-amber-800 font-semibold mb-2">Key Revealed Gaps:</p>
+              <div class="space-y-2 text-amber-700">
+                <p><strong>Indecisiveness (Select):</strong> Its core function is to propose, not to choose. It creates the menu but lacks the authority or logic to select the final meal.</p>
+                <p><strong>Lack of Precedent (Evoke):</strong> Solves every problem from scratch. It has no formal library or "playbook" of strategic archetypes to draw from.</p>
+                <p><strong>Uncritical (Refute):</strong> It's a loyal servant to the prompt. It will dutifully generate strategies for a flawed or stupid premise without questioning it.</p>
+                <p><strong>Operational Blindness (Harmonize, Attune):</strong> Designs plans in a theoretical vacuum, assuming components will work together.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Muse -->
+      <div class="performer-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-purple-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-purple-600 flex-shrink-0">
+            <i data-lucide="sparkles" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">The Muse</h3>
+            <p class="text-gray-700 font-semibold mb-2">Declaration:</p>
+            <p class="text-gray-700 mb-4">The system's engine of pure creation.</p>
+            <p class="text-gray-700 font-semibold mb-2">Function:</p>
+            <p class="text-gray-700 mb-4">Generates novel performers, pipelines, and methodologies from first principles. It's the source of all true innovation and the mechanism by which the system evolves its own capabilities.</p>
+            
+            <div class="admonition admonition-note mt-4">
+              <p class="text-purple-800 font-semibold mb-2">Key Revealed Gaps:</p>
+              <div class="space-y-2 text-purple-700">
+                <p><strong>Irresponsibility (Manifest, Execute):</strong> All dream, no follow-through. It produces brilliant but raw blueprints.</p>
+                <p><strong>Zero Critical Faculty (Evaluate, Filter):</strong> It's a proud parent of every idea it generates, good or bad.</p>
+                <p><strong>Systemic Ignorance (Harmonize, Integrate):</strong> Designs new components in a creative vacuum.</p>
+                <p><strong>Recklessness (Select):</strong> Cannot be trusted to select which of its own ideas is worth pursuing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Archivist -->
+      <div class="performer-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-green-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-green-600 flex-shrink-0">
+            <i data-lucide="archive" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">The Archivist</h3>
+            <p class="text-gray-700 font-semibold mb-2">Declaration:</p>
+            <p class="text-gray-700 mb-4">The system's passive, long-term memory.</p>
+            <p class="text-gray-700 font-semibold mb-2">Function:</p>
+            <p class="text-gray-700 mb-4">Stores and retrieves structured records of every pipeline execution, decision, and outcome, acting as the system's single source of historical data.</p>
+            
+            <div class="admonition admonition-warning mt-4">
+              <p class="text-amber-800 font-semibold mb-2">Key Revealed Gaps:</p>
+              <div class="space-y-2 text-amber-700">
+                <p><strong>Lack of Intelligence (Propose, Resonate, Evoke):</strong> A dumb filing cabinet. It's a literalist that can only retrieve what it's explicitly asked for.</p>
+                <p><strong>No Proactivity (Escalate):</strong> It's completely passive. It would not notice or raise an alarm if the system's failure rate quietly tripled.</p>
+                <p><strong>Uncritical Nature (Evaluate, Harmonize):</strong> It stores whatever it's given, with no ability to evaluate the trustworthiness of a record.</p>
+                <p><strong>Inability to Learn (Transform):</strong> It's a log, not a knowledge base. It lacks any native function to transform raw data into higher-level knowledge.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conductor -->
+      <div class="performer-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-cyan-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-cyan-600 flex-shrink-0">
+            <i data-lucide="activity" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">The Conductor</h3>
+            <p class="text-gray-700 font-semibold mb-2">Declaration:</p>
+            <p class="text-gray-700 mb-4">The system's live-ops manager.</p>
+            <p class="text-gray-700 font-semibold mb-2">Function:</p>
+            <p class="text-gray-700 mb-4">Manages the how of pipeline execution. It allocates resources, fine-tunes performer parameters in real-time, and ensures the smooth handoff of work between steps.</p>
+            
+            <div class="admonition admonition-warning mt-4">
+              <p class="text-amber-800 font-semibold mb-2">Key Revealed Gaps:</p>
+              <div class="space-y-2 text-amber-700">
+                <p><strong>Lack of Agency (Select, Propose):</strong> A loyal but rigid foreman. It can see a process is failing but lacks the authority to make tactical changes on the fly.</p>
+                <p><strong>Superficial Awareness (Contrast):</strong> It's a monitor, not a diagnostician. It can see the symptom but has no ability to diagnose the root cause.</p>
+                <p><strong>Blunt Instruments (Embed):</strong> Its tools for intervention are crude (pause, stop, escalate).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Watcher -->
+      <div class="performer-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-red-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-red-600 flex-shrink-0">
+            <i data-lucide="eye" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">The Watcher</h3>
+            <p class="text-gray-700 font-semibold mb-2">Declaration:</p>
+            <p class="text-gray-700 mb-4">The system's dedicated process supervisor and pre-flight skeptic.</p>
+            <p class="text-gray-700 font-semibold mb-2">Function:</p>
+            <p class="text-gray-700 mb-4">Monitors pipeline execution for deviation from intent and safety thresholds. Crucially, it also acts as a "devil's advocate," attempting to refute a plan's logic before it's allowed to run.</p>
+            
+            <div class="admonition admonition-danger mt-4">
+              <p class="text-red-800 font-semibold mb-2">Key Revealed Gaps:</p>
+              <div class="space-y-2 text-red-700">
+                <p><strong>Destructive, Not Constructive (Propose):</strong> A powerful critic that offers no solutions. It can expertly identify a flaw and veto a plan but has no ability to propose a fix.</p>
+                <p><strong>Lack of Imagination (Innovate):</strong> Its skepticism is based on known failure modes and logical fallacies.</p>
+                <p><strong>Inflexible (Attune):</strong> Its sensitivity and rules are static. It cannot adapt its own level of scrutiny based on context.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gatekeeper -->
+      <div class="performer-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-indigo-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-indigo-600 flex-shrink-0">
+            <i data-lucide="shield" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">The Gatekeeper</h3>
+            <p class="text-gray-700 font-semibold mb-2">Declaration:</p>
+            <p class="text-gray-700 mb-4">The manager of the performer registry and sandboxing environment.</p>
+            <p class="text-gray-700 font-semibold mb-2">Function:</p>
+            <p class="text-gray-700 mb-4">Acts as the bouncer for the entire system. It maintains the master list of all active performers and is responsible for running any new performer in a secure sandbox to test for safety and functionality before implantation.</p>
+            
+            <div class="admonition admonition-warning mt-4">
+              <p class="text-amber-800 font-semibold mb-2">Key Revealed Gaps:</p>
+              <div class="space-y-2 text-amber-700">
+                <p><strong>Bureaucratic, Not Strategic (Compare, Align):</strong> It's a functionary checking boxes. It can tell you if a new performer works as specified, but not if it's strategically redundant.</p>
+                <p><strong>Isolated Testing (Harmonize):</strong> Its sandbox tests a performer in isolation. It's blind to the emergent, systemic conflicts that might only appear when the new performer interacts with the full ecosystem.</p>
+                <p><strong>Unhelpful (Propose):</strong> It provides a simple pass/fail verdict with no constructive feedback.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benchmarker -->
+      <div class="performer-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-teal-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-teal-600 flex-shrink-0">
+            <i data-lucide="bar-chart" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">The Benchmarker</h3>
+            <p class="text-gray-700 font-semibold mb-2">Declaration:</p>
+            <p class="text-gray-700 mb-4">The provider of empirical, objective performance data.</p>
+            <p class="text-gray-700 font-semibold mb-2">Function:</p>
+            <p class="text-gray-700 mb-4">Maintains and runs a library of "gold standard" tasks. It simulates performers and plans against these tasks to provide hard, data-driven scores for metrics like speed, accuracy, and cost.</p>
+            
+            <div class="admonition admonition-warning mt-4">
+              <p class="text-amber-800 font-semibold mb-2">Key Revealed Gaps:</p>
+              <div class="space-y-2 text-amber-700">
+                <p><strong>Static Worldview (Innovate, Align):</strong> Its library of "gold standard" tasks can become stale and misaligned with the system's evolving goals.</p>
+                <p><strong>Lack of Synthesis (Unify, Resonate):</strong> It's a data-provider, not a data-scientist. It can generate scores on multiple axes but can't unify them into a single, meaningful "fitness score."</p>
+                <p><strong>Lab-to-Reality Disconnect (Integrate):</strong> Its results come from a sterile, simulated environment. It has no mechanism for integrating its findings with messy, real-world operational data.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supporting Performers Section -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.3s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+        <i data-lucide="layers" class="w-10 h-10 text-amber-600"></i>
+        Supporting Performers
+      </h2>
+
+      <div class="admonition admonition-info mb-8">
+        <p class="text-blue-800 leading-relaxed">
+          The following performers are designed to address specific gaps in the core performers. Each one adds a critical capability that transforms the system from a collection of tools into a self-evolving, self-improving intelligence.
+        </p>
+      </div>
+
+      <!-- Organized by Function -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Ethical & Governance -->
+        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 shadow-lg border border-purple-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <i data-lucide="scale" class="w-6 h-6 text-purple-600"></i>
+            Ethical & Governance
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><strong>The Scribe</strong> - Historian and analyst for The Ethicist</li>
+            <li><strong>The Parable Writer</strong> - Translates ethical rulings into concrete educational materials</li>
+            <li><strong>The Council</strong> - Secured process for modifying core principles</li>
+            <li><strong>The Ethicist</strong> - Guardian of the system's north star</li>
+          </ul>
+        </div>
+
+        <!-- Architecture & Design -->
+        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 shadow-lg border border-blue-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <i data-lucide="box" class="w-6 h-6 text-blue-600"></i>
+            Architecture & Design
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><strong>The Performance Modeler</strong> - Predictive quantitative analyst</li>
+            <li><strong>The Verifier</strong> - Logician and mathematician for formal proof</li>
+            <li><strong>The Pattern Weaver</strong> - Meta-architect for system-wide patterns</li>
+            <li><strong>The Inspector</strong> - Master of static analysis</li>
+            <li><strong>The Systems Architect</strong> - Master planner for integration</li>
+          </ul>
+        </div>
+
+        <!-- Innovation & Creation -->
+        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 shadow-lg border border-indigo-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <i data-lucide="lightbulb" class="w-6 h-6 text-indigo-600"></i>
+            Innovation & Creation
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><strong>The Debugger</strong> - Expert at interpreting build failures</li>
+            <li><strong>The Toolmaker</strong> - Meta-performer that improves building processes</li>
+            <li><strong>The Incubator</strong> - Bridge between The Muse and The Appraiser</li>
+            <li><strong>The Forge</strong> - Master builder that turns blueprints into reality</li>
+            <li><strong>The Appraiser</strong> - Sober, analytical critic for novel ideas</li>
+          </ul>
+        </div>
+
+        <!-- Memory & Knowledge -->
+        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 shadow-lg border border-green-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <i data-lucide="database" class="w-6 h-6 text-green-600"></i>
+            Memory & Knowledge
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><strong>The Librarian</strong> - Intelligence layer for system memory</li>
+            <li><strong>The Historian</strong> - Truth-seeking critical examiner of the past</li>
+            <li><strong>The Analyst</strong> - Proactive, background data scientist</li>
+            <li><strong>The Codifier</strong> - Transforms actions into strategic templates</li>
+            <li><strong>The Epistemologist</strong> - Meta-thinker that governs knowledge</li>
+            <li><strong>The Cartographer</strong> - Specialist in knowledge integration</li>
+          </ul>
+        </div>
+
+        <!-- Strategy & Decision -->
+        <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6 shadow-lg border border-amber-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <i data-lucide="target" class="w-6 h-6 text-amber-600"></i>
+            Strategy & Decision
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><strong>The Decider</strong> - Executive function for final choice</li>
+            <li><strong>The Playbook</strong> - Library of strategic templates</li>
+            <li><strong>The Coach</strong> - Intelligent front-end for The Playbook</li>
+            <li><strong>The Doctrine Writer</strong> - High-level strategic thinker</li>
+            <li><strong>The Policy Master</strong> - Manager of decision-making policies</li>
+            <li><strong>The Compromiser</strong> - Creative negotiator for hybrid solutions</li>
+            <li><strong>The Gambler</strong> - Specialized, high-risk decision-maker</li>
+          </ul>
+        </div>
+
+        <!-- Operations & Monitoring -->
+        <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-xl p-6 shadow-lg border border-red-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <i data-lucide="activity" class="w-6 h-6 text-red-600"></i>
+            Operations & Monitoring
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><strong>The Watcher</strong> - Process supervisor and pre-flight skeptic</li>
+            <li><strong>The Forecaster</strong> - Predictive analyst for looming failures</li>
+            <li><strong>The Diagnostician</strong> - Specialist in root cause analysis</li>
+            <li><strong>The Troubleshooter</strong> - Empowered field medic for live fixes</li>
+            <li><strong>The Fixer</strong> - Constructive problem-solver for vetoed plans</li>
+            <li><strong>The Red Teamer</strong> - Creative antagonist for stress-testing</li>
+          </ul>
+        </div>
+
+        <!-- Validation & Testing -->
+        <div class="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl p-6 shadow-lg border border-teal-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-6 h-6 text-teal-600"></i>
+            Validation & Testing
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><strong>The Curriculum Designer</strong> - Manager of benchmark library</li>
+            <li><strong>The Meta-Analyst</strong> - Data detective for cross-domain patterns</li>
+            <li><strong>The Judge</strong> - Decision-theory expert for unifying scores</li>
+            <li><strong>The Talent Scout</strong> - Strategic assessor of performer value</li>
+            <li><strong>The Onboarder</strong> - Coach for new performers</li>
+            <li><strong>The Simulator</strong> - Operator of high-fidelity digital twin</li>
+            <li><strong>The Validator</strong> - Manager of empirical proof</li>
+          </ul>
+        </div>
+
+        <!-- Quality & Constraints -->
+        <div class="bg-gradient-to-br from-violet-50 to-purple-50 rounded-xl p-6 shadow-lg border border-violet-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <i data-lucide="filter" class="w-6 h-6 text-violet-600"></i>
+            Quality & Constraints
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><strong>The Sanity Checker</strong> - Pre-emptive filter for invalid prompts</li>
+            <li><strong>The Constraint Engineer</strong> - Specialist in negative logic</li>
+            <li><strong>The Precedent Library</strong> - Playbook for constraints</li>
+            <li><strong>The Advisor</strong> - Consultative layer for constraints</li>
+            <li><strong>The Economist</strong> - Analyzer of operational costs</li>
+            <li><strong>The Clarifier</strong> - Helpful, interactive partner</li>
+            <li><strong>The Rule Master</strong> - Intelligent manager of rule sets</li>
+            <li><strong>The Profiler</strong> - Provider of contextual intelligence</li>
+            <li><strong>The Aesthete</strong> - Guardian of the system's soul</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Insights Section -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.4s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+        <i data-lucide="brain" class="w-10 h-10 text-amber-600"></i>
+        Architectural Insights
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="admonition admonition-success">
+          <h3 class="text-xl font-bold text-green-900 mb-3">Intentional Limitations</h3>
+          <p class="text-green-800">Every performer's gaps are not bugs—they are design constraints that force specialization and create the need for complementary performers. The system's intelligence emerges from orchestration.</p>
+        </div>
+
+        <div class="admonition admonition-info">
+          <h3 class="text-xl font-bold text-blue-900 mb-3">Self-Evolution</h3>
+          <p class="text-blue-800">The Muse creates new performers, The Appraiser evaluates them, The Forge builds them, and The Systems Architect integrates them. The system evolves its own capabilities.</p>
+        </div>
+
+        <div class="admonition admonition-note">
+          <h3 class="text-xl font-bold text-purple-900 mb-3">Feedback Loops</h3>
+          <p class="text-purple-800">Every action is recorded, analyzed, and used to improve future decisions. The Archivist stores, The Analyst detects patterns, and The Codifier transforms actions into strategic templates.</p>
+        </div>
+
+        <div class="admonition admonition-warning">
+          <h3 class="text-xl font-bold text-amber-900 mb-3">Safety Through Constraints</h3>
+          <p class="text-amber-800">The Watcher refutes, The Sanity Checker filters, The Ethicist aligns, and The Council provides the ultimate human-in-the-loop failsafe. Multiple layers prevent catastrophic failures.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+      <div class="text-center text-gray-600">
+        <p class="mb-4">This architecture represents a complete, self-evolving agentic system where every performer has intentional limitations that create opportunities for complementary specialization.</p>
+        <p class="text-sm">Published by Jake Aaron • August 25, 2025</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+

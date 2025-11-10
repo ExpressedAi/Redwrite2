@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SBCF: Stream Buffered Context Flashing | Redwrite</title>
+  <meta name="description" content="A revolutionary hybrid processing architecture that combines the raw speed of parallel execution with the coherence and consistency of sequential communication in multi-agent collaboration.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .code { font-family: 'JetBrains Mono', monospace; }
+    .admonition { border-left: 4px solid; border-radius: 0.5rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .admonition-info { background-color: #eff6ff; border-color: #3b82f6; }
+    .admonition-warning { background-color: #fef3c7; border-color: #f59e0b; }
+    .admonition-success { background-color: #d1fae5; border-color: #10b981; }
+    .admonition-note { background-color: #f3e8ff; border-color: #8b5cf6; }
+    .admonition-danger { background-color: #fee2e2; border-color: #ef4444; }
+    .concept-card { transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid; }
+    .concept-card:hover { transform: translateX(8px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-in {
+      animation: slide-in 0.6s ease-out;
+    }
+    code {
+      background-color: #f1f5f9;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875em;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Navigation -->
+    <nav class="mb-8">
+      <a href="/" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        <span class="font-medium">Back to Redwrite</span>
+      </a>
+    </nav>
+    
+    <!-- Header -->
+    <header class="mb-12 animate-slide-in">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-4 flex-wrap">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-blue-400 to-cyan-500 text-white rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            Applications
+          </span>
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full text-sm font-semibold">
+            Multi-Agent Coordination
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          SBCF
+          <span class="block text-3xl md:text-4xl text-gray-600 font-normal mt-2">Stream Buffered Context Flashing</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- Video Player -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.1s">
+      <div class="max-w-4xl mx-auto mb-8" style="max-height: 60vh; aspect-ratio: 16/9;">
+        <video 
+          controls 
+          class="w-full h-full rounded-xl shadow-2xl object-contain bg-gray-900"
+          style="max-height: 60vh;"
+        >
+          <source src="/videos/SBCF.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.2s">
+      <div class="admonition admonition-info">
+        <p class="text-blue-800 leading-relaxed text-lg mb-4">
+          <strong>Stream Buffered Context Flashing (SBCF)</strong> solves a fundamental bottleneck in multi-agent collaboration by inventing a new communication layer that operates within the generative stream itself. By weaponizing the temporal buffer created through precisely controlled manual streaming, the system enables real-time entity extraction and context propagation across parallel agent swarms.
+        </p>
+        <p class="text-blue-800 leading-relaxed text-lg">
+          The result is a revolutionary hybrid processing architecture that combines the raw speed of parallel execution with the coherence and consistency of sequential communication, proving that large-scale agentic coordination can achieve both velocity and shared understanding simultaneously.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Core Problem -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.3s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">The Core Problem: The Streaming Dilemma</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-red-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Fast Native Streaming</h3>
+          <p class="text-gray-700 mb-2">
+            API providers offer high-speed native streaming that delivers tokens at maximum velocity. However, this speed comes at a critical cost—the stream is a black box. The application cannot intercept, analyze, or act upon the content as it generates. The stream is opaque until completion.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-orange-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Manual Word-by-Word Streaming</h3>
+          <p class="text-gray-700 mb-2">
+            The alternative is complete control through manual, token-by-token generation. This provides full visibility and intervention capability, but the performance cost is devastating. Manual streaming operates orders of magnitude slower than native streams, making it impractical for real-time applications.
+          </p>
+        </div>
+        
+        <div class="admonition admonition-danger">
+          <h3 class="text-lg font-bold text-red-900 mb-2">The Coordination Bottleneck</h3>
+          <p class="text-red-800">
+            This dilemma becomes catastrophic in multi-agent systems. Parallel agents working on interdependent tasks face a brutal trade-off: execute in parallel for speed (but risk incoherence due to lack of shared context) or execute sequentially to maintain context (but sacrifice all parallelization benefits). Neither option is acceptable for complex, interdependent tasks requiring both speed and coherence.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Breakthrough Insight -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.4s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">The Breakthrough Insight: Weaponizing the Temporal Buffer</h2>
+      
+      <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-lg border border-blue-200 mb-6">
+        <p class="text-blue-900 leading-relaxed text-lg mb-4">
+          The breakthrough insight is that the "weakness" of manual streaming—its slowness—can be transformed into a powerful feature through precise exploitation.
+        </p>
+        <div class="space-y-4 mt-6">
+          <div class="admonition admonition-info">
+            <h3 class="text-lg font-bold text-blue-900 mb-2">Creating the Buffer</h3>
+            <p class="text-blue-800 text-sm">By deliberately using manual, brute-force streaming, the system creates a "buffer" in time. Each token arrives slightly slower than native speed, but this delay is predictable and controllable.</p>
+          </div>
+          
+          <div class="admonition admonition-success">
+            <h3 class="text-lg font-bold text-green-900 mb-2">Buffer as Opportunity</h3>
+            <p class="text-green-800 text-sm">This temporal buffer represents opportunity. During the microseconds between token generations, the system can perform critical operations that would be impossible with opaque native streams.</p>
+          </div>
+          
+          <div class="admonition admonition-note">
+            <h3 class="text-lg font-bold text-purple-900 mb-2">Weaponization</h3>
+            <p class="text-purple-800 text-sm">The temporal buffer is weaponized to perform Context Flashing—real-time extraction and propagation of critical information across parallel agent swarms, turning a performance liability into a coordination superpower.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Core Mechanism -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.5s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">The Core Mechanism: Context Flashing</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-indigo-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Dual-Task Generation</h3>
+        <p class="text-gray-700 mb-4">
+          As each agent in a parallel swarm generates its output, it simultaneously performs two tasks:
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-6 mt-6">
+          <div class="admonition admonition-info">
+            <h3 class="text-lg font-bold text-blue-900 mb-2">1. Entity Extraction</h3>
+            <p class="text-blue-800 text-sm mb-2">The agent scans its own output in real-time, identifying and extracting key entities:</p>
+            <ul class="list-disc list-inside space-y-1 text-blue-800 text-sm ml-2">
+              <li>Proper Nouns: Character names, locations, organizations</li>
+              <li>Core Concepts: Central themes, plot devices, key ideas</li>
+              <li>Significant Actions: Critical events, turning points, causal moments</li>
+            </ul>
+            <p class="text-blue-800 text-sm mt-2"><strong>Value:</strong> Entity extraction creates a compressed, high-signal representation of the agent's output without requiring full text analysis.</p>
+          </div>
+          
+          <div class="admonition admonition-success">
+            <h3 class="text-lg font-bold text-green-900 mb-2">2. Context Flashing</h3>
+            <p class="text-green-800 text-sm mb-2">The agent "flashes" extracted context to its designated neighbor in the sequence:</p>
+            <ul class="list-disc list-inside space-y-1 text-green-800 text-sm ml-2">
+              <li>Agent 1 flashes to Agent 2</li>
+              <li>Agent 2 flashes to Agent 3</li>
+              <li>Agent N flashes to Agent N+1</li>
+            </ul>
+            <p class="text-green-800 text-sm mt-2"><strong>Flash Payload:</strong> A curated list of the most significant entities extracted so far, transmitted as structured metadata.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">The Whisper Chain</h3>
+        <p class="text-gray-700 mb-2">
+          <strong>Information Propagation:</strong> Critical information propagates through the entire parallel swarm sequentially, even as agents execute in parallel. Agent 20 becomes aware of key concepts from Agent 1 without ever reading Agent 1's full output.
+        </p>
+        <p class="text-gray-700 mb-2">
+          <strong>Compressed Communication:</strong> Rather than transmitting full text (expensive, slow), the system transmits high-signal entities (cheap, fast). This compression makes real-time inter-agent communication practical.
+        </p>
+        <p class="text-gray-700 text-sm">
+          <strong>Emergent Coherence:</strong> The whisper chain creates emergent narrative coherence. Themes introduced early propagate through the chain, ensuring later agents can reference, develop, and resolve earlier concepts.</p>
+      </div>
+    </section>
+
+    <!-- System Architecture -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.6s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">System Architecture</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Component 1: Control Panel — Mission Control</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Central Command Interface:</strong> The Control Panel serves as the orchestration hub for the entire swarm operation.
+          </p>
+          <p class="text-gray-700 mb-2">
+            <strong>Mission Definition:</strong> Users define the high-level objective through a single prompt. For the demonstrated 20-agent narrative system, one prompt allocates one chapter to each agent.
+          </p>
+          <p class="text-gray-700 text-sm">
+            <strong>Real-Time Telemetry:</strong> The Control Panel displays live system metrics: completion status, active streams, total entities extracted, word count, and average tokens per second across the swarm.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Component 2: Agent Grid — The Factory Floor</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Parallel Process Visualization:</strong> The Agent Grid renders the entire parallel swarm as individual cards, each representing one agent.
+          </p>
+          <p class="text-gray-700 mb-2">
+            <strong>Per-Agent Status Display:</strong> Each card shows status indicator, live word count, generated output (scrolling display), and progress bar.
+          </p>
+          <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="admonition admonition-info">
+              <h3 class="text-lg font-bold text-blue-900 mb-2">Entities Extracted</h3>
+              <p class="text-blue-800 text-sm">Shows the key concepts the agent has identified in its own writing as generation proceeds. This list grows dynamically, providing real-time visibility into what the agent considers significant.</p>
+            </div>
+            <div class="admonition admonition-success">
+              <h3 class="text-lg font-bold text-green-900 mb-2">Context Received</h3>
+              <p class="text-green-800 text-sm">Shows the specific entities that have been "flashed" to this agent from its predecessor in the chain. This is the visual proof of the communication channel.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Component 3: Global Brain & Audit Trail</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Entity Database: The Emergent Knowledge Graph</strong>
+          </p>
+          <p class="text-gray-700 mb-2">
+            The Entity Database aggregates all entities extracted by any agent, creating a living map of the collective output's conceptual space.
+          </p>
+          <p class="text-gray-700 text-sm mb-3">
+            <strong>Features:</strong> Entity list with reference counts, agent attribution, and frequency heatmap. Provides instant insight into narrative themes, character importance, and conceptual distribution.</p>
+          
+          <p class="text-gray-700 mb-2 mt-4">
+            <strong>Context Flash Timeline: The Immutable Audit Trail</strong>
+          </p>
+          <p class="text-gray-700 text-sm">
+            The Context Flash Timeline logs every single flash event in chronological order, creating complete transparency into inter-agent communication. Each entry shows timestamp, source agent, target agent, entities flashed, and flash sequence number.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementation Workflow -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.7s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Implementation Workflow</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-teal-500">
+        <ol class="list-decimal list-inside space-y-3 text-gray-700 text-lg">
+          <li><strong>User defines</strong> mission in Control Panel (e.g., "20-chapter novel")</li>
+          <li><strong>System partitions</strong> task across N agents (20 agents = 20 chapters)</li>
+          <li><strong>User selects</strong> model and streaming parameters</li>
+          <li><strong>User initiates</strong> swarm with single click</li>
+          <li><strong>Agent 1 begins</strong> generation with manual streaming</li>
+          <li><strong>Entity extractor</strong> analyzes Agent 1's output in real-time</li>
+          <li><strong>Agent 1 flashes</strong> extracted entities to Agent 2</li>
+          <li><strong>Agent 2 begins</strong> generation with received context pre-injected</li>
+          <li><strong>Agent 2 extracts</strong> entities from its own output</li>
+          <li><strong>Agent 2 flashes</strong> augmented context (own entities + received context) to Agent 3</li>
+          <li><strong>Process repeats</strong> through entire chain (Agent 3 → 4 → 5... → 20)</li>
+          <li><strong>Entity Database</strong> aggregates all extracted entities</li>
+          <li><strong>Context Flash Timeline</strong> logs all flash events</li>
+          <li><strong>Control Panel</strong> displays aggregate telemetry</li>
+          <li><strong>All agents complete</strong> in parallel timeframe</li>
+          <li><strong>Final output</strong> exhibits coherence through context propagation</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Technical Advantages -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.8s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Technical Advantages</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">Parallel Velocity</h3>
+          <p class="text-green-800 text-sm">All agents execute simultaneously, achieving near-parallel completion times rather than sequential multiplication.</p>
+        </div>
+        
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Sequential Coherence</h3>
+          <p class="text-blue-800 text-sm">Despite parallel execution, outputs exhibit sequential continuity through context propagation, avoiding the incoherence typical of naive parallelization.</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">Compressed Communication</h3>
+          <p class="text-purple-800 text-sm">Entity extraction creates high-signal, low-bandwidth communication payload, enabling real-time inter-agent messaging without full text transmission.</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Real-Time Coordination</h3>
+          <p class="text-amber-800 text-sm">Context flashing operates within the generation stream, providing coordination without post-generation synchronization overhead.</p>
+        </div>
+        
+        <div class="admonition admonition-danger">
+          <h3 class="text-lg font-bold text-red-900 mb-2">Emergent Knowledge Graph</h3>
+          <p class="text-red-800 text-sm">Entity Database creates automatic conceptual mapping without explicit knowledge engineering.</p>
+        </div>
+        
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">Complete Transparency</h3>
+          <p class="text-green-800 text-sm">Context Flash Timeline provides full audit trail of inter-agent communication, eliminating black box coordination.</p>
+        </div>
+        
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Buffer Weaponization</h3>
+          <p class="text-blue-800 text-sm">Transforms manual streaming's performance cost into coordination capability, turning weakness into strength.</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">Scalable Architecture</h3>
+          <p class="text-purple-800 text-sm">Whisper chain scales linearly with agent count, avoiding N-squared communication complexity.</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Task Agnostic</h3>
+          <p class="text-amber-800 text-sm">System works for any interdependent parallel task (narrative writing, report generation, multi-stage analysis, etc.).</p>
+        </div>
+        
+        <div class="admonition admonition-danger">
+          <h3 class="text-lg font-bold text-red-900 mb-2">Temporal Decoupling</h3>
+          <p class="text-red-800 text-sm">Agents don't need to synchronize timing; context flashing operates asynchronously within generation streams.</p>
+        </div>
+        
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">Failure Resilience</h3>
+          <p class="text-green-800 text-sm">If one agent fails, successors can still receive context from earlier successful agents in the chain.</p>
+        </div>
+        
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Visual Debugging</h3>
+          <p class="text-blue-800 text-sm">Agent Grid and Entity Database enable instant identification of coherence issues through visual inspection.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Innovation Significance -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.9s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Innovation Significance</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">From Either/Or to Both/And</h3>
+          <p class="text-gray-700">The false choice between parallel speed and sequential coherence is eliminated. The system achieves both through architectural innovation.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">From Black Box to Transparent</h3>
+          <p class="text-gray-700">Native streaming's opacity is replaced with fully visible, logged, and auditable inter-agent communication.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">From Expensive to Compressed</h3>
+          <p class="text-gray-700">Full text transmission for coordination is replaced with lightweight entity flashing, making real-time multi-agent communication practical.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">From Weakness to Weapon</h3>
+          <p class="text-gray-700">Manual streaming's slowness transforms from liability to superpower when deliberately exploited for coordination.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">From Isolated to Connected</h3>
+          <p class="text-gray-700">Parallel agents evolve from isolated workers to coordinated swarm members maintaining shared understanding.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-red-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">From Post-Hoc to Real-Time</h3>
+          <p class="text-gray-700">Coordination moves from post-generation synchronization to stream-embedded real-time propagation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Wins -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.0s">
+      <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-lg border border-blue-200">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why This Wins</h2>
+        <p class="text-blue-900 leading-relaxed text-lg mb-4">
+          Stream Buffered Context Flashing proves that multi-agent swarms can operate at parallel speed while maintaining sequential coherence through intelligent architectural design. By weaponizing temporal buffers and creating whisper chains of compressed context, the system achieves what was previously thought impossible: <strong>you can have both velocity and shared mind</strong>.
+        </p>
+        <p class="text-blue-800 leading-relaxed text-lg font-semibold">
+          This is the future of multi-agent coordination—where parallelization doesn't sacrifice coherence, where communication doesn't require full text transmission, and where the stream itself becomes the coordination layer. This is parallel processing with a shared consciousness.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+      <div class="text-center text-gray-600">
+        <p class="mb-4">SBCF: Stream Buffered Context Flashing</p>
+        <p class="text-sm">Published by Jake A. Hallett • August 28, 2025</p>
+        <p class="text-xs mt-4 text-gray-500">This application represents a revolutionary hybrid processing architecture that combines parallel execution speed with sequential coherence through stream-embedded communication.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+
+

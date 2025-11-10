@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Δ-Primitives: A First-Principles Formalism | Redwrite</title>
+  <meta name="description" content="A first-principles formalism for detection, adjudication, and control of structure in vibrating systems. A primitive is a stubborn equilibrium; a law is a null-beating, steer-responsive, RG-stable deviation.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .code { font-family: 'JetBrains Mono', monospace; }
+    .admonition { border-left: 4px solid; border-radius: 0.5rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .admonition-info { background-color: #eff6ff; border-color: #3b82f6; }
+    .admonition-warning { background-color: #fef3c7; border-color: #f59e0b; }
+    .admonition-success { background-color: #d1fae5; border-color: #10b981; }
+    .admonition-note { background-color: #f3e8ff; border-color: #8b5cf6; }
+    .admonition-danger { background-color: #fee2e2; border-color: #ef4444; }
+    .concept-card { transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid; }
+    .concept-card:hover { transform: translateX(8px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.6); }
+    }
+    .animate-pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-in {
+      animation: slide-in 0.6s ease-out;
+    }
+    .math-block {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    code {
+      background-color: #f1f5f9;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875em;
+    }
+    pre {
+      background-color: #1e293b;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    pre code {
+      background-color: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    .section-toggle {
+      cursor: pointer;
+      user-select: none;
+    }
+    .section-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .section-content.expanded {
+      max-height: 10000px;
+    }
+    .toc-link {
+      color: #3b82f6;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc-link:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Navigation -->
+    <nav class="mb-8">
+      <a href="/" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        <span class="font-medium">Back to Redwrite</span>
+      </a>
+    </nav>
+    
+    <!-- Header -->
+    <header class="mb-12 animate-slide-in">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-4 flex-wrap">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+            <i data-lucide="microscope" class="w-4 h-4"></i>
+            Research
+          </span>
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-full text-sm font-semibold">
+            Mathematical Formalism
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Δ-Primitives
+          <span class="block text-3xl md:text-4xl text-gray-600 font-normal mt-2">A First-Principles Formalism</span>
+          <span class="block text-2xl md:text-3xl text-gray-500 font-normal mt-2">for Detection, Adjudication, and Control of Structure in Vibrating Systems</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- Abstract -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.1s">
+      <div class="admonition admonition-success">
+        <h2 class="text-2xl font-bold text-green-900 mb-4">Abstract</h2>
+        <p class="text-green-800 leading-relaxed text-lg mb-4">
+          Δ-Primitives is a first-principles formalism for detection, adjudication, and control of structure in vibrating systems. A <strong>primitive</strong> is a stubborn equilibrium; a <strong>law</strong> is a null-beating, steer-responsive, RG-stable deviation. The core law is <strong>low-order wins</strong>: integer relations with small (p+q) persist under coarse-graining; high-order relations thin and die.
+        </p>
+        <p class="text-green-800 leading-relaxed text-lg">
+          We operationalize this with a unified evidence score (S*) (weighted |Z|, χ̃², D<sub>KL</sub>, |K|) gated by audits E0–E4 (calibration, vibration, symmetry, causal micro-nudges, RG persistence). Predictive capture and stability are quantified by (ε<sub>cap</sub>), (ε<sub>stab</sub>); brittleness by (ζ). A four-axis controller (Frequency → Phase → Amplitude → Space) executes <strong>Snap–Hold–Release</strong> with strict eligibility (never force phase outside capture), one snap per axis per window, and MDL bias to reduce (p+q) and detune.
+        </p>
+      </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.2s">
+      <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-200">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+          <i data-lucide="list" class="w-8 h-8 text-teal-600"></i>
+          Table of Contents
+        </h2>
+        <div class="grid md:grid-cols-2 gap-4 text-gray-700">
+          <a href="#first-principles" class="toc-link">1. First Principles</a>
+          <a href="#axioms" class="toc-link">2. Axioms (A0–A5)</a>
+          <a href="#core-law" class="toc-link">3. Core Law: Low-Order Wins</a>
+          <a href="#phasor-model" class="toc-link">4. Phasor Model</a>
+          <a href="#controllers" class="toc-link">5. Controllers & Defaults</a>
+          <a href="#e-audits" class="toc-link">6. E-Audits (E0–E4)</a>
+          <a href="#omega-engine" class="toc-link">7. Ω* Engine & Harmony Optimizer</a>
+          <a href="#sore-thumb" class="toc-link">8. Sore-Thumb Score (S*)</a>
+          <a href="#dco" class="toc-link">9. Δ-Coupling Operator (DCO++)</a>
+          <a href="#unified-control" class="toc-link">10. Unified Polarity Control</a>
+          <a href="#capture-stability" class="toc-link">11. Capture, Stability, Brittleness</a>
+          <a href="#seven-pillars" class="toc-link">12. Seven Pillars (Applied Cuts)</a>
+          <a href="#implementation" class="toc-link">13. Implementation & Reference APIs</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- First Principles -->
+    <section id="first-principles" class="mb-16 animate-slide-in" style="animation-delay: 0.3s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">First Principles</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-blue-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Objects and Claims</h3>
+        <ul class="space-y-3 text-gray-700">
+          <li><strong>Primitive.</strong> A stubborn, nudge-resistant equilibrium (phase-structured but non-steerable at our budget).</li>
+          <li><strong>Law.</strong> A null-beating, steer-responsive, RG-stable deviation that survives coarse-graining and passes E-audits.</li>
+          <li><strong>Null (𝒢).</strong> Broadband phases with no persistent small-integer structure; all reported structure must beat this.</li>
+        </ul>
+      </div>
+
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-purple-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Phasor Model</h3>
+        <p class="text-gray-700 mb-4">Let signals/modes (i) be phasors (x<sub>i</sub> = A<sub>i</sub> e<sup>iθ<sub>i</sub></sup>) with frequency (f<sub>i</sub>) and damping (Γ<sub>i</sub>) (Q<sub>i</sub> = f<sub>i</sub>/Γ<sub>i</sub>).</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono">Group phasor: X = Σ<sub>i</sub> A<sub>i</sub> e<sup>iθ<sub>i</sub></sup></p>
+          <p class="text-gray-900 font-mono">Coherence: T = |X| / Σ<sub>i</sub> A<sub>i</sub></p>
+          <p class="text-gray-900 font-mono">Candidate integer relation between modes (a,b) at ratio p:q:</p>
+          <p class="text-gray-900 font-mono">e<sub>φ</sub> = wrap(pθ<sub>b</sub> - qθ<sub>a</sub>), s<sub>φ</sub> = sin(e<sub>φ</sub>)</p>
+          <p class="text-gray-900 font-mono">Coupling (pull) K<sub>p:q</sub> competes with damping to determine capture:</p>
+          <p class="text-gray-900 font-mono">ε<sub>ab</sub><sup>p:q</sup> = [2πK<sub>p:q</sub> - (Γ<sub>a</sub> + Γ<sub>b</sub>)]<sub>+</sub></p>
+        </div>
+      </div>
+
+      <div class="admonition admonition-note">
+        <h3 class="text-xl font-bold text-purple-900 mb-3">Core Law: Low-Order Wins</h3>
+        <p class="text-purple-800 mb-2">Renormalization flow for lock strength:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono">dK<sub>p:q</sub>/dℓ = (2 - Δ<sub>p:q</sub>)K<sub>p:q</sub> - ΛK<sub>p:q</sub><sup>3</sup></p>
+          <p class="text-gray-900 font-mono">Δ<sub>p:q</sub> = d + η(p+q) + ζ|ω<sub>b</sub>/ω<sub>a</sub> - q/p|</p>
+        </div>
+        <p class="text-purple-800 mt-2">Small (p+q) with small detune have (2 - Δ<sub>p:q</sub> > 0) ⇒ persistence; large (p+q) die under coarse-grain.</p>
+        <p class="text-purple-700 mt-3 italic"><strong>Prediction:</strong> integer-thinning—log|K<sub>p:q</sub>| decreases approximately linearly with (p+q) after detune normalization.</p>
+      </div>
+    </section>
+
+    <!-- Controllers -->
+    <section id="controllers" class="mb-16 animate-slide-in" style="animation-delay: 0.4s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Controllers (Snap–Hold–Release)</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Frequency (eligibility)</h3>
+          <p class="text-gray-700 mb-2"><strong>Rule:</strong> never force phase when |s<sub>f</sub>| > 1</p>
+          <p class="text-gray-700 text-sm">Actions: widen ε or small retunes (δf/f ≤ 2%) until |s<sub>f</sub>| ≤ τ<sub>f</sub> (default 0.2)</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Phase (timing)</h3>
+          <p class="text-gray-700 mb-2">Error e<sub>φ</sub>; low-gain loop δω = -k<sub>ℓ</sub> sin(e<sub>φ</sub>)</p>
+          <p class="text-gray-700 text-sm">Snap (5°–15°) if |e<sub>φ</sub>| > φ<sub>snap</sub> (default 25°), Release to hold when |e<sub>φ</sub>| ≤ φ<sub>tol</sub> (default 10°)</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Amplitude (harmony)</h3>
+          <p class="text-gray-700 mb-2">Contributions C<sub>i</sub> = cos(θ<sub>i</sub> - arg X) - T</p>
+          <p class="text-gray-700 text-sm">Update (multiplicative weights): A<sub>i</sub> ← Π<sub>Δ</sub>(A<sub>i</sub> exp(βC<sub>i</sub>)), β ∈ [0, 0.05]</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Space (support/topology)</h3>
+          <p class="text-gray-700 mb-2">Add/drop edges/supports that reduce (p+q) and brittleness ζ</p>
+          <p class="text-gray-700 text-sm">Maintain eligibility and increase T</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- E-Audits -->
+    <section id="e-audits" class="mb-16 animate-slide-in" style="animation-delay: 0.5s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">E-Audits (Pass/Fail Doctrine)</h2>
+      
+      <div class="space-y-4">
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">E0 Calibration</h3>
+          <p class="text-blue-800">LLN, p-values, windows, gauges</p>
+        </div>
+        
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">E1 Vibration</h3>
+          <p class="text-green-800">Narrowband peaks; phase signatures survive amplitude mute; time-reversal flips directed measures only</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">E2 Symmetry</h3>
+          <p class="text-purple-800">Declared invariances (gauge/permutation/coordinate) hold; unregistered breaks void claims</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">E3 Micro-Nudge (causal)</h3>
+          <p class="text-amber-800">Tiny on-manifold nudges (±5° phase, ±2% freq) increase (K, ε<sub>cap</sub>, T) vs null/sham with expected lag and sign symmetry</p>
+        </div>
+        
+        <div class="admonition admonition-danger">
+          <h3 class="text-lg font-bold text-red-900 mb-2">E4 RG Persistence</h3>
+          <p class="text-red-800">Coarse-graining (×2) preserves low-order hierarchy; high-order dies; integer-thinning holds</p>
+        </div>
+      </div>
+      
+      <div class="mt-6 bg-red-50 border border-red-200 rounded-lg p-4">
+        <p class="text-red-900 font-semibold">Doctrine: Fail any ⇒ <strong>demote</strong> (no partial credit)</p>
+      </div>
+    </section>
+
+    <!-- Seven Pillars -->
+    <section id="seven-pillars" class="mb-16 animate-slide-in" style="animation-delay: 0.6s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Seven Pillars (Applied Cuts)</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-indigo-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Yang–Mills</h3>
+          <p class="text-gray-700 text-sm">Mass gap as surviving low-order locks</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Riemann</h3>
+          <p class="text-gray-700 text-sm">Critical-line 1:1 locks</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">P vs NP</h3>
+          <p class="text-gray-700 text-sm">Low-order lock covers; bridges</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-pink-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">BSD</h3>
+          <p class="text-gray-700 text-sm">Rank as count of RG-persistent generators</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Poincaré</h3>
+          <p class="text-gray-700 text-sm">Holonomy (m=0) under Δ-connections</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-teal-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Hodge</h3>
+          <p class="text-gray-700 text-sm">(p,p) locks ↔ algebraic cycles</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-orange-500 md:col-span-2">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Navier–Stokes</h3>
+          <p class="text-gray-700 text-sm">Bounded low-order triad locks</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Concepts Summary -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.7s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Core Concepts Summary</h2>
+      
+      <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-lg border border-emerald-200">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Evidence & Metrics</h3>
+            <ul class="space-y-2 text-gray-700">
+              <li><strong>S* (Sore-Thumb Score):</strong> w<sub>Z</sub>|Z| + w<sub>χ</sub>χ̃² + w<sub>KL</sub>D<sub>KL</sub> + w<sub>K</sub>|K|</li>
+              <li><strong>ε<sub>cap</sub>:</strong> Capture bandwidth</li>
+              <li><strong>ε<sub>stab</sub>:</strong> Stability window</li>
+              <li><strong>ζ:</strong> Brittleness index</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Control & Optimization</h3>
+            <ul class="space-y-2 text-gray-700">
+              <li><strong>H* (Harmony):</strong> αT - βζ̄ + γε<sub>stab</sub>̄ - δ(p+q)̄</li>
+              <li><strong>Priority:</strong> Frequency → Phase → Amplitude → Space</li>
+              <li><strong>MDL Bias:</strong> Prefer lower (p+q) and fewer parameters</li>
+              <li><strong>RG Persistence:</strong> Integer-thinning under coarse-graining</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Properties -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.8s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Key Properties</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">Stability under recursion</h3>
+          <p class="text-green-800">Decay + caps prevent oscillatory thrash; momentum builds across ticks</p>
+        </div>
+        
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Compositionality</h3>
+          <p class="text-blue-800">Micro-performers with small, typed profiles compose like filters; ⊕/⊗ ensures safe parallelism</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">Auditable evolution</h3>
+          <p class="text-purple-800">Every change leaves a journaled delta, test, and economic rationale</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Alignment by construction</h3>
+          <p class="text-amber-800">The edge/barrier is a formal place to enforce contracts and invariants, not an afterthought</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Limitations & Risks -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.9s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Limitations & Risks</h2>
+      
+      <div class="space-y-4">
+        <div class="admonition admonition-danger">
+          <h3 class="text-lg font-bold text-red-900 mb-2">Budget starvation</h3>
+          <p class="text-red-800">Too-tight caps stall progress → start with soft warnings before hard rejections</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Axis entanglement</h3>
+          <p class="text-amber-800">Poorly chosen axes create hidden coupling → audit co-linearity and merge</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Spec drift</h3>
+          <p class="text-amber-800">Weak Architect poisons the loop → invest in contract templates and tests early</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Wins -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.0s">
+      <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-lg border border-emerald-200">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why This Wins</h2>
+        <p class="text-emerald-900 leading-relaxed text-lg">
+          Δ-Primitives transforms "prompt engineering" into <strong>cognitive manufacturing</strong>: budgeted, scheduled, audited, and economically optimized. It doesn't ask the LLM to be a god; it asks it to be <em>conducted</em>. Nodes steer, anti-nodes sing, micro-performers carry the tune, and the Auditor decides if the song passes the contract. With calendars, patches, and spawns, the system <strong>evolves itself</strong>.
+        </p>
+        <p class="text-emerald-800 mt-4 italic">
+          The core insight: <strong>low-order wins</strong>. Integer relations with small (p+q) persist under coarse-graining; high-order relations thin and die. This operationalizes renormalization group theory into a practical, auditable framework for detecting and certifying structure in vibrating systems.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+      <div class="text-center text-gray-600">
+        <p class="mb-4">Δ-Primitives: A first-principles formalism for detection, adjudication, and control of structure in vibrating systems.</p>
+        <p class="text-sm">Published by Jake Aaron • August 28, 2025</p>
+        <p class="text-xs mt-4 text-gray-500">This document represents a comprehensive framework for understanding and controlling structure in complex systems through renormalization group principles and rigorous audit protocols.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+    
+    // Smooth scroll for TOC links
+    document.querySelectorAll('.toc-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+
