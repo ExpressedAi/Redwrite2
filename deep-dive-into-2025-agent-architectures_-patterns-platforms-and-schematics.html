@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Dive into 2025 Agent Architectures: Patterns, Platforms & Schematics | Redwrite</title>
+  <meta name="description" content="Schematics, flows, and working diagrams for frontier agent architectures as of August 2025. Comprehensive guide to patterns, platforms, and practical implementations.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .code { font-family: 'JetBrains Mono', monospace; }
+    .admonition { border-left: 4px solid; border-radius: 0.5rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .admonition-info { background-color: #eff6ff; border-color: #3b82f6; }
+    .admonition-warning { background-color: #fef3c7; border-color: #f59e0b; }
+    .admonition-success { background-color: #d1fae5; border-color: #10b981; }
+    .admonition-note { background-color: #f3e8ff; border-color: #8b5cf6; }
+    .concept-card { transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid; }
+    .concept-card:hover { transform: translateX(8px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-in {
+      animation: slide-in 0.6s ease-out;
+    }
+    code {
+      background-color: #f1f5f9;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875em;
+     }
+    .youtube-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin: 0.5rem 0;
+    }
+    .youtube-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Navigation -->
+    <nav class="mb-8">
+      <a href="/" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        <span class="font-medium">Back to Redwrite</span>
+      </a>
+    </nav>
+    
+    <!-- Header -->
+    <header class="mb-12 animate-slide-in">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-4 flex-wrap">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-purple-400 to-pink-500 text-white rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+            Articles
+          </span>
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-blue-400 to-cyan-500 text-white rounded-full text-sm font-semibold">
+            Agent Architecture
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Deep Dive into 2025 Agent Architectures
+          <span class="block text-3xl md:text-4xl text-gray-600 font-normal mt-2">Patterns, Platforms & Schematics</span>
+        </h1>
+        <p class="text-xl text-gray-600 mt-4">Schematics, flows, and working diagrams for the frontier agent architectures as of August 2025</p>
+      </div>
+    </header>
+
+    <!-- Introduction -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.1s">
+      <div class="admonition admonition-info">
+        <p class="text-blue-800 leading-relaxed text-lg">
+          This guide provides schematics, flows, and working diagrams for frontier agent architectures. We've distilled the core patterns from authoritative sources to give you a comprehensive view of the state of the art in agent design as of August 2025.
+        </p>
+      </div>
+    </section>
+
+    <!-- Core Patterns -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.2s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">What This All Says About Agent Architecture in 2025</h2>
+      
+      <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-lg border border-blue-200 mb-6">
+        <p class="text-blue-900 leading-relaxed text-lg mb-4">
+          <strong>In a sentence:</strong> The state of the art converges on graph-structured, event-driven orchestration that separates planning from execution, gives the agent durable operating environments (virtual computers, microservices, or containerized runtimes), and threads human control points through the loop.
+        </p>
+        <p class="text-blue-800 leading-relaxed">
+          Whether you start with OpenAI's unified agent, Google's Gemini/Vertex stack, Anthropic's Computer Use, Microsoft's AutoGen, or NVIDIA's ACE/NIM, the diagrams rhyme: <strong>plan, select tools, act, observe, reflect</strong>—and persist context across steps with clear safety gates and governance.
+        </p>
+      </div>
+    </section>
+
+    <!-- OpenAI Ecosystem -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.3s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">OpenAI Ecosystem</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">ChatGPT Agent (Unified Agentic System)</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Architectural thrust:</strong> A unified system that merges web interaction (GUI browser and text browser), deep research synthesis, and ChatGPT's conversational core, all operating on a persistent "virtual computer" with a toolbox (browsers, terminal, direct API access, connectors) so the model can choose actions, maintain context, and complete end-to-end tasks.
+          </p>
+          <p class="text-gray-700 text-sm">
+            This is the canonical "reason–plan–act with tools on a VM" pattern scaled for real-world workflows. The system formalizes a tool suite and the virtual computer loop for robust, multi-step execution with state persistence.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Assistants API Object Model</h3>
+          <p class="text-gray-700">
+            <strong>Core objects:</strong> Assistant, Thread, Messages, Run, and Step—i.e., a stateful container model that formalizes "conversation-as-state," discrete runs, and tool-execution steps. These serve as agentic building blocks in apps and orchestration layers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google and Vertex AI -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.4s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Google and Vertex AI</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Gemini 2.0 and the Agentic Era</h3>
+          <p class="text-gray-700">
+            Google frames Gemini 2.0 as built for the "agentic era," pairing multimodality with orchestration layers (e.g., Vertex Agent Engine/Agent Builder) to plan, route, and act across tools and services.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Vertex AI Agent Engine</h3>
+          <p class="text-gray-700">
+            Agent lifecycle and deployment steps: create agent; configure tools, memory, policies; deploy; and manage, with orchestration managing plan/execute loops and endpointing for production.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Vertex AI Agent Builder</h3>
+          <p class="text-gray-700">
+            Components include Agent Garden (library/registry), tool and data integrations, and deployment surfaces. The system consolidates multi-agent experiences over Google Cloud primitives (policies, connectors, evaluators).
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Project Astra (Universal Assistant Prototype)</h3>
+          <p class="text-gray-700">
+            Multimodal, real-time, device-centric assistant research. Astra positions as a continuous, perceptual agent prototype feeding Google's broader agent stack.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anthropic -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.5s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Anthropic</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-indigo-500">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Computer Use (Tool That Operates a Computer)</h3>
+        <p class="text-gray-700 mb-2">
+          <strong>Architecture:</strong> Loop over screenshots + pointer/keyboard actions with stateful reasoning—LLM observes the screen, plans, clicks/types, and iterates; supports file operations and app workflows.
+        </p>
+        <p class="text-gray-700">
+          Acts as an "operating environment" for agents to execute real desktop flows. Design patterns for agents and safety/trust overlays appear in Anthropic's "Building Effective Agents," clarifying orchestration, decomposition, and guardrails around Computer Use.
+        </p>
+      </div>
+    </section>
+
+    <!-- Microsoft -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.6s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Microsoft</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">AutoGen v0.4 (Asynchronous, Event-Driven Multi-Agent)</h3>
+        <p class="text-gray-700">
+          Layered architecture adopting an actor-model runtime with strong observability, distributed scaling, and an event bus for agent-to-agent protocols. Diagrams show standalone and layered runtimes, with agents communicating via messages through the runtime.
+        </p>
+      </div>
+    </section>
+
+    <!-- LangChain and Orchestration -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.7s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">LangChain and Orchestration Patterns</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Plan-and-Execute Design</h3>
+          <p class="text-gray-700">
+            The archetypal split of Planner (large model once) and Executors (smaller workers/tools many times) featuring a re-planning loop. This is a compact schematic reusable across stacks (Vertex, Bedrock, AutoGen, LangGraph, etc.).
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">LangGraph Agent Architectures</h3>
+          <p class="text-gray-700">
+            Graph-structured, cyclic agent workflows with state and control over steps, retries, and collaboration. Serves as an orchestration substrate for multi-agent designs and human-in-the-loop gates.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">LlamaIndex AgentWorkflow (Human-in-the-Loop)</h3>
+          <p class="text-gray-700">
+            Event-driven workflow where tools can emit InputRequiredEvent and wait for HumanResponseEvent—codifying human checkpoints and resumability for safety and control. Steps (blue) and events (green) form the workflow structure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AWS and Salesforce -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.8s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Enterprise Platforms</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-orange-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">AWS Agents for Amazon Bedrock</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Build-time:</strong> Assemble FM, instructions, action groups (OpenAPI or function schemas with optional Lambdas), knowledge bases, and prompt templates into a packaged agent.
+          </p>
+          <p class="text-gray-700">
+            <strong>Runtime via InvokeAgent:</strong> Pre-processing → orchestration loop (rationale, choose action/KB, invoke, observe) → post-processing—exactly the core "plan/act/observe" loop.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Salesforce Agentforce</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Layers:</strong> Salesforce Platform (Flows/Apex, Agent SDK/API), Atlas Reasoning Engine (Topics, Instructions, Actions metadata; conditional filters; grounding/citations), and Data Cloud (RAG indexing/chunking, analytics, BYOM, digital wallet).
+          </p>
+          <p class="text-gray-700 text-sm">
+            Detailed process diagrams show how prompts, code, and LLM calls weave into "explainable" outputs with platform-native governance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NVIDIA -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.9s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">NVIDIA Production Microservices</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">ACE Agent (GPU-Accelerated, Containerized Agent SDK)</h3>
+          <p class="text-gray-700">
+            Microservices architecture linking Riva Speech AI, Avatar/Vision AI, dialog management, custom plugins, and UIs—served via TensorRT and Triton. Supports gRPC (low-latency speech) and REST (text), with diagrams showing server and interface composition.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">NIM Microservices (Agent Blueprints and Human-in-the-Loop)</h3>
+          <p class="text-gray-700">
+            Human decision-maker orchestrating Content Creator and Digital Artist agents (e.g., Llama 3.1 405B and SDXL-Turbo via NIM), with LangGraph coordinating state transitions—illustrating modular, multi-agent pipelines with explicit human approvals.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Development Agents -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.0s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Development Agents</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Cognition Devin 2.0</h3>
+          <p class="text-gray-700">
+            System highlights include automated repository indexing into "wikis" with architecture diagrams and secure enterprise deployment with cross-tenant communication controls. Devin positions as agent-native development with VM/task orchestration.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">SWE-agent (Autonomous Software Engineering)</h3>
+          <p class="text-gray-700">
+            Systemizes "use computer to fix issues in real repos" with tool design, templates, and an architecture diagram—a practical instantiation of computer-use, planning, and execution loops for SWE-bench-class tasks.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Embodied and Reasoning Frameworks -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.1s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Embodied and Reasoning Frameworks</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Voyager (Embodied Lifelong Learning)</h3>
+          <p class="text-gray-700">
+            Components: automatic curriculum, skill library of executable code, iterative refinement—showing how an LLM can plan, code, and bootstrap general skills in an open-ended world.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Reflexion (Self-Reflection Loop)</h3>
+          <p class="text-gray-700">
+            Adds a critique-and-improve phase to ReAct-like loops—actor/critic dynamics that upgrade decision quality by verbal feedback and summary-derived self-reflection.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Tree of Thoughts</h3>
+          <p class="text-gray-700">
+            Maintains a branching search over intermediate "thoughts," with evaluation and backtracking. Often embedded in planning agents to enhance problem solving beyond single-chain reasoning.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-red-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Graph/Diagram of Thoughts</h3>
+          <p class="text-gray-700">
+            Generalizes CoT/ToT into DAG-style iterative reasoning with critiques, refinements, and verifications as nodes. Shows encoders and graph flows for effective reasoning.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Practical Patterns -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.2s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Practical Schematic Patterns You Can Reuse</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Planner–Executor Loop</h3>
+          <p class="text-blue-800 text-sm">Use a single strong planner to decompose, then many light executors with re-planning only when necessary. It's the efficiency king for multi-step tasks.</p>
+        </div>
+        
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">Event-Driven Workflows</h3>
+          <p class="text-green-800 text-sm">Emit/consume events around steps, and inject human approvals by pausing on "InputRequiredEvent" for safety and control.</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">Computer-Use Shell</h3>
+          <p class="text-purple-800 text-sm">When the task is a real desktop/web app flow, wrap a screenshot–act–observe cycle with guardrails and memory.</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Microservices Assembly</h3>
+          <p class="text-amber-800 text-sm">For large-scale latency-sensitive agents, stitch LLMs, speech, vision, and plugins across GPU-accelerated servers, and keep gRPC streaming close to the edge for responsiveness.</p>
+        </div>
+        
+        <div class="admonition admonition-danger md:col-span-2">
+          <h3 class="text-lg font-bold text-red-900 mb-2">Enterprise Governance</h3>
+          <p class="text-red-800 text-sm">Use platform-native data/identity/policy planes to ensure retrieval governance, action permissions, audit trails, and citations—those diagrams matter in production.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Resources -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.3s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Supplementary Video Resources</h2>
+      
+      <div class="space-y-4">
+        <a href="https://www.youtube.com/watch?v=ZaY5_ScmiFE" target="_blank" rel="noopener noreferrer" class="youtube-link">
+          <i data-lucide="play-circle" class="w-5 h-5"></i>
+          <span>An Introduction to AI Agents (for 2025)</span>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=PVs7ZnWXTcc&pp=0gcJCfwAo7VqN5tD" target="_blank" rel="noopener noreferrer" class="youtube-link">
+          <i data-lucide="play-circle" class="w-5 h-5"></i>
+          <span>Master THESE 4 Stages of AI Agents in 2025! (Beginner to PRO)</span>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=uH6fBzy1kJg" target="_blank" rel="noopener noreferrer" class="youtube-link">
+          <i data-lucide="play-circle" class="w-5 h-5"></i>
+          <span>The ULTIMATE Guide to BUILDING AI Agents 2025 (Step by Step)</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Key Takeaways -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.4s">
+      <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg border border-purple-200">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Key Takeaways</h2>
+        <ul class="space-y-3 text-purple-900 text-lg">
+          <li class="flex items-start gap-3">
+            <i data-lucide="check-circle" class="w-6 h-6 text-purple-600 flex-shrink-0 mt-0.5"></i>
+            <span>The state of the art converges on <strong>graph-structured, event-driven orchestration</strong> that separates planning from execution</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="check-circle" class="w-6 h-6 text-purple-600 flex-shrink-0 mt-0.5"></i>
+            <span>Agents require <strong>durable operating environments</strong> (virtual computers, microservices, or containerized runtimes)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="check-circle" class="w-6 h-6 text-purple-600 flex-shrink-0 mt-0.5"></i>
+            <span>All architectures follow the pattern: <strong>plan, select tools, act, observe, reflect</strong>—with context persistence across steps</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="check-circle" class="w-6 h-6 text-purple-600 flex-shrink-0 mt-0.5"></i>
+            <span><strong>Safety gates and governance</strong> are threaded through the loop for production systems</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="check-circle" class="w-6 h-6 text-purple-600 flex-shrink-0 mt-0.5"></i>
+            <span>Differences are in <strong>ergonomics, deployment posture, and operational substrate</strong>—not core patterns</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+      <div class="text-center text-gray-600">
+        <p class="mb-4">Deep Dive into 2025 Agent Architectures: A comprehensive guide to patterns, platforms, and practical implementations.</p>
+        <p class="text-sm">Published by Jake A. Hallett • August 10, 2025</p>
+        <p class="text-xs mt-4 text-gray-500">This guide synthesizes authoritative sources and diagrams from major AI platforms and research institutions to provide a clear view of the current state of agent architecture design.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+
+

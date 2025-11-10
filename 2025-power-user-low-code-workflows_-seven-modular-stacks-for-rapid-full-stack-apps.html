@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2025 Power-User Low-Code Workflows: Seven Modular Stacks for Rapid Full-Stack Apps | Redwrite</title>
+  <meta name="description" content="The straightest line through the low-code cosmos as of August 2025: power users are shipping full-stack sites fast with modular, interoperable stacks.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .admonition { border-left: 4px solid; border-radius: 0.5rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .admonition-info { background-color: #eff6ff; border-color: #3b82f6; }
+    .admonition-warning { background-color: #fef3c7; border-color: #f59e0b; }
+    .admonition-success { background-color: #d1fae5; border-color: #10b981; }
+    .admonition-note { background-color: #f3e8ff; border-color: #8b5cf6; }
+    .admonition-danger { background-color: #fee2e2; border-color: #ef4444; }
+    .pillar-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
+    }
+    .animate-pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-in {
+      animation: slide-in 0.6s ease-out;
+    }
+    .stat-card {
+      transition: all 0.3s ease;
+    }
+    .stat-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    .workflow-card {
+      transition: all 0.3s ease;
+      border-left: 4px solid;
+    }
+    .workflow-card:hover {
+      transform: translateX(8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Navigation -->
+    <nav class="mb-8">
+      <a href="/" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        <span class="font-medium">Back to Redwrite</span>
+      </a>
+    </nav>
+    
+    <!-- Header -->
+    <header class="mb-12 animate-slide-in">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-4 flex-wrap">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-600 text-white rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+            <i data-lucide="layers" class="w-4 h-4"></i>
+            Applications
+          </span>
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-full text-sm font-semibold">
+            Low-Code & No-Code
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          2025 Power-User Low-Code Workflows
+          <span class="block text-3xl md:text-4xl text-gray-600 font-normal mt-2">Seven Modular Stacks for Rapid Full-Stack Apps</span>
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          The straightest line through the low-code cosmos as of August 2025: power users are shipping full-stack sites fast with modular, interoperable stacks that mix a visual front end, a no/low-code backend, a membership/payments layer, and automation rails.
+        </p>
+      </div>
+    </header>
+
+    <!-- Opening Statement -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.1s">
+      <div class="admonition admonition-info">
+        <p class="text-blue-800 leading-relaxed text-lg">
+          The dominant workflows below are what you'll actually see in the wild when budgets are real, timelines are tight, and teams want velocity without surrendering control.
+        </p>
+      </div>
+    </section>
+
+    <!-- Research Notes -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.2s">
+      <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-lg border border-blue-200">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="text-blue-600 flex-shrink-0">
+            <i data-lucide="search" class="w-8 h-8"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Research Notes</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              I surveyed current (2025) docs, changelogs, and vendor pages for Webflow/Wized/Xano, WeWeb, Framer, Retool, Supabase, Bubble, Directus, Softr, n8n, Make, Zapier. This corroborates feature maturity: Xano realtime websockets, Wized v3 updates, WeWeb AI & workflow improvements, Softr's new Databases/Workflows, Retool External Apps, Supabase Branching 2.0 and Launch Week 15, Bubble product updates (including mobile pricing), and Framer CMS/membership ecosystem.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              I also checked membership/user features and migration realities: Webflow Users sunset threads; Framer membership via templates/third-party; Outseta vs Memberstack for memberships; and automation platform updates (n8n unlimited-workflows pricing, Make AI Tools, Zapier AI improvements).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Seven Workflows -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.3s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">The Seven Workflows</h2>
+      
+      <!-- Workflow 1: WWX -->
+      <div class="workflow-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-blue-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-blue-600 flex-shrink-0">
+            <i data-lucide="code" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Webflow + Wized + Xano ("WWX") for custom SaaS and portals</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Pixel-perfect marketing and app shells in Webflow; dynamic logic and API orchestration via Wized events/requests; robust backend (auth, DB, functions, files, queues) in Xano—now with realtime websockets for reactive UIs. It's fast to ship, scalable enough, and easy to maintain across roles (designer, integrator, backend).
+            </p>
+            
+            <div class="admonition admonition-note mt-4">
+              <p class="text-purple-800 font-semibold mb-2">Key Features:</p>
+              <ul class="list-disc list-inside text-purple-700 space-y-1">
+                <li>Wized v3 (mid–2025) introduced a cleaner UI, Elements & Events replacing Actions, and Workspaces</li>
+                <li>Xano's native realtime websockets unlock presence, live counters, feeds, and multiuser interactions</li>
+              </ul>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-6">
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-gray-900 mb-2">Typical Stack</h4>
+                <ul class="text-sm text-gray-700 space-y-1">
+                  <li>• Front end: Webflow (site/app UI), Wized (logic + API bridge)</li>
+                  <li>• Backend: Xano (DB, auth, endpoints, background tasks, websockets)</li>
+                  <li>• Membership/payments: Memberstack or Outseta</li>
+                  <li>• Automations: n8n or Make for back-office and growth flows</li>
+                </ul>
+              </div>
+              <div class="bg-cyan-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-gray-900 mb-2">What to Watch</h4>
+                <ul class="text-sm text-gray-700 space-y-1">
+                  <li>• Webflow Users migration: budget time to move to Memberstack/Outseta</li>
+                  <li>• Complex auth edge cases may still require custom logic in Xano</li>
+                  <li>• For heavy content, consider a headless CMS (Directus) or external DB</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workflow 2: WeWeb -->
+      <div class="workflow-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-purple-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-purple-600 flex-shrink-0">
+            <i data-lucide="layout" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">WeWeb + Xano or Supabase for app-like UIs with pro workflows</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              WeWeb (Vue-based) provides a flexible front end with Global Workflows, strong data bindings, and growing AI helpers. It pairs naturally with Xano or Supabase depending on preference for no-code backend vs open Postgres stack.
+            </p>
+            
+            <div class="admonition admonition-success mt-4">
+              <p class="text-green-800 font-semibold mb-2">WeWeb's 2025 Updates:</p>
+              <p class="text-green-700">Improved AI-assisted design systems and iterative formula help, plus new components like an advanced calendar—boosting build speed.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-6">
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-gray-900 mb-2">Typical Stack</h4>
+                <ul class="text-sm text-gray-700 space-y-1">
+                  <li>• Front end: WeWeb (UI, workflows)</li>
+                  <li>• Backend: Xano (no-code backend) or Supabase (Postgres + Auth + Edge Functions + Realtime)</li>
+                  <li>• Membership/payments: Outseta or Memberstack</li>
+                  <li>• Automations: n8n / Make / Zapier AI for ops</li>
+                </ul>
+              </div>
+              <div class="bg-pink-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-gray-900 mb-2">What to Watch</h4>
+                <ul class="text-sm text-gray-700 space-y-1">
+                  <li>• If your app needs SSR/SEO guarantees, validate your WeWeb approach early</li>
+                  <li>• Realtime websockets: Xano supports them; ensure the WeWeb connector matches your realtime needs</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workflow 3: Framer -->
+      <div class="workflow-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-pink-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-pink-600 flex-shrink-0">
+            <i data-lucide="palette" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Framer CMS + Membership layer + APIs for content-led products</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Framer gives rapid design-to-production with a solid CMS, performance, built-in SEO, and an accelerating update cadence; paired with a membership/paywall layer, it's ideal for content-first products, courses, and communities.
+            </p>
+            
+            <div class="admonition admonition-info mt-4">
+              <p class="text-blue-800 font-semibold mb-2">Ecosystem Maturity:</p>
+              <p class="text-blue-700">The ecosystem has matured: off-the-shelf membership templates and paywall systems (e.g., FramerAuth templates) accelerate gated content.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workflow 4: Bubble -->
+      <div class="workflow-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-indigo-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-indigo-600 flex-shrink-0">
+            <i data-lucide="box" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Bubble (all-in-one) when you want maximum app power without code</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              The platform continues to advance (2025 product updates, including mobile pricing options and AI-assisted build tools), with massive plugin ecosystem and robust workflow engine—suitable for full-stack web apps without external backend.
+            </p>
+            
+            <div class="admonition admonition-warning mt-4">
+              <p class="text-amber-800 font-semibold mb-2">Lock-in Consideration:</p>
+              <p class="text-amber-700">Lock-in and portability: larger teams may prefer decoupled stacks (WeWeb/WWX/Supabase) for long-term control.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workflow 5: Next.js -->
+      <div class="workflow-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-teal-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-teal-600 flex-shrink-0">
+            <i data-lucide="zap" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Next.js + Headless CMS (Directus/Strapi) + Builder.io for hybrid "pro/low-code"</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              When you need serious SSR/SEO, full React control, and visual editing for marketing, this hybrid is rising: componentized Next.js app with a headless CMS and Builder.io for drag-and-drop by non-devs. It's the "pro-code with low-code accelerants" path.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workflow 6: Retool -->
+      <div class="workflow-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-orange-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-orange-600 flex-shrink-0">
+            <i data-lucide="database" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Retool External Apps embedded into marketing sites for data-heavy customer portals</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Retool's external/embedded apps allow teams to create secure customer/vendor/partner portals rapidly, with rich components, RBAC, and hosted infra—then embed them in Webflow/Framer/Next sites. Ideal for data ops portals or dashboards.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workflow 7: Softr -->
+      <div class="workflow-card bg-white rounded-xl p-8 mb-6 shadow-lg border-l-4 border-emerald-500">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="text-emerald-600 flex-shrink-0">
+            <i data-lucide="sparkles" class="w-10 h-10"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Softr (2025 edition) for internal tools, MVPs, and member sites</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              2025 brought major Softr upgrades—Workflows, Tables, and now Softr Databases—making it more full-stack, reducing reliance on Airtable/Notion and improving performance and control.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Decision Guide -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.4s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Decision Guide: Which Workflow to Pick</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="pillar-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 shadow-lg border border-blue-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Designer-led SaaS with real-time UI</h3>
+          <p class="text-gray-700 mb-4">WWX (Webflow + Wized + Xano) + Memberstack/Outseta + n8n</p>
+        </div>
+        
+        <div class="pillar-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 shadow-lg border border-purple-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">App-like interface with flexible logic</h3>
+          <p class="text-gray-700 mb-4">WeWeb + Xano or Supabase + n8n/Make</p>
+        </div>
+        
+        <div class="pillar-card bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-6 shadow-lg border border-pink-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Content-led product/membership</h3>
+          <p class="text-gray-700 mb-4">Framer CMS + membership template + embedded data modules</p>
+        </div>
+        
+        <div class="pillar-card bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 shadow-lg border border-indigo-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Maximum app power without code</h3>
+          <p class="text-gray-700 mb-4">Bubble</p>
+        </div>
+        
+        <div class="pillar-card bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl p-6 shadow-lg border border-teal-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">SEO/SSR and pro-code control</h3>
+          <p class="text-gray-700 mb-4">Next.js + Directus + Builder.io + optional Supabase</p>
+        </div>
+        
+        <div class="pillar-card bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6 shadow-lg border border-orange-200">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Data portal for customers/partners</h3>
+          <p class="text-gray-700 mb-4">Retool External Apps embedded inside your site</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Snapshot -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.5s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Comparison Snapshot (Pragmatic)</h2>
+      
+      <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-200">
+        <div class="space-y-6">
+          <div class="border-b border-gray-200 pb-4">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Time-to-first-value</h3>
+            <p class="text-gray-700">Bubble, Softr, Framer are fastest; WWX/WeWeb close behind with templates.</p>
+          </div>
+          
+          <div class="border-b border-gray-200 pb-4">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Realtime</h3>
+            <p class="text-gray-700">Xano websockets, Supabase Realtime native; Bubble can simulate; Framer requires custom.</p>
+          </div>
+          
+          <div class="border-b border-gray-200 pb-4">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">SEO/SSR</h3>
+            <p class="text-gray-700">Next.js is king; WeWeb/WWX good enough for many marketing needs; Bubble/Framer fine for most content; validate performance budgets.</p>
+          </div>
+          
+          <div class="border-b border-gray-200 pb-4">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Membership</h3>
+            <p class="text-gray-700">Memberstack/Outseta are pragmatic choices; Framer templates exist; Webflow Users sunset prompts migration.</p>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Automation</h3>
+            <p class="text-gray-700">n8n (self-host/control), Make (AI tools and wide connectors), Zapier AI (UI + app ecosystem).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Three Copy-Paste Build Recipes -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.6s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Three "Copy-Paste" Build Recipes</h2>
+      
+      <div class="space-y-6">
+        <div class="admonition admonition-success">
+          <h3 class="text-xl font-bold text-green-900 mb-2">Recipe A: WWX SaaS with realtime notifications</h3>
+          <p class="text-green-800">Webflow UI → Wized events/requests → Xano endpoints + WebSockets (presence, live counters) → Memberstack for gating/billing → n8n for CRM/alerts.</p>
+        </div>
+        
+        <div class="admonition admonition-info">
+          <h3 class="text-xl font-bold text-blue-900 mb-2">Recipe B: WeWeb + Supabase product with AI-augmented ops</h3>
+          <p class="text-blue-800">WeWeb pages + Global Workflows → Supabase Auth/DB/Edge Functions → Make AI Tools for content and outreach, Zapier AI for app-chain tasks.</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-xl font-bold text-purple-900 mb-2">Recipe C: Framer membership site with embedded analytics portal</h3>
+          <p class="text-purple-800">Framer CMS + membership template → Stripe → embed a Retool External App for analytics dashboards inside logged-in routes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Caveats -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.7s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Caveats Seasoned Teams Respect</h2>
+      
+      <div class="space-y-4">
+        <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+          <h3 class="text-lg font-bold text-red-900 mb-2">Lock-in vs Control</h3>
+          <p class="text-red-800">Bubble/Softr are fast but harder to decouple later; WWX/WeWeb/Supabase/Next favor modularity. Choose with your 18-month horizon in mind.</p>
+        </div>
+        
+        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-lg">
+          <h3 class="text-lg font-bold text-yellow-900 mb-2">Auth Migrations</h3>
+          <p class="text-yellow-800">If you're on Webflow Users, triage migration to Memberstack/Outseta or custom auth soon.</p>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Realtime is a Tax</h3>
+          <p class="text-blue-800">Websockets add complexity; Xano makes it easier, but plan for subscription/state management.</p>
+        </div>
+        
+        <div class="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-lg">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">Team Skill Contour</h3>
+          <p class="text-purple-800">If your team is design-heavy, WWX/Framer feel native; if dev-savvy, WeWeb + Supabase or Next.js + Directus + Builder.io pay off.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Resources -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.8s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Supplementary Video Resources</h2>
+      
+      <div class="space-y-4">
+        <a href="https://www.youtube.com/watch?v=hxknsa6TrmQ" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200 group">
+          <div class="text-red-600 flex-shrink-0">
+            <i data-lucide="play-circle" class="w-12 h-12"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Power Automate 2025 Workflow Guide: Automate Like a Pro!</h3>
+            <p class="text-sm text-gray-600 mt-1">Jun 10, 2025 • 54:51</p>
+          </div>
+          <i data-lucide="external-link" class="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors"></i>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=V-TWSFAkUhw" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200 group">
+          <div class="text-red-600 flex-shrink-0">
+            <i data-lucide="play-circle" class="w-12 h-12"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Unlock the Future of Low-Code with Power Fx - January 2025</h3>
+            <p class="text-sm text-gray-600 mt-1">Jan 27, 2025 • 1:00:07</p>
+          </div>
+          <i data-lucide="external-link" class="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors"></i>
+        </a>
+        
+        <a href="https://www.youtube.com/watch?v=B0cHOdBv7Jg" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200 group">
+          <div class="text-red-600 flex-shrink-0">
+            <i data-lucide="play-circle" class="w-12 h-12"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Power Automate Desktop Tutorial for Beginners [2025]</h3>
+            <p class="text-sm text-gray-600 mt-1">Mar 16, 2024 • 1:21:03</p>
+          </div>
+          <i data-lucide="external-link" class="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+      <div class="text-center text-gray-600">
+        <p class="mb-4">If you want, I can map your next build to one of these flows in under an hour—tell me the product's core loop, data sensitivity, and whether design or data wins when they disagree. I'll chart the shortest low-code line from idea to inevitability.</p>
+        <p class="text-sm">Published by Jake Aaron • August 10, 2025</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+

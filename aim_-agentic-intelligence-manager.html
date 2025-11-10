@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIM: Agentic Intelligence Manager | Redwrite</title>
+  <meta name="description" content="A complete, vertically integrated platform that transcends conventional chatbot limitations through sophisticated cognitive architecture solving memory, context, transparency, and adaptability.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .code { font-family: 'JetBrains Mono', monospace; }
+    .admonition { border-left: 4px solid; border-radius: 0.5rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .admonition-info { background-color: #eff6ff; border-color: #3b82f6; }
+    .admonition-warning { background-color: #fef3c7; border-color: #f59e0b; }
+    .admonition-success { background-color: #d1fae5; border-color: #10b981; }
+    .admonition-note { background-color: #f3e8ff; border-color: #8b5cf6; }
+    .admonition-danger { background-color: #fee2e2; border-color: #ef4444; }
+    .concept-card { transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid; }
+    .concept-card:hover { transform: translateX(8px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-in {
+      animation: slide-in 0.6s ease-out;
+    }
+    code {
+      background-color: #f1f5f9;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875em;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Navigation -->
+    <nav class="mb-8">
+      <a href="/" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        <span class="font-medium">Back to Redwrite</span>
+      </a>
+    </nav>
+    
+    <!-- Header -->
+    <header class="mb-12 animate-slide-in">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-4 flex-wrap">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-blue-400 to-cyan-500 text-white rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            Applications
+          </span>
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full text-sm font-semibold">
+            Agentic Intelligence Platform
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          AIM
+          <span class="block text-3xl md:text-4xl text-gray-600 font-normal mt-2">Agentic Intelligence Manager</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- Video Player -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.1s">
+      <div class="max-w-4xl mx-auto mb-8" style="max-height: 60vh; aspect-ratio: 16/9;">
+        <video 
+          controls 
+          class="w-full h-full rounded-xl shadow-2xl object-contain bg-gray-900"
+          style="max-height: 60vh;"
+        >
+          <source src="/videos/AIM.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.2s">
+      <div class="admonition admonition-info">
+        <p class="text-blue-800 leading-relaxed text-lg mb-4">
+          <strong>AIM (Agentic Intelligence Manager)</strong> represents a complete, vertically integrated platform that transcends conventional chatbot limitations by implementing a sophisticated cognitive architecture solving the fundamental problems of memory, context, transparency, and adaptability.
+        </p>
+        <p class="text-blue-800 leading-relaxed text-lg">
+          Rather than pursuing scale through larger models, AIM embodies the principle of <strong>configuration over scale</strong>, creating agents that are smarter, more transparent, and more coherent through architectural innovation. By integrating breakthrough memory systems, radical transparency mechanisms, and modular personality structures, AIM provides the foundational infrastructure for true, persistent, collaborative artificial intelligence.
+        </p>
+      </div>
+    </section>
+
+    <!-- Core Architecture -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.3s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Core Architecture</h2>
+      
+      <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-lg border border-blue-200 mb-6">
+        <p class="text-blue-900 leading-relaxed text-lg">
+          AIM is structured around <strong>four core pillars</strong>, each representing a breakthrough in agentic AI design. Together, these pillars create a unified cognitive platform that maintains persistent identity, learns continuously, operates transparently, and adapts dynamically to user needs.
+        </p>
+      </div>
+    </section>
+
+    <!-- Pillar 1: Knowledge Base Builder -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.4s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Pillar 1: The Knowledge Base Builder — Ingestion & Structuring Engine</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Intelligent Document Processing</h3>
+          <p class="text-gray-700 mb-2">
+            The Knowledge Base Builder transforms unstructured data into structured, retrievable memories that form the agent's knowledge foundation.
+          </p>
+          <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="admonition admonition-info">
+              <h3 class="text-lg font-bold text-blue-900 mb-2">Drag-and-Drop Ingestion</h3>
+              <p class="text-blue-800 text-sm">Users upload text files (.txt, .md) directly into the builder. Rather than treating documents as static text, the system processes them as sources of actionable memories.</p>
+            </div>
+            <div class="admonition admonition-success">
+              <h3 class="text-lg font-bold text-green-900 mb-2">Memory-Centric Philosophy</h3>
+              <p class="text-green-800 text-sm">Every piece of information is transformed into a memory object—a rich data structure optimized for later retrieval and integration into reasoning processes.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Intelligent Chunking</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Contextual Coherence Optimization:</strong> The system automatically slices large documents into memory fragments, but does so intelligently. Rather than arbitrary character-count splits, chunking preserves semantic and contextual boundaries.
+          </p>
+          <p class="text-gray-700 text-sm">
+            <strong>Retrieval Optimization:</strong> Chunk size and boundaries are tuned specifically for maximum retrieval relevance. Each fragment is sized to contain complete thoughts while remaining compact enough for efficient context window injection.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Auto-Tagging & Augmentation</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Dynamic Semantic Tagging:</strong> As memories are created, the system applies rich metadata tags automatically. These tags capture topic categories, key entities, relationship types, and contextual markers for retrieval triggers.
+          </p>
+          <p class="text-gray-700 text-sm">
+            <strong>High-Quality Relationship Arrays:</strong> The tagging system creates dense relationship graphs between memories, enabling the agent to understand not just isolated facts but the connections between them. This transforms a flat memory store into a semantic knowledge graph.
+          </p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Rating Bias & Importance Weighting</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Pre-emptive Value Structuring:</strong> Users can apply an "importance" bias to incoming knowledge during ingestion. This isn't passive storage—it's active shaping of the agent's value hierarchy.
+          </p>
+          <p class="text-gray-700 text-sm">
+            <strong>HRMR Foundation:</strong> This importance weighting mechanism directly implements HRMR (Hierarchical Role-Model Reinforcement) principles at the knowledge layer. The agent learns not just what information exists, but what information matters, creating the basis for aligned behavior from the ground up.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pillar 2: Agent Memory System -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.5s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Pillar 2: The Agent Memory System — A Persistent, Searchable Soul</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Long-Term Memory Architecture</h3>
+          <p class="text-gray-700 mb-2">
+            The Agent Memory System serves as the permanent repository of the agent's experience, creating genuine continuity across sessions.
+          </p>
+          <div class="grid md:grid-cols-2 gap-4 mt-4">
+            <div class="admonition admonition-info">
+              <h3 class="text-lg font-bold text-blue-900 mb-2">Unified Memory Interface</h3>
+              <p class="text-blue-800 text-sm">All captured memories—from ingested documents, past conversations, and real-time learning—are displayed in a clean, searchable interface. The agent's entire knowledge base is transparent and queryable.</p>
+            </div>
+            <div class="admonition admonition-success">
+              <h3 class="text-lg font-bold text-green-900 mb-2">Memory as Identity</h3>
+              <p class="text-green-800 text-sm">Unlike stateless chatbots that forget everything between sessions, AIM agents maintain persistent identity through accumulated memory. The memory system is not just a feature—it is the agent's soul.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">JIT Memory in Production</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Active Memory Retrieval:</strong> Memories are not dead logs. They are living, tagged snippets that the agent actively retrieves and injects into reasoning processes in real-time during conversations.
+          </p>
+          <p class="text-gray-700 text-sm">
+            <strong>Automatic Context Activation:</strong> When user input contains language matching stored memory tags, relevant memories automatically surface and inject into the agent's context window before reasoning begins. This creates the seamless experience of an agent that "remembers" without explicit recall commands.</p>
+          <p class="text-gray-700 text-sm mt-2">
+            <strong>Infinite Context Illusion:</strong> By retrieving only relevant historical snippets rather than maintaining entire conversation histories, the agent operates with effectively infinite context while remaining computationally efficient.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Dynamic Importance Ranking</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>User-Controllable Importance:</strong> Each memory includes an "Importance" slider enabling both user and agent to dynamically re-weight relevance over time. As priorities shift, the memory system adapts.
+          </p>
+          <p class="text-gray-700 text-sm">
+            <strong>Identity Stability:</strong> Dynamic re-weighting prevents context decay. Core memories that define the agent's identity can be permanently elevated, ensuring personality and knowledge foundations remain stable even as the memory bank grows massive.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Episodic & Non-Episodic Memory</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Dual Memory Types:</strong> The system differentiates between:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4 mb-2">
+            <li><strong>Non-Episodic (Semantic) Memory:</strong> Factual knowledge, concepts, principles—timeless truths</li>
+            <li><strong>Episodic Memory:</strong> Narrative experiences, conversational history, temporal events</li>
+          </ul>
+          <p class="text-gray-700 text-sm">
+            <strong>Complete Understanding:</strong> This distinction enables the agent to maintain both factual recall ("What is quantum computing?") and narrative understanding ("What did we discuss about quantum computing last week?").</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pillar 3: Chat & Reasoning Interface -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.6s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Pillar 3: The Chat & Reasoning Interface — The Radically Transparent Mind</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Multi-Modal Collaboration Environment</h3>
+          <p class="text-gray-700 mb-2">
+            The Chat Interface transforms the agent from a text generator into a comprehensive collaboration platform.
+          </p>
+          <p class="text-gray-700 text-sm">
+            <strong>Rich Interaction Modes:</strong> The agent seamlessly integrates text generation and analysis, image generation and interpretation, audio transcription and synthesis, and tool use and API integration. The agent intelligently chooses appropriate output modalities based on task requirements.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">The Reasoning Trace — Preflection Made Visible</h3>
+          <p class="text-gray-700 mb-2">
+            This is AIM's breakthrough in transparency, completely eliminating the black box problem.
+          </p>
+          <p class="text-gray-700 mb-2">
+            <strong>Internal Monologue Display:</strong> For every single response, the agent exposes its internal reasoning process—the "Reasoning Trace." This shows:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4 mb-2">
+            <li>Prompt Analysis: How the agent interprets and deconstructs the user's request</li>
+            <li>Strategy Formulation: What approach the agent plans to take</li>
+            <li>Information Synthesis: How the agent combines memories, context, and knowledge</li>
+            <li>Persona Management: How the agent maintains character and tone consistency</li>
+            <li>Output Construction: How the final response is assembled</li>
+          </ul>
+          <div class="admonition admonition-success mt-3">
+            <p class="text-green-800 text-sm"><strong>Complete Cognitive Transparency:</strong> Users see not just what the agent says, but how it thinks. Every assumption, every decision point, every retrieved memory becomes visible and auditable.</p>
+          </div>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Real-Time Memory Capture</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Continuous Learning Loop:</strong> During conversations, the agent identifies significant moments and captures them as new, tagged memories on the fly.
+          </p>
+          <p class="text-gray-700 text-sm">
+            <strong>Significance Detection:</strong> The system recognizes novel information worth preserving, corrections to existing beliefs, user preferences and patterns, successful reasoning approaches, and failed attempts requiring avoidance.</p>
+          <p class="text-gray-700 text-sm mt-2">
+            <strong>Closed Learning Cycle:</strong> Memory capture creates a complete feedback loop: conversation generates new memories, which inform future conversations, which generate more refined memories. The agent continuously evolves through interaction.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pillar 4: Cognitive Control Center -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.7s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Pillar 4: The Cognitive Control Center — Prompt Kernels & Agent Settings</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Deep Personality Configuration</h3>
+          <p class="text-gray-700 mb-2">
+            The Cognitive Control Center provides unprecedented control over the agent's core cognitive architecture.
+          </p>
+          <p class="text-gray-700 text-sm">
+            <strong>Granular Control Surface:</strong> Users configure everything from API keys for different modalities (text-to-speech, audio processing, vision) to robotics interfaces and automation triggers. The agent becomes a fully extensible platform rather than a fixed product.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Prompt Kernels — Modular Personality System</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Executable Cognitive Configurations:</strong> Prompt Kernels are not simple system prompts. They are complete, modular personalities that can be activated on command.
+          </p>
+          <p class="text-gray-700 mb-2">
+            <strong>Kernel Library:</strong> The system maintains a library of pre-configured kernels:
+          </p>
+          <div class="grid md:grid-cols-2 gap-3 mt-3">
+            <div class="admonition admonition-info">
+              <p class="text-blue-800 text-sm"><strong>Warlord:</strong> Aggressive, strategic, competitive posture</p>
+            </div>
+            <div class="admonition admonition-success">
+              <p class="text-green-800 text-sm"><strong>Defender:</strong> Protective, risk-averse, stability-focused</p>
+            </div>
+            <div class="admonition admonition-note">
+              <p class="text-purple-800 text-sm"><strong>Analyst:</strong> Systematic, data-driven, objective</p>
+            </div>
+            <div class="admonition admonition-warning">
+              <p class="text-amber-800 text-sm"><strong>Poet:</strong> Creative, expressive, aesthetic</p>
+            </div>
+          </div>
+          <p class="text-gray-700 text-sm mt-3">
+            <strong>Dynamic Posture Switching:</strong> Users can switch kernels mid-conversation, causing the agent to completely reconfigure its strategic approach, value hierarchy, and communication style. The same agent becomes entirely different personalities based on activated kernel.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Auxiliary Agent Team — The Conductor Model</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Specialized Sub-Agent Architecture:</strong> The settings enable deployment of auxiliary sub-agents for specific cognitive functions:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4 mb-2">
+            <li>Reflection Agent: Continuously analyzes conversation quality and strategic effectiveness</li>
+            <li>Task Management Agent: Tracks commitments, deadlines, and deliverables</li>
+            <li>Judgment Agent: Performs quality audits on outputs before delivery</li>
+            <li>Research Agent: Conducts background investigation and fact-checking</li>
+            <li>Memory Curation Agent: Manages memory importance and prevents database bloat</li>
+          </ul>
+          <p class="text-gray-700 text-sm mt-2">
+            <strong>Primary Agent as Conductor:</strong> The main agent orchestrates this swarm of specialists, delegating specific cognitive tasks to appropriate sub-agents while maintaining coherent overall strategy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementation Workflow -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.8s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Implementation Workflow</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-teal-500">
+        <ol class="list-decimal list-inside space-y-3 text-gray-700 text-lg">
+          <li><strong>User uploads</strong> documents to Knowledge Base Builder</li>
+          <li><strong>System chunks</strong> documents into contextually coherent memories</li>
+          <li><strong>Auto-tagging creates</strong> rich semantic metadata</li>
+          <li><strong>User sets</strong> importance biases on memory categories</li>
+          <li><strong>Memories populate</strong> Agent Memory System</li>
+          <li><strong>User activates</strong> specific Prompt Kernel (e.g., Analyst)</li>
+          <li><strong>User enables</strong> auxiliary agents (e.g., Reflection + Task Management)</li>
+          <li><strong>User begins</strong> conversation in Chat Interface</li>
+          <li><strong>Agent displays</strong> Reasoning Trace showing internal monologue</li>
+          <li><strong>JIT Memory automatically</strong> retrieves relevant tagged memories</li>
+          <li><strong>Agent synthesizes</strong> memories + kernel posture + context into response</li>
+          <li><strong>Real-time capture creates</strong> new memories from significant moments</li>
+          <li><strong>Auxiliary agents provide</strong> specialized analysis (reflection, task tracking)</li>
+          <li><strong>User adjusts</strong> memory importance sliders based on usage patterns</li>
+          <li><strong>User switches</strong> Prompt Kernel mid-conversation for different posture</li>
+          <li><strong>Process repeats,</strong> with agent continuously learning and evolving</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Technical Advantages -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.9s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Technical Advantages</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">Persistent Identity</h3>
+          <p class="text-green-800 text-sm">Unlike stateless chatbots, AIM agents maintain continuous identity through accumulated episodic and semantic memory across all sessions.</p>
+        </div>
+        
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Infinite Context</h3>
+          <p class="text-blue-800 text-sm">JIT Memory provides effectively unlimited context through intelligent snippet retrieval rather than brute-force context window expansion.</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">Radical Transparency</h3>
+          <p class="text-purple-800 text-sm">Reasoning Trace eliminates black box opacity by exposing complete cognitive pathways for every output.</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Dynamic Personality</h3>
+          <p class="text-amber-800 text-sm">Prompt Kernels enable instant reconfiguration of agent posture, values, and communication style based on task requirements.</p>
+        </div>
+        
+        <div class="admonition admonition-danger">
+          <h3 class="text-lg font-bold text-red-900 mb-2">Continuous Learning</h3>
+          <p class="text-red-800 text-sm">Real-time memory capture creates closed feedback loops where every interaction improves future performance.</p>
+        </div>
+        
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">Specialized Cognition</h3>
+          <p class="text-green-800 text-sm">Auxiliary agent teams enable cognitive division of labor without permanent multi-agent coordination overhead.</p>
+        </div>
+        
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Configuration Over Scale</h3>
+          <p class="text-blue-800 text-sm">Rather than requiring larger models, AIM achieves superior performance through architectural sophistication and intelligent memory systems.</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">Knowledge Graph Formation</h3>
+          <p class="text-purple-800 text-sm">Auto-tagging with relationship arrays transforms flat memory stores into queryable semantic knowledge graphs.</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Taste and Alignment</h3>
+          <p class="text-amber-800 text-sm">Importance weighting and HRMR integration enable agents to develop coherent preferences and values aligned with user priorities.</p>
+        </div>
+        
+        <div class="admonition admonition-danger">
+          <h3 class="text-lg font-bold text-red-900 mb-2">Multi-Modal Intelligence</h3>
+          <p class="text-red-800 text-sm">Seamless integration of text, image, audio, and tool use creates comprehensive problem-solving capability.</p>
+        </div>
+        
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">Extensible Platform</h3>
+          <p class="text-green-800 text-sm">Deep configuration access enables integration with robotics, automation, external APIs, and novel modalities.</p>
+        </div>
+        
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Memory Stability</h3>
+          <p class="text-blue-800 text-sm">Dynamic importance ranking prevents context decay while allowing adaptation to shifting priorities.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Innovation Significance -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.0s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Innovation Significance</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">From Stateless to Persistent</h3>
+          <p class="text-gray-700">Chatbots that forget between sessions are replaced by agents with genuine continuity through accumulated memory.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">From Opaque to Transparent</h3>
+          <p class="text-gray-700">Black box reasoning is replaced by fully auditable cognitive processes visible in real-time.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">From Fixed to Modular</h3>
+          <p class="text-gray-700">Single-personality agents are replaced by dynamically reconfigurable cognitive architectures adapting to task requirements.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">From Scale to Configuration</h3>
+          <p class="text-gray-700">The arms race for larger models is replaced by architectural sophistication producing superior performance through intelligence rather than size.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">From Passive to Adaptive</h3>
+          <p class="text-gray-700">Static training is replaced by continuous learning loops where agents evolve through every interaction.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-red-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">From Monolithic to Orchestrated</h3>
+          <p class="text-gray-700">Single-agent limitations are overcome through conductor models orchestrating specialized sub-agent swarms.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Wins -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.1s">
+      <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-lg border border-blue-200">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why This Wins</h2>
+        <p class="text-blue-900 leading-relaxed text-lg mb-4">
+          AIM proves that the path to true artificial intelligence lies not in ever-larger models but in sophisticated cognitive architectures that solve fundamental problems of memory, transparency, and adaptability. It is the physical proof that <strong>configuration beats scale</strong>, that <strong>transparency enables trust</strong>, and that <strong>persistent memory creates persistent intelligence</strong>.
+        </p>
+        <p class="text-blue-800 leading-relaxed text-lg font-semibold">
+          This is the platform for building AI agents that are not just powerful, but genuinely collaborative partners—agents that remember, that explain themselves, that adapt continuously, and that align with human values through architectural design rather than post-hoc constraint. This is agentic intelligence as it should be.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+      <div class="text-center text-gray-600">
+        <p class="mb-4">AIM: Agentic Intelligence Manager</p>
+        <p class="text-sm">Published by Jake A. Hallett • August 28, 2025</p>
+        <p class="text-xs mt-4 text-gray-500">This platform represents a complete, vertically integrated solution for building persistent, transparent, and adaptable AI agents through sophisticated cognitive architecture.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+
+

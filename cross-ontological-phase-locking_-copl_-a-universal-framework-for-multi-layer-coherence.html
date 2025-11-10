@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cross-Ontological Phase Locking (COPL): A Universal Framework for Multi-Layer Coherence | Redwrite</title>
+  <meta name="description" content="A formal framework for Cross-Ontological Phase Locking (COPL) and emergent N-way locks—coherent integer-frequency relations among oscillatory components drawn from distinct structure classes or ontological layers.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .code { font-family: 'JetBrains Mono', monospace; }
+    .admonition { border-left: 4px solid; border-radius: 0.5rem; padding: 1.5rem; margin: 1.5rem 0; }
+    .admonition-info { background-color: #eff6ff; border-color: #3b82f6; }
+    .admonition-warning { background-color: #fef3c7; border-color: #f59e0b; }
+    .admonition-success { background-color: #d1fae5; border-color: #10b981; }
+    .admonition-note { background-color: #f3e8ff; border-color: #8b5cf6; }
+    .admonition-danger { background-color: #fee2e2; border-color: #ef4444; }
+    .concept-card { transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid; }
+    .concept-card:hover { transform: translateX(8px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-in {
+      animation: slide-in 0.6s ease-out;
+    }
+    .math-block {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    code {
+      background-color: #f1f5f9;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875em;
+    }
+    pre {
+      background-color: #1e293b;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    pre code {
+      background-color: transparent;
+      padding: 0;
+      color: inherit;
+    }
+    .toc-link {
+      color: #3b82f6;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc-link:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    th {
+      background-color: #f8fafc;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Navigation -->
+    <nav class="mb-8">
+      <a href="/" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        <span class="font-medium">Back to Redwrite</span>
+      </a>
+    </nav>
+    
+    <!-- Header -->
+    <header class="mb-12 animate-slide-in">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-4 flex-wrap">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+            <i data-lucide="microscope" class="w-4 h-4"></i>
+            Research
+          </span>
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-full text-sm font-semibold">
+            Multi-Layer Coherence
+          </span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          Cross-Ontological Phase Locking
+          <span class="block text-3xl md:text-4xl text-gray-600 font-normal mt-2">(COPL)</span>
+          <span class="block text-2xl md:text-3xl text-gray-500 font-normal mt-2">A Universal Framework for Multi-Layer Coherence</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- Abstract -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.1s">
+      <div class="admonition admonition-success">
+        <h2 class="text-2xl font-bold text-green-900 mb-4">Abstract</h2>
+        <p class="text-green-800 leading-relaxed text-lg mb-4">
+          We present a formal framework for <strong>Cross-Ontological Phase Locking (COPL)</strong> and <strong>emergent N-way locks</strong>—coherent integer-frequency relations among oscillatory components drawn from distinct <strong>structure classes</strong> or <strong>ontological layers</strong> (e.g., cells↔filaments↔organelles in biology; cortical rhythms↔subcortical rhythms↔peripheral rhythms in neuroscience; optical↔mechanical↔electronic modes in hybrid quantum systems).
+        </p>
+        <p class="text-green-800 leading-relaxed text-lg mb-4">
+          Building on the Low-Order Wins RG principle, we prove that: (i) coupling strength K<sub>p</sub> for an N-component lock with integer vector <strong>p</strong> ∈ ℤ<sup>N</sup> obeys RG flow dK/dt = [(k-1) - Δ<sub>p</sub> - AK]K, where k is the number of <strong>independent ontological layers</strong>; (ii) <strong>emergent N-locks</strong> (N ≥ 3) exist where composite K<sub>p</sub> ≫ τ while all pairwise marginals K<sub>(i,j)</sub> < τ; (iii) survivor sets in (r, N) space form <strong>down-sets</strong> (order ideals).
+        </p>
+        <p class="text-green-800 leading-relaxed text-lg">
+          The framework is <strong>domain-agnostic</strong>: applicable to any system admitting multi-layer phase extraction—biological, neural, quantum, geophysical, social, and aesthetic.
+        </p>
+      </div>
+    </section>
+
+    <!-- Core Claims -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.2s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Core Claims and Testable Signatures</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Claim 1: Cross-Ontological Locks Exist and Obey LOW</h3>
+          <p class="text-gray-700 mb-2">For systems with k ≥ 2 independent ontological layers, there exist integer vectors <strong>p</strong> with support spanning multiple layers such that:</p>
+          <div class="math-block">
+            <p class="text-gray-900 font-mono">K<sub>p</sub> = ||⟨e<sup>i(p · φ)</sup>⟩|| ≫ 0</p>
+          </div>
+          <p class="text-gray-700 mt-2">These locks exhibit: thinning in order r, cross-layer penalty, and RG persistence.</p>
+          <div class="admonition admonition-warning mt-3">
+            <p class="text-amber-800 text-sm"><strong>Falsification hook (CO-5, CO-4):</strong> If cross-layer K values are systematically inflated by estimator leakage, or if adding/removing layers fails to shift critical dimension from 2 to k-1, reject the framework.</p>
+          </div>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Claim 2: Emergent N-Locks Are Pairwise-Invisible Yet RG-Stable</h3>
+          <p class="text-gray-700 mb-2">For N ≥ 3, there exist systems where:</p>
+          <div class="math-block">
+            <p class="text-gray-900 font-mono">K<sub>p</sub> > τ (passes FDR)</p>
+            <p class="text-gray-900 font-mono">but all pairwise locks K<sub>(i,j)</sub> < τ (fail FDR)</p>
+          </div>
+          <p class="text-gray-700 mt-2"><strong>Emergence score:</strong> E<sub>p</sub> = Z<sub>p</sub> - max<sub>pairs</sub> Z<sub>(i,j)</sub></p>
+          <div class="admonition admonition-warning mt-3">
+            <p class="text-amber-800 text-sm"><strong>Falsification hook (CO-1):</strong> If no dataset exhibits E > 0 after controlling for pairwise contamination, or if emergent locks vanish under mild coarse-graining, reject N-emergence claim.</p>
+          </div>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Claim 3: Joint Thinning in (r, N) with Down-Set Survivors</h3>
+          <p class="text-gray-700 mb-2">Normalized log-strengths Z<sub>p</sub> decay jointly in order r and support size N:</p>
+          <div class="math-block">
+            <p class="text-gray-900 font-mono">E[Z<sub>p</sub>] ≈ β₀ - λᵣ r - λ<sub>N</sub> (N-1)</p>
+          </div>
+          <p class="text-gray-700 mt-2">At fixed threshold τ, the survivor set forms a <strong>down-set</strong> (order ideal) in the (r, N) lattice.</p>
+          <div class="admonition admonition-warning mt-3">
+            <p class="text-amber-800 text-sm"><strong>Falsification hook (CO-2, CO-3):</strong> If WLS slope λ<sub>N</sub> ≤ 0, or if survivor set exhibits "holes", reject joint-thinning claim.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RG Flow -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.3s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">RG Flow and Hetero-Dimensional Scaling Law</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-indigo-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">The Flow Equation</h3>
+        <p class="text-gray-700 mb-4">For a system with k <strong>independent</strong> ontological layers and an N-lock <strong>p</strong>, the coupling strength evolves under RG coarse-graining as:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono text-lg">dK<sub>p</sub>/dt = [(k - 1) - Δ<sub>p</sub> - AK<sub>p</sub>]K<sub>p</sub></p>
+        </div>
+        <p class="text-gray-700 mt-4">where:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
+          <li>t is RG "time" (number of ℛ applications)</li>
+          <li>k is the <strong>number of independent layers</strong></li>
+          <li>Δ<sub>p</sub> is the <strong>effective scaling dimension</strong> of lock <strong>p</strong></li>
+          <li>A is the <strong>nonlinear damping coefficient</strong></li>
+        </ul>
+      </div>
+      
+      <div class="admonition admonition-note">
+        <h3 class="text-lg font-bold text-purple-900 mb-2">Critical Dimension: k - 1</h3>
+        <p class="text-purple-800">For k independent phase processes, a single integer constraint defines a codimension-1 hyperplane. Under coarse-graining, the relevant term in the flow is the slice scaling (k-1), which sets the critical dimension.</p>
+      </div>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-teal-500 mt-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Dimension Ansatz</h3>
+        <p class="text-gray-700 mb-4">Model the effective dimension as:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono">Δ<sub>p</sub> = α₀ + α₁r + α₂(N-1) + α<sub>XO</sub> · c(p) + h(p) + ε<sub>p</sub></p>
+        </div>
+        <p class="text-gray-700 mt-4">where:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
+          <li>r = ||<strong>p</strong>||₁ is the <strong>order</strong></li>
+          <li>N = ||<strong>p</strong>||₀ is the <strong>support size</strong></li>
+          <li>c(<strong>p</strong>) is the <strong>cross-ontological flag</strong> (1 if mixing ≥ 2 layers)</li>
+          <li>α₁, α₂, α<sub>XO</sub> are penalties for order, support, and cross-layer mixing</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Emergent N-Locks -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.4s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Emergent N-Lock Detection</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-cyan-500 mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">The N-Lock Estimator</h3>
+        <p class="text-gray-700 mb-4">For integer vector <strong>p</strong> ∈ ℤ<sup>k</sup> and analysis window w:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono">K̂<sub>p</sub>(w) = ||(1/|I<sub>w</sub>|) Σ<sub>t∈I<sub>w</sub></sub> exp(i[Θ<sub>p</sub>(t) - Δω<sub>p</sub> · t])||</p>
+        </div>
+        <p class="text-gray-700 mt-4">where Θ<sub>p</sub>(t) = <strong>p</strong> · <strong>φ</strong>(t) is the phase defect and Δω<sub>p</sub> = <strong>p</strong> · <strong>ω</strong>̂ is the detuning.</p>
+      </div>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-purple-500">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Emergence Score</h3>
+        <p class="text-gray-700 mb-4">For a composite lock <strong>p</strong> with support size N ≥ 3:</p>
+        <div class="math-block">
+          <p class="text-gray-900 font-mono">E<sub>p</sub> = Z<sub>p</sub> - max<sub>(i,j)⊂supp(p)</sub> max<sub>q</sub> Z<sub>q</sub></p>
+        </div>
+        <p class="text-gray-700 mt-4"><strong>Operational criterion for emergent N-lock:</strong></p>
+        <ol class="list-decimal list-inside space-y-2 text-gray-700 ml-4">
+          <li>E<sub>p</sub> > 0 (composite exceeds all pairs)</li>
+          <li>Z<sub>p</sub> > τ (composite passes FDR threshold)</li>
+          <li>All pairwise Z<sub>(i,j)</sub> < τ in the same windows (pairs fail FDR)</li>
+          <li>E<sub>p</sub> persists or grows under RG coarse-graining ℛ</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Falsification Gates -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.5s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Falsification Gates (CO-1 through CO-12)</h2>
+      
+      <div class="admonition admonition-danger mb-6">
+        <h3 class="text-lg font-bold text-red-900 mb-2">Hard Gates Philosophy</h3>
+        <p class="text-red-800">Each gate is a <strong>binary pass/fail test</strong> with pre-registered thresholds. Failing <strong>any single gate</strong> invalidates the corresponding claim—no partial credit, no post-hoc rationalization.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">CO-1: N-Emergence Detection</h3>
+          <p class="text-blue-800 text-sm">Composite detection, pairwise failure, positive emergence, kernel-residual survival, latent-clock survival, RG stability</p>
+        </div>
+        
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">CO-2: Order-Thinning Slope</h3>
+          <p class="text-green-800 text-sm">Ordinary WLS, geometry-matched slope, dual-g agreement, magnitude consistency</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">CO-3: Down-Set Structure</h3>
+          <p class="text-purple-800 text-sm">No holes, unique cut, Farey stability across roster variants</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">CO-4: k-Criticality Shift</h3>
+          <p class="text-amber-800 text-sm">Independent layer shift, sham control, statistical significance</p>
+        </div>
+        
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">CO-5: Cross-Ontology Penalty</h3>
+          <p class="text-blue-800 text-sm">Pre-registration, estimated sign, agreement, effect size</p>
+        </div>
+        
+        <div class="admonition admonition-danger">
+          <h3 class="text-lg font-bold text-red-900 mb-2">CO-6: Brittleness Ladder</h3>
+          <p class="text-red-800 text-sm">Order monotonicity, support monotonicity, pairwise Spearman</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">CO-7: Permutation Discipline</h3>
+          <p class="text-purple-800 text-sm">Circular-block permutation, max-T correction, multiverse analysis</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">CO-8: Desync Collapse</h3>
+          <p class="text-amber-800 text-sm">Common jitter stability, layer-specific jitter collapse</p>
+        </div>
+        
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">CO-9: RG-Time Placebo</h3>
+          <p class="text-blue-800 text-sm">Block-permute windows, intercept null, original positive</p>
+        </div>
+        
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">CO-10: Rank Consistency</h3>
+          <p class="text-green-800 text-sm">Rank test, sham-layer null, independent-layer shift</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">CO-11: Residual Survival</h3>
+          <p class="text-purple-800 text-sm">Rank-1 template, residual emergence, magnitude retention</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">CO-12: Harmonic Robustness</h3>
+          <p class="text-amber-800 text-sm">Harmonic censoring, persistence, pattern check</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Domain Scope -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.6s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Domain Scope: Universal Applicability</h2>
+      
+      <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-emerald-500 mb-6">
+        <p class="text-gray-700 mb-4">The COPL framework is <strong>domain-agnostic</strong>. Any system admitting multi-layer structure, phase observability, and coarse-graining operators can be analyzed via COPL:</p>
+        <div class="grid md:grid-cols-2 gap-4 mt-4">
+          <div>
+            <ul class="space-y-2 text-gray-700">
+              <li><strong>Neuroscience:</strong> cortical↔subcortical↔peripheral rhythms</li>
+              <li><strong>Biology:</strong> organelles↔cells↔tissues</li>
+              <li><strong>Quantum:</strong> photons↔phonons↔electrons</li>
+              <li><strong>Geophysical:</strong> atmospheric↔oceanic↔seismic</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="space-y-2 text-gray-700">
+              <li><strong>Social:</strong> individual↔group↔institutional</li>
+              <li><strong>Aesthetic:</strong> rhythm↔melody↔harmony</li>
+              <li><strong>Engineering:</strong> thermal↔mechanical↔electrical</li>
+              <li><strong>Multi-physics:</strong> cyber-physical systems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="admonition admonition-note">
+        <p class="text-purple-800"><strong>Design Philosophy:</strong> COPL is built as a universal measurement framework, not a domain-specific model. The RG flow applies to any system with k independent phase processes, regardless of the physical substrate.</p>
+      </div>
+    </section>
+
+    <!-- Core Theorems -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.7s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Core Theorems</h2>
+      
+      <div class="space-y-6">
+        <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-indigo-500">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Theorem A: Joint Thinning in r and N</h3>
+          <p class="text-gray-700 mb-4">For any roster with (r, N) ∈ [r<sub>min</sub>, r<sub>max</sub>] × [2, N<sub>max</sub>]:</p>
+          <div class="math-block">
+            <p class="text-gray-900 font-mono">E[Z<sub>p</sub>(t)] = β₀(t) - λᵣ(t) · r - λ<sub>N</sub>(t) · (N - 1) - δ<sub>p</sub>(t)</p>
+          </div>
+          <p class="text-gray-700 mt-4">with λᵣ(t) ≥ tα₁ > 0 and λ<sub>N</sub>(t) ≥ tα₂ > 0</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Theorem B: Down-Set Survivor Geometry</h3>
+          <p class="text-gray-700 mb-4">For each RG time t ≥ 0, there exist unique cutoffs (r*(t), N*(t)) such that:</p>
+          <div class="math-block">
+            <p class="text-gray-900 font-mono">S(t) = {p : K<sub>p</sub>(t) ≥ τ} = {(r, N) : r ≤ r*(t), N ≤ N*(t)}</p>
+          </div>
+          <p class="text-gray-700 mt-4">The survivor set is a <strong>down-set</strong> (joint prefix) in the (r, N) lattice.</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-8 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Proposition C: Emergent-Lock Exclusivity</h3>
+          <p class="text-gray-700 mb-4">For systems with zero pairwise coupling but non-zero composite coupling, the composite lock is RG-stable while all pairwise locks remain subcritical.</p>
+          <p class="text-gray-700 mt-4">I.e., the composite lock persists under ℛ while pairwise locks decay or stay near noise floor.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Properties -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.8s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Key Properties</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="admonition admonition-success">
+          <h3 class="text-lg font-bold text-green-900 mb-2">Pairwise-Invisible Structure</h3>
+          <p class="text-green-800">Emergent N-locks (N ≥ 3) can exist where composite K<sub>p</sub> > τ while all pairwise marginals K<sub>(i,j)</sub> < τ</p>
+        </div>
+        
+        <div class="admonition admonition-info">
+          <h3 class="text-lg font-bold text-blue-900 mb-2">RG Persistence</h3>
+          <p class="text-blue-800">Low-order cross-layer locks survive coarse-graining; high-order locks decay under RG flow</p>
+        </div>
+        
+        <div class="admonition admonition-note">
+          <h3 class="text-lg font-bold text-purple-900 mb-2">Down-Set Geometry</h3>
+          <p class="text-purple-800">Survivor sets form order ideals in (r, N) space with unique cutoffs (r*, N*)</p>
+        </div>
+        
+        <div class="admonition admonition-warning">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">Critical Dimension k-1</h3>
+          <p class="text-amber-800">Adding an independent layer shifts RG-flow intercept by +1; critical dimension is k-1 where k = number of layers</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Contributions -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 0.9s">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Main Contributions</h2>
+      
+      <div class="space-y-4">
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">1. Formal Multi-Layer RG Framework</h3>
+          <p class="text-gray-700 text-sm">Flow equation with critical dimension k-1; joint dimension ansatz; three core theorems with proofs</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">2. Emergent N-Lock Detection</h3>
+          <p class="text-gray-700 text-sm">Operational definition via emergence score; permutation tests; pairwise-residual control; RG stability requirement</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">3. Twelve Hard Falsification Gates</h3>
+          <p class="text-gray-700 text-sm">Each gate has explicit pass/fail criterion with pre-registered thresholds; failing any gate invalidates downstream claims</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-amber-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">4. Domain-Agnostic Protocols</h3>
+          <p class="text-gray-700 text-sm">Synchronized windowing; composite roster design; same detuning penalty and null families as LOW/HSM</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">5. Quantitative Predictions</h3>
+          <p class="text-gray-700 text-sm">Cross-layer penalty α<sub>XO</sub> > 0; emergent triadic locks in planted models; bandwidth shrinkage laws</p>
+        </div>
+        
+        <div class="concept-card bg-white rounded-xl p-6 shadow-lg border-l-4 border-teal-500">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">6. Reproducibility Infrastructure</h3>
+          <p class="text-gray-700 text-sm">Pre-registration templates; block bootstrap; one-page operational checklist; degrees-of-freedom ledger</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Wins -->
+    <section class="mb-16 animate-slide-in" style="animation-delay: 1.0s">
+      <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-lg border border-emerald-200">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why This Wins</h2>
+        <p class="text-emerald-900 leading-relaxed text-lg">
+          The COPL framework extends LOW's integer-thinning law from <strong>within-layer</strong> to <strong>cross-layer</strong> coordination, offering the first falsifiable account of how complex systems organize coherence across ontological boundaries. All claims are testable via preregistered (r, N) rosters with pilot/holdout splits, BH-FDR at q ≤ 0.05, and hard rejection if any gate fails.
+        </p>
+        <p class="text-emerald-800 mt-4 italic">
+          The core insight: <strong>emergent N-locks</strong> can exist where composite phase-locking is strong while all pairwise locks are weak—detectable only when examining the correct N-tuple. This provides a formal framework for understanding multi-layer coordination that standard pairwise methods cannot detect.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+      <div class="text-center text-gray-600">
+        <p class="mb-4">Cross-Ontological Phase Locking (COPL): A universal framework for multi-layer coherence and emergent N-way locks.</p>
+        <p class="text-sm">Published by Jake A. Hallett • August 28, 2025</p>
+        <p class="text-xs mt-4 text-gray-500">This document represents a comprehensive framework for understanding and detecting coherence across multiple ontological layers through renormalization group principles and rigorous falsification protocols.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+
+
