@@ -290,7 +290,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onToggle, onSelectCon
     {
       id: '1',
       role: 'assistant',
-      content: 'Hi! I\'m **Red**, your Redwrite assistant. I can help you find and navigate through content. What are you looking for today?',
+      content: 'Hi! I\'m **Delta**, your Primitives assistant. I can help you find and navigate through content. What are you looking for today?',
       timestamp: new Date(),
       type: 'text'
     }
