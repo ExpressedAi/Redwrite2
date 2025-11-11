@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { ContentItem } from './types';
 import { sampleContent } from './data/sampleContent';
 import ContentCard from './components/ContentCard';
@@ -33,12 +33,49 @@ function App() {
   }, [searchQuery, currentFilter, content]);
 
 
+  // Browser history support for modal
+  useEffect(() => {
+    const handlePopState = () => {
+      setSelectedContent(null);
+    };
+
+    if (selectedContent) {
+      window.history.pushState({ modal: true }, '');
+      window.addEventListener('popstate', handlePopState);
+    }
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [selectedContent]);
+
   const handleContentClick = (item: ContentItem) => {
     setSelectedContent(item);
   };
 
   const handleCloseViewer = () => {
-    setSelectedContent(null);
+    if (selectedContent && window.history.state?.modal) {
+      window.history.back();
+    } else {
+      setSelectedContent(null);
+    }
+  };
+
+  const handleExploreClick = () => {
+    // Scroll to content grid
+    const contentGrid = document.querySelector('[data-content-grid]');
+    if (contentGrid) {
+      contentGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleSearchClick = () => {
+    // Focus on search input
+    const searchInput = document.querySelector('input[type="text"]') as HTMLInputElement;
+    if (searchInput) {
+      searchInput.focus();
+      searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
 
@@ -59,11 +96,13 @@ function App() {
             </div>
 
             <div className="flex items-center gap-3">
-              <button className="p-2 text-silver-500 hover:text-graphite-900 transition-colors duration-micro ease-snap" aria-label="Search">
+              <button
+                onClick={handleSearchClick}
+                className="p-2 text-silver-500 hover:text-graphite-900 transition-colors duration-micro ease-snap"
+                aria-label="Search"
+                title="Jump to search"
+              >
                 <Search className="w-5 h-5" />
-              </button>
-              <button className="p-2 text-silver-500 hover:text-graphite-900 transition-colors duration-micro ease-snap" aria-label="Bookmarks">
-                <Bookmark className="w-5 h-5" />
               </button>
             </div>
           </div>
@@ -84,8 +123,11 @@ function App() {
             Low-order structure. Minimal form. Maximal proof. We turn change into tools you can steer.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="btn-primary px-8 py-3 font-sans font-medium">
-              See receipts →
+            <button
+              onClick={handleExploreClick}
+              className="btn-primary px-8 py-3 font-sans font-medium"
+            >
+              Explore content →
             </button>
           </div>
         </div>
@@ -99,7 +141,10 @@ function App() {
 
         {/* Content Grid */}
         {filteredContent.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            data-content-grid
+          >
             {filteredContent.map((item) => (
               <ContentCard
                 key={item.id}
