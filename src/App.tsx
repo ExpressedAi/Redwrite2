@@ -43,23 +43,26 @@ function App() {
 
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-snow">
       {/* Header */}
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
+      <header className="glass border-b border-mist/50 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
-              <h1 className="text-2xl font-bold text-gray-900">Redwrite</h1>
+              <h1 className="text-2xl font-display font-bold text-graphite-900 tracking-wider flex items-center gap-2">
+                <span className="text-delta-blue text-3xl">Δ</span>
+                PRIMITIVES
+              </h1>
               <nav className="hidden md:flex items-center gap-6">
-                <a href="/contact.html" className="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+                <a href="/contact.html" className="text-graphite-700 hover:text-graphite-900 transition-colors duration-micro ease-snap">Contact</a>
               </nav>
             </div>
-            
+
             <div className="flex items-center gap-3">
-              <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors" aria-label="Search">
+              <button className="p-2 text-silver-500 hover:text-graphite-900 transition-colors duration-micro ease-snap" aria-label="Search">
                 <Search className="w-5 h-5" />
               </button>
-              <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors" aria-label="Bookmarks">
+              <button className="p-2 text-silver-500 hover:text-graphite-900 transition-colors duration-micro ease-snap" aria-label="Bookmarks">
                 <Bookmark className="w-5 h-5" />
               </button>
             </div>
@@ -70,17 +73,19 @@ function App() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero Section */}
-        <div className="text-center mb-12">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Redefining the future<br />
-            <span className="text-soft-purple">with AI</span>
+        <div className="text-center mb-12 py-12">
+          <h2 className="text-6xl md:text-7xl font-display font-bold text-graphite-900 mb-6 tracking-tight leading-tight">
+            Primitive wins.
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Discover cutting-edge insights, breakthrough research, and practical applications that are shaping tomorrow's intelligent systems.
+          <p className="text-xl md:text-2xl text-graphite-700 max-w-3xl mx-auto mb-4 font-sans">
+            Snap to simple. Build with deltas that persist.
+          </p>
+          <p className="text-lg text-silver-500 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Low-order structure. Minimal form. Maximal proof. We turn change into tools you can steer.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
-              Explore Articles →
+            <button className="btn-primary px-8 py-3 font-sans font-medium">
+              See receipts →
             </button>
           </div>
         </div>

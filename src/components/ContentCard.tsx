@@ -25,17 +25,17 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onClick }) => {
   const getCardColor = () => {
     switch (item.category) {
       case 'Applications':
-        return 'bg-gradient-to-br from-blue-400 to-cyan-500';
+        return 'bg-gradient-to-br from-delta-blue/20 to-mint/30';
       case 'Articles':
-        return 'bg-gradient-to-br from-purple-400 to-pink-500';
+        return 'bg-gradient-to-br from-orchid/20 to-delta-blue/20';
       case 'Research':
-        return 'bg-gradient-to-br from-emerald-400 to-teal-500';
+        return 'bg-gradient-to-br from-mint/30 to-delta-blue/20';
       case 'Trade Secrets':
-        return 'bg-gradient-to-br from-amber-400 to-orange-500';
+        return 'bg-gradient-to-br from-amber/30 to-orchid/20';
       case 'Writing':
-        return 'bg-gradient-to-br from-indigo-400 to-purple-500';
+        return 'bg-gradient-to-br from-orchid/30 to-mint/20';
       default:
-        return 'bg-gradient-to-br from-gray-400 to-gray-500';
+        return 'bg-gradient-to-br from-mist to-cloud';
     }
   };
 
@@ -49,45 +49,45 @@ const ContentCard: React.FC<ContentCardProps> = ({ item, onClick }) => {
   return (
     <div
       onClick={() => onClick(item)}
-      className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group overflow-hidden border border-gray-100/50"
+      className="glass hover:shadow-lg transition-all duration-ui ease-snap cursor-pointer group overflow-hidden"
     >
-      <div className={`relative ${getCardColor()} h-32 flex items-center justify-center`}>
-        <div className="text-gray-600">
+      <div className={`relative ${getCardColor()} h-32 flex items-center justify-center backdrop-blur-sm`}>
+        <div className="text-graphite-700">
           {getIcon()}
         </div>
         {item.isOriginalResearch && (
-          <div className="absolute top-3 left-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs px-3 py-1 rounded-full flex items-center gap-1 font-semibold shadow-lg">
+          <div className="absolute top-3 left-3 bg-delta-blue text-snow text-xs px-3 py-1 rounded-full flex items-center gap-1 font-semibold shadow-lg font-sans">
             <Sparkles className="w-3 h-3" />
             Original Research
           </div>
         )}
-        <div className="absolute top-3 right-3 bg-white/80 backdrop-blur-sm text-gray-600 text-xs px-3 py-1 rounded-full flex items-center gap-1">
+        <div className="absolute top-3 right-3 glass text-graphite-700 text-xs px-3 py-1 rounded-full flex items-center gap-1">
           <Clock className="w-3 h-3" />
           {getDuration()}
         </div>
       </div>
-      
+
       <div className="p-5">
         <div className="flex flex-wrap gap-2 mb-3">
           {item.tags.slice(0, 2).map((tag) => (
             <span
               key={tag}
-              className="bg-pastel-blue text-gray-600 text-xs px-3 py-1 rounded-full"
+              className="bg-mist text-graphite-700 text-xs px-3 py-1 rounded-full font-sans"
             >
               {tag}
             </span>
           ))}
         </div>
-        
-        <h3 className="font-semibold text-gray-800 text-lg mb-2 group-hover:text-gray-600 transition-colors">
+
+        <h3 className="font-display font-semibold text-graphite-900 text-lg mb-2 group-hover:text-delta-blue transition-colors duration-micro ease-snap">
           {item.title}
         </h3>
-        
-        <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
+
+        <p className="text-silver-500 text-sm leading-relaxed mb-4 line-clamp-2 font-sans">
           {item.description}
         </p>
-        
-        <div className="flex items-center justify-between text-xs text-gray-400">
+
+        <div className="flex items-center justify-between text-xs text-silver-500 font-sans">
           <span>{item.author}</span>
           <span>{new Date(item.publishedAt).toLocaleDateString()}</span>
         </div>

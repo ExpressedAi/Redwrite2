@@ -17,7 +17,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose, content, onCon
 
   // Check if already authenticated
   useEffect(() => {
-    const authStatus = localStorage.getItem('redwrite-admin-auth');
+    const authStatus = localStorage.getItem('primitives-admin-auth');
     if (authStatus === 'true') {
       setIsAuthenticated(true);
     }
@@ -25,9 +25,9 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose, content, onCon
 
   const handleAuth = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'redwrite2025') {
+    if (password === 'primitives2025') {
       setIsAuthenticated(true);
-      localStorage.setItem('redwrite-admin-auth', 'true');
+      localStorage.setItem('primitives-admin-auth', 'true');
       setPassword('');
     } else {
       alert('Incorrect password');
@@ -36,7 +36,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose, content, onCon
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    localStorage.removeItem('redwrite-admin-auth');
+    localStorage.removeItem('primitives-admin-auth');
   };
 
   const generateId = () => {
@@ -74,7 +74,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose, content, onCon
           description: `Uploaded ${fileType} content - ${file.name}`,
           type: fileType,
           url: `/uploads/${file.name}`, // This would be your actual upload URL
-          author: 'Redwrite Admin',
+          author: 'Primitives Admin',
           publishedAt: new Date().toISOString(),
           tags: ['Uploaded', fileType.charAt(0).toUpperCase() + fileType.slice(1)],
           readTime: fileType === 'video' || fileType === 'audio' ? 30 : 10,
@@ -171,7 +171,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose, content, onCon
       <div className="bg-white w-full max-w-6xl mx-auto m-4 rounded-2xl shadow-2xl flex flex-col">
         {/* Header */}
         <div className="border-b border-gray-200 p-6 flex justify-between items-center">
-          <h2 className="text-2xl font-bold text-gray-900">🔥 Redwrite Admin Panel</h2>
+          <h2 className="text-2xl font-bold text-gray-900">🔥 Primitives Admin Panel</h2>
           <div className="flex gap-3">
             <button
               onClick={handleLogout}

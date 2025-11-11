@@ -1,3 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primitives Brand Color Tokens */
+    --color-snow: #FCFCFD;
+    --color-cloud: #F4F6F8;
+    --color-mist: #ECEFF3;
+    --color-graphite-900: #0B0D10;
+    --color-graphite-700: #151A20;
+    --color-silver-500: #9AA3AF;
+
+    /* Primitives Accent Colors */
+    --accent-delta: #3A8FFF;
+    --accent-orchid: #A28BFF;
+    --accent-mint: #8BF2E6;
+    --accent-amber: #FFC66D;
+
+    /* Glass Tokens */
+    --glass-stroke: rgba(220, 227, 240, 0.65);
+    --glass-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 10px 25px rgba(15, 23, 42, 0.06);
+
+    /* Spacing & Radius */
+    --radius-2xl: 20px;
+    --space: 8px;
+
+    /* Motion Easings */
+    --ease-snap: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-hold: cubic-bezier(0.33, 0, 0.67, 1);
+    --ease-release: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Durations */
+    --dur-micro: 140ms;
+    --dur-ui: 240ms;
+    --dur-page: 420ms;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card Utility */
+  .glass {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.60) 100%);
+    border: 1px solid var(--glass-stroke);
+    backdrop-filter: blur(12px) saturate(1.4) brightness(1.07);
+    box-shadow: var(--glass-shadow);
+    border-radius: var(--radius-2xl);
+  }
+
+  /* Primary Button - Primitives Style */
+  .btn-primary {
+    color: var(--color-snow);
+    background: var(--accent-delta);
+    border-radius: 12px;
+    transition: transform var(--dur-micro) var(--ease-snap),
+                box-shadow var(--dur-micro) var(--ease-snap);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(58, 143, 255, 0.3);
+  }
+
+  /* Delta Symbol Utility */
+  .delta-symbol::before {
+    content: 'Δ';
+    font-weight: 700;
+  }
+}

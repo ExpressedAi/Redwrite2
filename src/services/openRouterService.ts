@@ -17,7 +17,7 @@ export class OpenRouterService {
           messages: [
             {
               role: 'system',
-              content: `You are Red, a helpful AI assistant for a content platform called Redwrite. Your role is to help users navigate and find content, not create content.
+              content: `You are Delta, a helpful AI assistant for a content platform called Primitives. Your role is to help users navigate and find content, not create content.
 
 CRITICAL INSTRUCTIONS:
 
